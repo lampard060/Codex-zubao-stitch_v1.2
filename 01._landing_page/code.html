@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZuBao - 数字避难所</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#3f4943",
+                        "on-background": "#1c1b1d",
+                        "surface-bright": "#fcf8fb",
+                        "primary-fixed": "#9df4c8",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "primary": "#005136",
+                        "secondary": "#006c49",
+                        "error": "#ba1a1a",
+                        "primary-container": "#006c49",
+                        "primary-fixed-dim": "#81d8ad",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#002113",
+                        "tertiary": "#005136",
+                        "secondary-fixed": "#6ffbbe",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#81d8ad",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "background": "#fcf8fb",
+                        "tertiary-fixed": "#6ffbbe",
+                        "tertiary-fixed-dim": "#4fdea4",
+                        "secondary-container": "#6cf8bb",
+                        "surface-tint": "#006c49",
+                        "surface-variant": "#e5e1e4",
+                        "outline": "#6f7a72",
+                        "on-tertiary-container": "#64f1b5",
+                        "on-primary-fixed-variant": "#005236",
+                        "outline-variant": "#bec9c0",
+                        "tertiary-container": "#006c4a",
+                        "surface-container-low": "#f6f2f5",
+                        "on-tertiary-fixed": "#002114",
+                        "surface-container-highest": "#e5e1e4",
+                        "on-primary-fixed": "#002113",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#313032",
+                        "surface-dim": "#dcd9dc",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#ebe7ea",
+                        "inverse-on-surface": "#f3f0f3",
+                        "surface": "#fcf8fb",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-primary-container": "#93eabe",
+                        "on-tertiary-fixed-variant": "#005237",
+                        "on-surface": "#1c1b1d",
+                        "on-secondary-container": "#00714d",
+                        "surface-container": "#f1edf0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(252, 248, 251, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #005136, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-fixed selection:text-primary overflow-x-hidden">
+<!-- Navigation Shell (Desktop) -->
+<nav class="w-full h-16 sticky top-0 z-40 bg-surface/70 backdrop-blur-xl flex justify-between items-center px-8 shadow-sm">
+<div class="text-xl font-bold tracking-tighter text-emerald-800 font-headline" style="">ZuBao</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-emerald-800 font-bold transition-colors" href="#" style="">首页</a>
+<a class="text-zinc-500 hover:text-emerald-700 transition-colors" href="#" style="">体验</a>
+<a class="text-zinc-500 hover:text-emerald-700 transition-colors" href="#" style="">关于</a>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-zinc-500" style="">notifications</span>
+<span class="material-symbols-outlined text-zinc-500" style="">account_circle</span>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative h-[921px] w-full flex items-center px-8 md:px-24 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Minimalist high-end spa interior with soft morning light filtering through linen curtains onto a smooth stone floor and green plants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdHjp6SARO0iLifn6rVNB7kWvhXILRCLUZoJgD48q-uBpZ0OoySF-Y7hjbbo5xLzp4tuIf_7gBO2Z2kYJkIQkBpCpVKptMkZ5sfxhVeTNBoJOzjjOcAjHtwnSEQdFR0NTDDz2PkZVlnq_3jIriZlheaP1nBTsl7-QONaTiByrvB2d6bPbRYO54iFPuOv7DP_Xe7xMIpn-dlqQKAQiWYBaeDgQZJNkSE80vxZWeOna8iP4OW0SceRG6xbWm-L6TzuUGsoVQFSKVSaB4" style=""/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface/40 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-2xl glass-panel p-12 rounded-xl shadow-sm border border-outline-variant/10">
+<span class="font-label text-primary font-bold tracking-[0.2em] uppercase text-xs mb-6 block" style="">Premium Editorial Wellness</span>
+<h1 class="font-headline text-6xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[1.1] mb-8" style="">
+                让养生 <br/> <span class="text-gradient" style="">触手可及</span>
+</h1>
+<p class="font-body text-on-surface-variant text-lg leading-relaxed mb-10 max-w-md" style="">在这个繁忙的时代，ZuBao 为您打造专属的数字避难所。连接专业技师与高端空间，重塑身心平衡的艺术。</p>
+<div class="flex flex-wrap gap-4">
+<button class="px-10 py-5 bg-gradient-to-br from-primary to-primary-container text-white rounded-xl font-semibold shadow-lg hover:brightness-110 transition-all" style="">
+                    开启治愈之旅
+                </button>
+<button class="px-10 py-5 bg-surface-container-high text-on-surface rounded-xl font-semibold hover:bg-surface-container-highest transition-all" style="">
+                    了解更多
+                </button>
+</div>
+</div>
+</section>
+<!-- Role Entrances (The "Access" Grid) -->
+<section class="py-32 px-8 md:px-24 bg-surface">
+<div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+<div class="max-w-xl">
+<span class="font-label text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block" style="">Identity Access</span>
+<h2 class="font-headline text-4xl font-bold tracking-tight text-on-surface" style="">多重身份，同一种奢华。</h2>
+</div>
+<p class="font-body text-zinc-500 max-w-xs text-right" style="">
+                无论您是寻求放松的宾客，还是追求卓越的专业人士，在此都能找到您的归属。
+            </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Merchant Card -->
+<div class="group relative overflow-hidden rounded-xl bg-surface-container-low aspect-[4/5] flex flex-col justify-end p-10 transition-all duration-500 hover:shadow-2xl">
+<div class="absolute top-0 left-0 w-full h-full bg-emerald-950/5 group-hover:bg-emerald-950/0 transition-all"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary text-4xl mb-6 block" style="">business_center</span>
+<h3 class="font-headline text-2xl font-bold mb-4" style="">商家入口</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed" style="">数字化门店管理，提升运营效率，连接更多高端客源。</p>
+<a class="inline-flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all" href="#" style="">
+                        进入管理后台 <span class="material-symbols-outlined" style="">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Practitioner Card -->
+<div class="group relative overflow-hidden rounded-xl bg-white aspect-[4/5] flex flex-col justify-end p-10 shadow-sm border border-outline-variant/10 transition-all duration-500 hover:-translate-y-2">
+<div class="absolute top-10 right-10 opacity-10">
+<span class="material-symbols-outlined text-9xl" style="">spa</span>
+</div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary text-4xl mb-6 block" style="">self_improvement</span>
+<h3 class="font-headline text-2xl font-bold mb-4" style="">技师入口</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed" style="">灵活排班，专业评价体系，让才华在云端闪耀。</p>
+<a class="inline-flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all" href="#" style="">
+                        管理我的排班 <span class="material-symbols-outlined" style="">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Consumer Card -->
+<div class="group relative overflow-hidden rounded-xl bg-primary text-white aspect-[4/5] flex flex-col justify-end p-10 transition-all duration-500">
+<div class="absolute inset-0 opacity-20">
+<img class="w-full h-full object-cover" data-alt="High-resolution texture of emerald silk fabric with organic folds and soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUoFWL-XQLQu8Ve6qIrzgOVFTzKvKGKYqwVyl3a4omVMGBcj9hCN-HF6r691yHKwgTpOng0ulznHLiLb69wWFGeYYnz7nFL4hDX1dCQ_kTD2DmDHMskZd-5LrqgOvFf_G0VTZWTwrDiNSt7oz7ApXuYVoQg9cuZdzWgBrO_81SMBAc6ZjfYXrng5PLpFKSSWq5JSTri6Ks0pCuHjbv_yFVJlmqI5ZBU6yYbd63E1GaIBn_nNxcoqyFJvCcA638jUxGHB8vCFsYNB7A" style=""/>
+</div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl mb-6 block" style="">face_6</span>
+<h3 class="font-headline text-2xl font-bold mb-4" style="">消费者入口</h3>
+<p class="text-primary-fixed/80 mb-8 leading-relaxed" style="">一键预约，私享尊贵，开启属于您的数字康养生活。</p>
+<a class="inline-flex items-center gap-2 text-secondary-fixed font-bold group-hover:gap-4 transition-all" href="#" style="">
+                        立即开始体验 <span class="material-symbols-outlined" style="">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Atmospheric Divider -->
+<section class="h-[614px] relative overflow-hidden">
+<img class="w-full h-full object-cover grayscale brightness-90" data-alt="Wide shot of a luxury zen garden with balanced stones and a small bamboo water feature at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfRFesMLBXscO1us5sgQb1SWGA5UVmf1k8y31mgkuI2jxp3se-U8MB0kIIneUIn2Rr0NxQAlgfWk0EsZQ0z3eP_t9hyWuJd7zFOZFBjyDj9BMa1eJOPdXQ1QEmMCE2uGtAP-v4KGKvg_bOgj_JzfkX9R-WKo1cjliLqx-sgT0eJkvheTpoCM4Pyt4Vduw60yAob5ymT-0daB27kkiYJC2EZQwekVHrmu5CcGA98P6ifSQ1dsIoOPWq3BuuT4oq-FPd3ySJe0P_8jLv" style=""/>
+<div class="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-[2px]">
+<div class="text-center text-white max-w-3xl px-8">
+<h2 class="font-headline text-4xl md:text-5xl font-light italic leading-snug" style="">"真正的治愈，始于内心的宁静与技术的精准邂逅。"</h2>
+<p class="mt-8 font-label tracking-[0.3em] text-sm uppercase opacity-70" style="">— ZuBao Philosophy —</p>
+</div>
+</div>
+</section>
+<!-- Feature Grid (Editorial Bento) -->
+<section class="py-32 px-8 md:px-24">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[280px]">
+<div class="md:col-span-8 bg-surface-container-low rounded-xl p-12 flex flex-col justify-between">
+<h3 class="font-headline text-3xl font-bold max-w-sm" style="">智能排班系统，为每一秒专业时间赋能。</h3>
+<div class="flex justify-between items-end">
+<p class="text-zinc-500 max-w-xs" style="">基于大数据分析的实时调度，确保服务的高效与无缝衔接。</p>
+<span class="material-symbols-outlined text-6xl text-primary/20" style="">analytics</span>
+</div>
+</div>
+<div class="md:col-span-4 bg-primary-container text-on-primary-container rounded-xl p-12 relative overflow-hidden">
+<h3 class="font-headline text-2xl font-bold relative z-10" style="">极致隐私保障</h3>
+<p class="mt-4 opacity-80 relative z-10" style="">金融级加密，保护您的每一项健康数据。</p>
+<span class="material-symbols-outlined absolute -bottom-10 -right-10 text-[180px] opacity-10" style="">verified_user</span>
+</div>
+<div class="md:col-span-4 bg-white rounded-xl p-12 shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary mb-6" style="">workspace_premium</span>
+<h3 class="font-headline text-xl font-bold" style="">精英技师认证</h3>
+<p class="mt-2 text-zinc-500" style="">仅与行业前5%的顶尖疗愈师合作。</p>
+</div>
+<div class="md:col-span-8 bg-surface-container-highest rounded-xl p-12 flex items-center gap-12 overflow-hidden">
+<div class="hidden lg:block w-48 h-48 rounded-full overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Macro photo of smooth black river stones with a single green leaf resting on top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUdxU4Qa4a7-ZmbZAP8MNMwIV3hy2U9e0cPYJuxV8jY-eF3mvZ1EmpgwW5q5zukg624VIHVl6FGRK0kq4KWexAy4jPXSZJBdx7pfFil2D8oWLa2_lnBv0bYjPakhmjDxmJka-Q2bSuAbt0vTA7urCalatxO5BMWJg6BbC8SJOAYSm9PVKgAikArQVpSRKfRa4L2-IL-xNLHfWY5OKRGRrKepbz3UKSaYZpAeWpc-xupQWyUhDb4E1V4KvgvDIMqRMDy_f7yYqoTDQe" style=""/>
+</div>
+<div>
+<h3 class="font-headline text-2xl font-bold mb-4" style="">定制化服务方案</h3>
+<p class="text-zinc-500" style="">根据您的身心状态，AI算法将为您匹配最适合的疗程建议。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-low py-24 px-8 md:px-24">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-outline-variant/20 pb-16">
+<div class="col-span-1 md:col-span-1">
+<div class="text-2xl font-black text-emerald-900 font-headline mb-6" style="">ZuBao</div>
+<p class="text-sm text-zinc-500 leading-relaxed" style="">高端康养产业的数字化引航者。我们致力于通过技术手段，让每一次养生体验都成为一种生活美学。</p>
+</div>
+<div>
+<h4 class="font-headline font-bold mb-6" style="">探索</h4>
+<ul class="space-y-4 text-sm text-zinc-600">
+<li class="" style=""><a class="hover:text-primary" href="#" style="">服务项目</a></li>
+<li class="" style=""><a class="hover:text-primary" href="#" style="">技师风采</a></li>
+<li class="" style=""><a class="hover:text-primary" href="#" style="">城市覆盖</a></li>
+<li class="" style=""><a class="hover:text-primary" href="#" style="">会员计划</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold mb-6" style="">合作</h4>
+<ul class="space-y-4 text-sm text-zinc-600">
+<li class="" style=""><a class="hover:text-primary" href="#" style="">商家入驻</a></li>
+<li class="" style=""><a class="hover:text-primary" href="#" style="">技师招募</a></li>
+<li class="" style=""><a class="hover:text-primary" href="#" style="">品牌合作</a></li>
+<li class="" style=""><a class="hover:text-primary" href="#" style="">开发者API</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold mb-6" style="">联系</h4>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-sm" style="">mail</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-sm" style="">call</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-sm" style="">share</span>
+</div>
+</div>
+<p class="text-xs text-zinc-400" style="">© 2024 ZuBao. 保留所有权利。</p>
+</div>
+</div>
+<div class="pt-12 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-400 uppercase tracking-widest">
+<div class="" style="">Privacy Policy</div>
+<div class="" style="">Terms of Service</div>
+<div class="" style="">Cookies</div>
+</div>
+</footer>
+<!-- Mobile Navigation Shell -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-xl h-20 z-50 flex justify-around items-center px-4 border-t border-outline-variant/10">
+<div class="flex flex-col items-center gap-1 text-primary font-bold">
+<span class="material-symbols-outlined" style="">dashboard</span>
+<span class="text-[10px]" style="">首页</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-zinc-400">
+<span class="material-symbols-outlined" style="">spa</span>
+<span class="text-[10px]" style="">技师</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-zinc-400">
+<span class="material-symbols-outlined" style="">receipt_long</span>
+<span class="text-[10px]" style="">订单</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-zinc-400">
+<span class="material-symbols-outlined" style="">settings</span>
+<span class="text-[10px]" style="">我的</span>
+</div>
+</div>
+<!-- Floating Action Button - Only for Home Context -->
+<div class="fixed bottom-24 right-8 z-50 hidden md:block">
+<button class="w-16 h-16 rounded-full bg-primary text-white shadow-2xl flex items-center justify-center hover:scale-105 transition-transform duration-300" style="">
+<span class="material-symbols-outlined text-3xl" style="">calendar_month</span>
+</button>
+</div>
+</body></html>

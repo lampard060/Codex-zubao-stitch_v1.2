@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>足宝 | 基础资料</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght@300;400;500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260410a" />
+  </head>
+  <body data-page="merchant-master-data">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">足宝</div>
+        <div class="brand-subtitle">基础资料</div>
+        <nav class="nav-list">
+          <a class="nav-item" href="./merchant-dashboard.html"><span class="material-symbols-outlined">dashboard</span>首页</a>
+          <a class="nav-item" href="./merchant-technicians.html"><span class="material-symbols-outlined">spa</span>技师</a>
+          <a class="nav-item" href="./merchant-orders.html"><span class="material-symbols-outlined">receipt_long</span>订单</a>
+          <a class="nav-item active" href="./merchant-master-data.html"><span class="material-symbols-outlined">inventory_2</span>基础资料</a>
+          <a class="nav-item" href="./merchant-analytics.html"><span class="material-symbols-outlined">analytics</span>统计</a>
+          <a class="nav-item" href="./merchant-settings.html"><span class="material-symbols-outlined">settings</span>设置</a>
+        </nav>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <div class="small" style="text-transform: uppercase; letter-spacing: 0.14em">基础资料</div>
+            <div style="font-weight: 800; font-family: Manrope, sans-serif; font-size: 1.2rem">项目、房间与客户档案</div>
+          </div>
+          <div class="topbar-actions">
+            <span class="badge success">订单选择式录入基础</span>
+          </div>
+        </header>
+
+        <section class="page-header dashboard-header">
+          <p class="eyebrow">主数据管理</p>
+          <h1 class="page-title">基础资料</h1>
+          <p class="page-copy">先维护项目、房间和客户档案，后续新增订单时直接选择，不再手工填写。</p>
+        </section>
+
+        <section class="grid-2">
+          <article class="white-card card-pad">
+            <div class="section-header" style="margin: 0 0 16px">
+              <div>
+                <h2 class="section-title" style="font-size: 1.6rem">项目管理</h2>
+                <p class="section-copy">维护服务名称、内容、价格和时长。</p>
+              </div>
+              <button class="ghost-button" id="service-item-reset-button">新建项目</button>
+            </div>
+            <div class="form-grid-2">
+              <label class="form-field">
+                <span class="field-label">项目名称</span>
+                <input id="service-item-name-input" placeholder="例如：足底按摩" />
+              </label>
+              <label class="form-field">
+                <span class="field-label">服务类型</span>
+                <select id="service-item-mode-input">
+                  <option value="scheduled">排钟</option>
+                  <option value="designated">点钟</option>
+                </select>
+              </label>
+              <label class="form-field">
+                <span class="field-label">项目价格（元）</span>
+                <input id="service-item-price-input" type="number" min="0" step="0.01" placeholder="例如：398" />
+              </label>
+              <label class="form-field">
+                <span class="field-label">服务时长（分钟）</span>
+                <input id="service-item-duration-input" type="number" min="1" step="1" placeholder="例如：60" />
+              </label>
+              <label class="form-field form-field-full">
+                <span class="field-label">项目内容</span>
+                <textarea id="service-item-description-input" rows="3" placeholder="例如：足底按摩 + 热敷放松"></textarea>
+              </label>
+            </div>
+            <div class="form-actions">
+              <p class="small" id="service-item-feedback" hidden></p>
+              <button class="pill-button" id="service-item-save-button">保存项目</button>
+            </div>
+            <div class="record-list" id="service-item-list" style="margin-top: 18px"></div>
+          </article>
+
+          <article class="white-card card-pad">
+            <div class="section-header" style="margin: 0 0 16px">
+              <div>
+                <h2 class="section-title" style="font-size: 1.6rem">房间管理</h2>
+                <p class="section-copy">预先设置门店房间，订单开单时直接选择。</p>
+              </div>
+              <button class="ghost-button" id="room-reset-button">新建房间</button>
+            </div>
+            <div class="form-grid-2">
+              <label class="form-field">
+                <span class="field-label">房间名称</span>
+                <input id="room-name-input" placeholder="例如：V108" />
+              </label>
+              <label class="form-field">
+                <span class="field-label">房间类型</span>
+                <input id="room-type-input" placeholder="例如：豪华间" />
+              </label>
+              <label class="form-field form-field-full">
+                <span class="field-label">备注</span>
+                <textarea id="room-note-input" rows="3" placeholder="例如：双人房 / 靠窗"></textarea>
+              </label>
+            </div>
+            <div class="form-actions">
+              <p class="small" id="room-feedback" hidden></p>
+              <button class="pill-button" id="room-save-button">保存房间</button>
+            </div>
+            <div class="record-list" id="room-list" style="margin-top: 18px"></div>
+          </article>
+        </section>
+
+        <section class="white-card card-pad" style="margin-top: 22px">
+          <div class="section-header" style="margin: 0 0 16px">
+            <div>
+              <h2 class="section-title" style="font-size: 1.6rem">客户管理</h2>
+              <p class="section-copy">建档客户可在开单时直接选择，其他客户默认按散客处理。</p>
+            </div>
+            <button class="ghost-button" id="customer-reset-button">新建客户</button>
+          </div>
+          <div class="form-grid-2">
+            <label class="form-field">
+              <span class="field-label">客户姓名</span>
+              <input id="customer-name-input" placeholder="例如：张先生" />
+            </label>
+            <label class="form-field">
+              <span class="field-label">联系电话</span>
+              <input id="customer-phone-input" placeholder="例如：13800138000" />
+            </label>
+            <label class="form-field">
+              <span class="field-label">性别</span>
+              <select id="customer-gender-input">
+                <option value="">未设置</option>
+                <option value="male">男</option>
+                <option value="female">女</option>
+              </select>
+            </label>
+            <label class="form-field">
+              <span class="field-label">客户类型</span>
+              <select id="customer-member-input">
+                <option value="false">散客建档</option>
+                <option value="true">会员客户</option>
+              </select>
+            </label>
+            <label class="form-field form-field-full">
+              <span class="field-label">客户备注</span>
+              <textarea id="customer-note-input" rows="3" placeholder="例如：偏好轻力度 / 颈肩重点放松"></textarea>
+            </label>
+          </div>
+          <div class="form-actions">
+            <p class="small" id="customer-feedback" hidden></p>
+            <button class="pill-button" id="customer-save-button">保存客户</button>
+          </div>
+          <div class="record-list" id="customer-list" style="margin-top: 18px"></div>
+        </section>
+      </main>
+    </div>
+    <script src="./app.js?v=20260410a"></script>
+  </body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>足宝 | 商家首页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght@300;400;500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260410a" />
+  </head>
+  <body data-page="merchant-dashboard">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">足宝</div>
+        <div class="brand-subtitle">商家管理端</div>
+        <nav class="nav-list">
+          <a class="nav-item active" href="./merchant-dashboard.html"><span class="material-symbols-outlined">dashboard</span>首页</a>
+          <a class="nav-item" href="./merchant-technicians.html"><span class="material-symbols-outlined">spa</span>技师</a>
+          <a class="nav-item" href="./merchant-orders.html"><span class="material-symbols-outlined">receipt_long</span>订单</a>
+          <a class="nav-item" href="./merchant-master-data.html"><span class="material-symbols-outlined">inventory_2</span>基础资料</a>
+          <a class="nav-item" href="./merchant-analytics.html"><span class="material-symbols-outlined">analytics</span>统计</a>
+          <a class="nav-item" href="./merchant-settings.html"><span class="material-symbols-outlined">settings</span>设置</a>
+        </nav>
+        <div class="sidebar-footer">
+          <a class="primary-cta" href="./merchant-orders.html?openCreate=1" style="display: inline-flex; justify-content: center">新增上钟</a>
+          <div class="sidebar-meta">
+            <div class="avatar-sm avatar-fallback">管</div>
+            <div>
+              <div class="small" style="letter-spacing: 0.12em; text-transform: uppercase">旗舰店管理员</div>
+              <div style="font-weight: 700" data-shop-name>足宝旗舰店</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <div class="small" style="text-transform: uppercase; letter-spacing: 0.14em">商家管理</div>
+            <div style="font-weight: 800; font-family: Manrope, sans-serif; font-size: 1.2rem" data-shop-backstage-name>足宝旗舰店后台</div>
+          </div>
+          <div class="topbar-actions">
+            <span class="badge success">试用剩余 18 天</span>
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="material-symbols-outlined">account_circle</span>
+          </div>
+        </header>
+
+        <section class="page-header dashboard-header">
+          <p class="eyebrow">经营首页</p>
+          <h1 class="page-title">商家控制台</h1>
+          <p class="page-copy" id="dashboard-welcome-copy">欢迎回来，今日门店运行良好。</p>
+        </section>
+
+        <section class="dashboard-kpi-grid">
+          <article class="dashboard-kpi-card">
+            <div class="dashboard-kpi-top">
+              <span class="dashboard-kpi-icon material-symbols-outlined">receipt_long</span>
+              <span class="dashboard-kpi-trend">+12% vs 昨天</span>
+            </div>
+            <p class="dashboard-kpi-label">今日订单</p>
+            <p class="dashboard-kpi-value" id="dashboard-today-order-count">42</p>
+          </article>
+          <article class="dashboard-kpi-card">
+            <div class="dashboard-kpi-top">
+              <span class="dashboard-kpi-icon material-symbols-outlined">payments</span>
+              <span class="dashboard-kpi-trend">+8% vs 昨天</span>
+            </div>
+            <p class="dashboard-kpi-label">今日营收</p>
+            <p class="dashboard-kpi-value" id="dashboard-today-revenue">¥12,840</p>
+          </article>
+          <article class="dashboard-kpi-card">
+            <div class="dashboard-kpi-top">
+              <span class="dashboard-kpi-icon material-symbols-outlined">group</span>
+              <span class="dashboard-kpi-trend">满负荷运行</span>
+            </div>
+            <p class="dashboard-kpi-label">在岗技师</p>
+            <p class="dashboard-kpi-value" id="dashboard-on-duty-count">18 / 20</p>
+          </article>
+        </section>
+
+        <section class="dashboard-profit-band">
+          <div>
+            <p class="dashboard-profit-label">本月利润</p>
+            <div class="dashboard-profit-main">
+              <strong id="dashboard-month-revenue">¥18,230</strong>
+              <span class="dashboard-profit-pill">↗ 6.8%</span>
+            </div>
+            <p class="dashboard-profit-note" id="dashboard-profit-note">营收 ¥42,850 · 工资 ¥24,620</p>
+          </div>
+          <div class="dashboard-profit-side">
+            <div>
+              <span class="dashboard-profit-side-label">净利率</span>
+                  <strong id="dashboard-completed-order-count">42.5%</strong>
+            </div>
+            <div>
+              <span class="dashboard-profit-side-label">较上月</span>
+                  <strong id="dashboard-in-service-count">+¥1,180</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="dashboard-main-grid">
+          <div class="dashboard-left-stack">
+            <div class="section-header dashboard-section-header">
+              <div>
+                <h2 class="section-title">正在进行中</h2>
+                <p class="section-copy">实时查看当前服务订单与剩余时间。</p>
+              </div>
+              <a class="action-link" href="./merchant-orders.html">查看全部订单 <span class="material-symbols-outlined">arrow_forward</span></a>
+            </div>
+
+            <div class="dashboard-live-list" id="dashboard-ongoing-orders">
+              <article class="dashboard-live-card">
+                <div class="dashboard-live-index">01</div>
+                <div>
+                  <div class="dashboard-live-title">足疗 SPA - 尊享套餐</div>
+                  <div class="small">客户：李先生　技师：林婉儿</div>
+                </div>
+                <span class="badge success">服务中</span>
+                <div class="dashboard-live-time">
+                  <div class="small">剩余时间</div>
+                  <strong>24:15</strong>
+                </div>
+              </article>
+
+              <article class="dashboard-live-card warning">
+                <div class="dashboard-live-index">02</div>
+                <div>
+                  <div class="dashboard-live-title">深度经络理疗</div>
+                  <div class="small">客户：李女士　技师：王大志</div>
+                </div>
+                <span class="badge warning">待结算</span>
+                <div class="dashboard-live-time">
+                  <div class="small">剩余时间</div>
+                  <strong>14:30</strong>
+                </div>
+              </article>
+
+              <article class="dashboard-live-card">
+                <div class="dashboard-live-index">03</div>
+                <div>
+                  <div class="dashboard-live-title">香薰热石调理</div>
+                  <div class="small">客户：赵小姐　技师：苏雅</div>
+                </div>
+                <span class="badge success">服务中</span>
+                <div class="dashboard-live-time">
+                  <div class="small">剩余时间</div>
+                  <strong>05:40</strong>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="dashboard-right-stack">
+            <article class="dashboard-panel">
+              <div class="section-header dashboard-section-header" style="margin: 0 0 12px">
+                <div>
+                  <h2 class="section-title" style="font-size: 1.6rem">客流趋势</h2>
+                  <p class="section-copy">实时更新每小时订单峰值</p>
+                </div>
+                <span class="dashboard-dot-note">今日</span>
+              </div>
+              <div class="dashboard-mini-chart">
+                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 24%"></div><span>08:00</span></div>
+                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 40%"></div><span>12:00</span></div>
+                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 56%"></div><span>16:00</span></div>
+                <div class="dashboard-mini-col"><div class="dashboard-mini-bar active" style="height: 82%"></div><span>18:00</span></div>
+                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 68%"></div><span>20:00</span></div>
+                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 32%"></div><span>00:00</span></div>
+              </div>
+            </article>
+
+            <article class="dashboard-panel">
+              <div class="section-header dashboard-section-header" style="margin: 0 0 12px">
+                <div>
+                  <h2 class="section-title" style="font-size: 1.6rem">待钟技师 (2)</h2>
+                  <p class="section-copy">当前可立即安排上钟的技师</p>
+                </div>
+              </div>
+              <div class="dashboard-standby-list" id="dashboard-waiting-technicians">
+                <div class="dashboard-standby-card">
+                  <div class="portrait dashboard-portrait"><div class="portrait-fallback">陈</div></div>
+                  <div class="dashboard-standby-body">
+                    <div style="font-weight: 800">陈晓婷</div>
+                    <div class="small">推拿技师 · 当前可立即安排</div>
+                  </div>
+                  <span class="badge success">待钟</span>
+                </div>
+                <div class="dashboard-standby-card">
+                  <div class="portrait dashboard-portrait" style="background: linear-gradient(135deg, #365166, #638b92)"><div class="portrait-fallback">阿</div></div>
+                  <div class="dashboard-standby-body">
+                    <div style="font-weight: 800">阿慧丽</div>
+                    <div class="small">香薰理疗师 · 当前可立即安排</div>
+                  </div>
+                  <span class="badge success">待钟</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section style="margin-top: 36px">
+          <div class="section-header dashboard-section-header">
+            <div>
+              <h2 class="section-title">技师排行榜</h2>
+              <p class="section-copy">实时对比技师今日服务单量与贡献营收。</p>
+            </div>
+          </div>
+          <div class="dashboard-ranking-grid" id="dashboard-ranking-grid">
+            <article class="dashboard-ranking-card leaderboard-card rank-1">
+              <div class="dashboard-ranking-topline">
+                <div class="portrait dashboard-ranking-portrait"><div class="portrait-fallback">李</div></div>
+                <span class="dashboard-ranking-number">01</span>
+              </div>
+              <div class="dashboard-ranking-body">
+                <h3>小李 (Xiao Li)</h3>
+                <p class="small">高级理疗师</p>
+                <div class="dashboard-ranking-stats">
+                  <div class="dashboard-ranking-stat">
+                    <span>上钟次数</span>
+                    <strong>12 次</strong>
+                  </div>
+                  <div class="dashboard-ranking-stat">
+                    <span>贡献营收</span>
+                    <strong>¥3,640</strong>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="dashboard-ranking-card leaderboard-card rank-2">
+              <div class="dashboard-ranking-topline">
+                <div class="portrait dashboard-ranking-portrait" style="background: linear-gradient(135deg, #2c4b5d, #78918d)"><div class="portrait-fallback">王</div></div>
+                <span class="dashboard-ranking-number">02</span>
+              </div>
+              <div class="dashboard-ranking-body">
+                <h3>小王 (Xiao Wang)</h3>
+                <p class="small">金牌技师</p>
+                <div class="dashboard-ranking-stats">
+                  <div class="dashboard-ranking-stat">
+                    <span>上钟次数</span>
+                    <strong>10 次</strong>
+                  </div>
+                  <div class="dashboard-ranking-stat">
+                    <span>贡献营收</span>
+                    <strong>¥3,120</strong>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="dashboard-ranking-card leaderboard-card rank-3">
+              <div class="dashboard-ranking-topline">
+                <div class="portrait dashboard-ranking-portrait" style="background: linear-gradient(135deg, #254a43, #5e8d7f)"><div class="portrait-fallback">珍</div></div>
+                <span class="dashboard-ranking-number">03</span>
+              </div>
+              <div class="dashboard-ranking-body">
+                <h3>阿珍 (A Zhen)</h3>
+                <p class="small">资深理疗师</p>
+                <div class="dashboard-ranking-stats">
+                  <div class="dashboard-ranking-stat">
+                    <span>上钟次数</span>
+                    <strong>9 次</strong>
+                  </div>
+                  <div class="dashboard-ranking-stat">
+                    <span>贡献营收</span>
+                    <strong>¥2,850</strong>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <a class="floating-fab" href="./merchant-orders.html?openCreate=1"><span class="material-symbols-outlined">add</span></a>
+    <script src="./app.js?v=20260410a"></script>
+  </body>
+</html>

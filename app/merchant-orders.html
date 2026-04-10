@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>足宝 | 订单管理</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght@300;400;500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260410a" />
+  </head>
+  <body data-page="merchant-orders">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">足宝</div>
+        <div class="brand-subtitle">订单管理</div>
+        <nav class="nav-list">
+          <a class="nav-item" href="./merchant-dashboard.html"><span class="material-symbols-outlined">dashboard</span>首页</a>
+          <a class="nav-item" href="./merchant-technicians.html"><span class="material-symbols-outlined">spa</span>技师</a>
+          <a class="nav-item active" href="./merchant-orders.html"><span class="material-symbols-outlined">receipt_long</span>订单</a>
+          <a class="nav-item" href="./merchant-master-data.html"><span class="material-symbols-outlined">inventory_2</span>基础资料</a>
+          <a class="nav-item" href="./merchant-analytics.html"><span class="material-symbols-outlined">analytics</span>统计</a>
+          <a class="nav-item" href="./merchant-settings.html"><span class="material-symbols-outlined">settings</span>设置</a>
+        </nav>
+        <div class="sidebar-footer">
+          <button class="primary-cta" id="orders-create-toggle-sidebar">新增上钟</button>
+          <div class="sidebar-meta">
+            <div class="avatar-sm avatar-fallback">店</div>
+            <div>
+              <div class="small">门店后台</div>
+              <div style="font-weight: 700">足宝旗舰店</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <div class="small" style="text-transform: uppercase; letter-spacing: 0.14em">订单管理</div>
+            <div style="font-weight: 800; font-family: Manrope, sans-serif; font-size: 1.2rem">当日上钟记录</div>
+          </div>
+          <div class="topbar-actions">
+            <span class="badge success">进行中 3 单</span>
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="material-symbols-outlined">account_circle</span>
+          </div>
+        </header>
+
+        <section class="page-header dashboard-header">
+          <p class="eyebrow">订单中心</p>
+          <h1 class="page-title">订单管理</h1>
+          <p class="page-copy">按日期查看上钟记录，快速确认订单状态、服务时间与结算进度。</p>
+        </section>
+
+        <section class="dashboard-kpi-grid">
+          <article class="dashboard-kpi-card">
+            <div class="dashboard-kpi-top">
+              <span class="dashboard-kpi-icon material-symbols-outlined">receipt_long</span>
+              <span class="dashboard-kpi-trend">今日更新</span>
+            </div>
+            <p class="dashboard-kpi-label">今日订单</p>
+            <p class="dashboard-kpi-value" id="orders-total-count">42</p>
+          </article>
+          <article class="dashboard-kpi-card">
+            <div class="dashboard-kpi-top">
+              <span class="dashboard-kpi-icon material-symbols-outlined">payments</span>
+              <span class="dashboard-kpi-trend">实时同步</span>
+            </div>
+            <p class="dashboard-kpi-label">今日营收</p>
+            <p class="dashboard-kpi-value" id="orders-total-revenue">¥12,840</p>
+          </article>
+          <article class="dashboard-kpi-card">
+            <div class="dashboard-kpi-top">
+              <span class="dashboard-kpi-icon material-symbols-outlined">schedule</span>
+              <span class="dashboard-kpi-trend">需跟进</span>
+            </div>
+            <p class="dashboard-kpi-label">待结订单</p>
+            <p class="dashboard-kpi-value" id="orders-pending-count">6</p>
+          </article>
+        </section>
+
+        <section class="dashboard-filter-shell">
+          <div class="filters-left">
+            <label class="field" style="min-width: 320px">
+              <span class="material-symbols-outlined">search</span>
+              <input id="orders-search-input" placeholder="搜索订单号、技师姓名" />
+            </label>
+            <label class="field" style="min-width: 220px">
+              <input type="date" id="orders-date-input" />
+              <span class="material-symbols-outlined">calendar_today</span>
+            </label>
+          </div>
+          <div class="filters-right">
+            <div class="inline-group" id="orders-status-filters">
+              <button class="ghost-button" data-order-status-filter="all"><span class="material-symbols-outlined">tune</span> 全部</button>
+              <button class="ghost-button" data-order-status-filter="in_service">服务中</button>
+              <button class="ghost-button" data-order-status-filter="completed">已完成</button>
+              <button class="ghost-button" data-order-status-filter="cancelled">已取消</button>
+            </div>
+            <button class="pill-button" id="orders-create-toggle"><span class="material-symbols-outlined">add</span> 新增上钟</button>
+          </div>
+        </section>
+
+        <section class="white-card card-pad" id="orders-create-panel" hidden style="margin-bottom: 22px">
+          <div class="section-header" style="margin: 0 0 18px">
+            <div>
+              <h2 class="section-title" style="font-size: 1.6rem">新增上钟订单</h2>
+              <p class="section-copy">按项目、房间和客户档案选择开单，系统会自动带出类型、时长和价格。</p>
+            </div>
+            <button class="ghost-button" id="orders-create-cancel">取消</button>
+          </div>
+          <div class="form-grid-2">
+            <label class="form-field">
+              <span class="field-label">技师</span>
+              <select id="orders-create-technician"></select>
+            </label>
+            <label class="form-field">
+              <span class="field-label">项目</span>
+              <select id="orders-create-service-item"></select>
+            </label>
+            <label class="form-field">
+              <span class="field-label">房间</span>
+              <select id="orders-create-room"></select>
+            </label>
+            <label class="form-field">
+              <span class="field-label">客户</span>
+              <select id="orders-create-customer"></select>
+            </label>
+            <label class="form-field">
+              <span class="field-label">开始时间</span>
+              <input id="orders-create-start-time" type="datetime-local" />
+            </label>
+            <label class="form-field">
+              <span class="field-label">备注</span>
+              <input id="orders-create-note" placeholder="例如：客户偏好轻力度" />
+            </label>
+            <div class="record-list form-field-full" id="orders-create-service-summary">
+              <div class="record-row" style="grid-template-columns: 120px 1fr">
+                <div class="small">项目说明</div>
+                <div>请选择项目后自动带出</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <p class="small" id="orders-create-feedback" hidden></p>
+            <button class="pill-button" id="orders-create-submit">确认新增</button>
+          </div>
+        </section>
+
+        <section class="white-card card-pad" id="orders-edit-panel" hidden style="margin-bottom: 22px">
+          <div class="section-header" style="margin: 0 0 18px">
+            <div>
+              <h2 class="section-title" style="font-size: 1.6rem">编辑订单</h2>
+              <p class="section-copy">更新技师、项目、房间或客户选择，金额会随项目自动同步。</p>
+            </div>
+            <button class="ghost-button" id="orders-edit-cancel">取消</button>
+          </div>
+          <div class="inline-group" style="margin-bottom: 18px">
+            <span class="badge success">当前订单</span>
+            <span class="small" id="orders-edit-order-no">--</span>
+          </div>
+          <div class="record-list" style="margin-bottom: 18px" id="orders-edit-summary">
+            <div class="record-row" style="grid-template-columns: 120px 1fr">
+              <div class="small">技师</div>
+              <div>--</div>
+            </div>
+            <div class="record-row" style="grid-template-columns: 120px 1fr">
+              <div class="small">订单状态</div>
+              <div>--</div>
+            </div>
+            <div class="record-row" style="grid-template-columns: 120px 1fr">
+              <div class="small">订单金额</div>
+              <div>--</div>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <label class="form-field">
+              <span class="field-label">技师</span>
+              <select id="orders-edit-technician"></select>
+            </label>
+            <label class="form-field">
+              <span class="field-label">项目</span>
+              <select id="orders-edit-service-item"></select>
+            </label>
+            <label class="form-field">
+              <span class="field-label">房间</span>
+              <select id="orders-edit-room"></select>
+            </label>
+            <label class="form-field">
+              <span class="field-label">客户</span>
+              <select id="orders-edit-customer"></select>
+            </label>
+            <label class="form-field">
+              <span class="field-label">开始时间</span>
+              <input id="orders-edit-start-time" type="datetime-local" />
+            </label>
+            <label class="form-field form-field-full">
+              <span class="field-label">备注</span>
+              <textarea id="orders-edit-note" rows="4" placeholder="请输入需要同步的订单备注"></textarea>
+            </label>
+            <div class="record-list form-field-full" id="orders-edit-service-summary">
+              <div class="record-row" style="grid-template-columns: 120px 1fr">
+                <div class="small">项目说明</div>
+                <div>请选择项目后自动带出</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <p class="small" id="orders-edit-feedback" hidden></p>
+            <button class="pill-button" id="orders-edit-submit">保存订单</button>
+          </div>
+        </section>
+
+        <section class="white-card card-pad" id="orders-detail-panel" hidden style="margin-bottom: 22px">
+          <div class="section-header" style="margin: 0 0 18px">
+            <div>
+              <h2 class="section-title" style="font-size: 1.6rem">订单详情</h2>
+              <p class="section-copy">用于快速查看当前订单的服务信息、客户信息与金额明细。</p>
+            </div>
+            <div class="inline-group">
+              <button class="ghost-button" id="orders-detail-prev">上一单</button>
+              <button class="ghost-button" id="orders-detail-next">下一单</button>
+              <button class="ghost-button" id="orders-detail-close">关闭</button>
+            </div>
+          </div>
+          <div class="record-list" id="orders-detail-items">
+            <div class="record-row" style="grid-template-columns: 120px 1fr">
+              <div class="small">订单号</div>
+              <div>--</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="dashboard-main-grid">
+          <div class="dashboard-left-stack">
+            <div class="section-header dashboard-section-header">
+              <div>
+                <h2 class="section-title">订单列表</h2>
+                <p class="section-copy">优先展示当日需要关注的订单记录。</p>
+              </div>
+            </div>
+            <div class="dashboard-live-list" id="orders-list">
+              <article class="dashboard-live-card">
+                <div class="dashboard-live-index">01</div>
+                <div>
+                  <div class="dashboard-live-title">#ZB-8921 足底按摩</div>
+                  <div class="small">客户：张先生　技师：林婉儿　房号：V108 豪华间</div>
+                </div>
+                <span class="badge success">服务中</span>
+                <div class="dashboard-live-time">
+                  <div class="small">订单金额</div>
+                  <strong>¥398</strong>
+                </div>
+              </article>
+              <article class="dashboard-live-card warning">
+                <div class="dashboard-live-index">02</div>
+                <div>
+                  <div class="dashboard-live-title">#ZB-8920 全身油压</div>
+                  <div class="small">客户：李女士　技师：王大志　房号：S202 雅致间</div>
+                </div>
+                <span class="badge warning">待结算</span>
+                <div class="dashboard-live-time">
+                  <div class="small">订单金额</div>
+                  <strong>¥588</strong>
+                </div>
+              </article>
+              <article class="dashboard-live-card">
+                <div class="dashboard-live-index">03</div>
+                <div>
+                  <div class="dashboard-live-title">#ZB-8919 精品开背</div>
+                  <div class="small">客户：赵小姐　技师：张子墨　房号：V105 豪华间</div>
+                </div>
+                <span class="badge neutral">已完成</span>
+                <div class="dashboard-live-time">
+                  <div class="small">订单金额</div>
+                  <strong>¥298</strong>
+                </div>
+              </article>
+              <article class="dashboard-live-card">
+                <div class="dashboard-live-index">04</div>
+                <div>
+                  <div class="dashboard-live-title">#ZB-8918 中医经络推拿</div>
+                  <div class="small">客户：周先生　技师：沈清秋　房号：S201 雅致间</div>
+                </div>
+                <span class="badge neutral">已完成</span>
+                <div class="dashboard-live-time">
+                  <div class="small">订单金额</div>
+                  <strong>¥468</strong>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="dashboard-right-stack">
+            <article class="dashboard-panel">
+              <div class="section-header dashboard-section-header" style="margin: 0 0 12px">
+                <div>
+                  <h2 class="section-title" style="font-size: 1.6rem">状态分布</h2>
+                  <p class="section-copy">快速了解今日订单处理情况。</p>
+                </div>
+              </div>
+              <div class="dashboard-status-list" id="orders-status-list">
+                <div class="dashboard-status-row">
+                  <span>服务中</span>
+                  <strong>3 单</strong>
+                </div>
+                <div class="dashboard-status-row">
+                  <span>待结算</span>
+                  <strong>6 单</strong>
+                </div>
+                <div class="dashboard-status-row">
+                  <span>已完成</span>
+                  <strong>33 单</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="dashboard-panel">
+              <div class="section-header dashboard-section-header" style="margin: 0 0 12px">
+                <div>
+                  <h2 class="section-title" style="font-size: 1.6rem">订单高峰</h2>
+                  <p class="section-copy">查看今日订单集中时段。</p>
+                </div>
+              </div>
+              <div class="dashboard-mini-chart">
+                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 22%"></div><span>10:00</span></div>
+                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 44%"></div><span>12:00</span></div>
+                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 62%"></div><span>14:00</span></div>
+                <div class="dashboard-mini-col"><div class="dashboard-mini-bar active" style="height: 84%"></div><span>16:00</span></div>
+                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 70%"></div><span>18:00</span></div>
+                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 28%"></div><span>20:00</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="./app.js?v=20260410a"></script>
+  </body>
+</html>

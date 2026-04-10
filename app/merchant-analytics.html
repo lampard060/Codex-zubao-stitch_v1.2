@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>足宝 | 经营统计</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght@300;400;500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260410a" />
+  </head>
+  <body data-page="merchant-analytics">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">足宝</div>
+        <div class="brand-subtitle">经营统计</div>
+        <nav class="nav-list">
+          <a class="nav-item" href="./merchant-dashboard.html"><span class="material-symbols-outlined">dashboard</span>首页</a>
+          <a class="nav-item" href="./merchant-technicians.html"><span class="material-symbols-outlined">spa</span>技师</a>
+          <a class="nav-item" href="./merchant-orders.html"><span class="material-symbols-outlined">receipt_long</span>订单</a>
+          <a class="nav-item" href="./merchant-master-data.html"><span class="material-symbols-outlined">inventory_2</span>基础资料</a>
+          <a class="nav-item active" href="./merchant-analytics.html"><span class="material-symbols-outlined">analytics</span>统计</a>
+          <a class="nav-item" href="./merchant-settings.html"><span class="material-symbols-outlined">settings</span>设置</a>
+        </nav>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <div class="small" style="text-transform: uppercase; letter-spacing: 0.14em">经营统计</div>
+            <div style="font-weight: 800; font-family: Manrope, sans-serif; font-size: 1.2rem">经营统计总览</div>
+          </div>
+          <div class="topbar-actions">
+            <button class="ghost-button" data-analytics-period="today">今日</button>
+            <button class="ghost-button" data-analytics-period="month">本月</button>
+            <button class="pill-button" data-analytics-period="year">本年</button>
+          </div>
+        </header>
+
+        <section class="page-header dashboard-header">
+          <p class="eyebrow">经营概览</p>
+          <h1 class="page-title">经营统计</h1>
+          <p class="page-copy" id="analytics-page-copy">统一查看收入、工资支出、净营收与技师贡献，辅助门店经营判断。</p>
+        </section>
+
+        <section class="dashboard-kpi-grid">
+          <article class="dashboard-kpi-card">
+            <div class="dashboard-kpi-top">
+              <span class="dashboard-kpi-icon material-symbols-outlined">payments</span>
+              <span class="dashboard-kpi-trend" id="analytics-gross-trend-label">本月累计</span>
+            </div>
+            <p class="dashboard-kpi-label">营业收入</p>
+            <p class="dashboard-kpi-value" id="analytics-gross-revenue">¥26,480</p>
+          </article>
+          <article class="dashboard-kpi-card">
+            <div class="dashboard-kpi-top">
+              <span class="dashboard-kpi-icon material-symbols-outlined">account_balance_wallet</span>
+              <span class="dashboard-kpi-trend">已同步</span>
+            </div>
+            <p class="dashboard-kpi-label">工资支出</p>
+            <p class="dashboard-kpi-value" id="analytics-payroll-cost">¥33,360</p>
+          </article>
+          <article class="dashboard-kpi-card">
+            <div class="dashboard-kpi-top">
+              <span class="dashboard-kpi-icon material-symbols-outlined">monitoring</span>
+              <span class="dashboard-kpi-trend">经营结果</span>
+            </div>
+            <p class="dashboard-kpi-label">净营收</p>
+            <p class="dashboard-kpi-value" id="analytics-net-revenue">-¥6,880</p>
+          </article>
+        </section>
+
+        <section class="dashboard-main-grid analytics-overview-grid">
+          <div class="dashboard-left-stack analytics-stack">
+            <article class="dashboard-panel analytics-panel analytics-panel-tall">
+              <div class="section-header dashboard-section-header" style="margin: 0 0 12px">
+                <div>
+                  <h2 class="section-title">阶段营收趋势</h2>
+                  <p class="section-copy" id="analytics-trend-copy">支持按本月、本年或自选阶段查看经营变化。</p>
+                </div>
+                <div class="inline-group" id="analytics-period-badges">
+                  <span class="badge neutral">本月</span>
+                  <span class="badge neutral">本年</span>
+                  <span class="badge success">自选阶段</span>
+                </div>
+              </div>
+              <div class="dashboard-analytics-chart" id="analytics-weekly-trend">
+                <div class="dashboard-analytics-col"><div class="dashboard-analytics-bar" style="height: 28%"></div><span>第1周</span></div>
+                <div class="dashboard-analytics-col"><div class="dashboard-analytics-bar" style="height: 52%"></div><span>第2周</span></div>
+                <div class="dashboard-analytics-col"><div class="dashboard-analytics-bar active" style="height: 82%"></div><span>第3周</span></div>
+                <div class="dashboard-analytics-col"><div class="dashboard-analytics-bar" style="height: 64%"></div><span>第4周</span></div>
+                <div class="dashboard-analytics-col"><div class="dashboard-analytics-bar" style="height: 46%"></div><span>第5周</span></div>
+              </div>
+            </article>
+
+            <article class="dashboard-panel analytics-panel">
+              <div class="section-header dashboard-section-header" style="margin: 0 0 12px">
+                <div>
+                  <h2 class="section-title">工资支出摘要</h2>
+                  <p class="section-copy">仅展示经营判断需要的工资摘要信息。</p>
+                </div>
+                <a class="action-link" href="./merchant-payroll.html">查看工资明细 <span class="material-symbols-outlined">arrow_forward</span></a>
+              </div>
+              <div class="analytics-tech-list" id="analytics-payroll-summary">
+                <div class="analytics-tech-row">
+                  <div class="analytics-tech-meta">
+                    <div class="avatar-sm avatar-fallback">林</div>
+                    <div>
+                      <strong>林婉儿</strong>
+                      <p>底薪 ¥3,000 + 提成 ¥4,280 + 点钟费 ¥720</p>
+                    </div>
+                  </div>
+                  <span class="analytics-tech-amount">¥8,000</span>
+                </div>
+                <div class="analytics-tech-row">
+                  <div class="analytics-tech-meta">
+                    <div class="avatar-sm avatar-fallback">张</div>
+                    <div>
+                      <strong>张子墨</strong>
+                      <p>底薪 ¥3,200 + 提成 ¥5,160 + 点钟费 ¥880</p>
+                    </div>
+                  </div>
+                  <span class="analytics-tech-amount">¥9,240</span>
+                </div>
+                <div class="analytics-tech-row">
+                  <div class="analytics-tech-meta">
+                    <div class="avatar-sm avatar-fallback">其</div>
+                    <div>
+                      <strong>其余两位技师</strong>
+                      <p>沈清秋、王大志本月工资合计</p>
+                    </div>
+                  </div>
+                  <span class="analytics-tech-amount">¥16,120</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="dashboard-right-stack analytics-stack">
+            <article class="dashboard-panel analytics-panel">
+              <div class="section-header dashboard-section-header" style="margin: 0 0 12px">
+                <div>
+                  <h2 class="section-title" style="font-size: 1.6rem">经营结构</h2>
+                  <p class="section-copy">查看收入与支出的当前占比。</p>
+                </div>
+              </div>
+              <div class="dashboard-status-list" id="analytics-structure-list">
+                <div class="dashboard-status-row">
+                  <span>营业收入</span>
+                  <strong>¥26,480</strong>
+                </div>
+                <div class="dashboard-status-row">
+                  <span>工资支出</span>
+                  <strong>¥33,360</strong>
+                </div>
+                <div class="dashboard-status-row">
+                  <span>净营收</span>
+                  <strong>-¥6,880</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="dashboard-panel analytics-panel">
+              <div class="section-header dashboard-section-header" style="margin: 0 0 12px">
+                <div>
+                  <h2 class="section-title" style="font-size: 1.6rem">技师贡献排行</h2>
+                  <p class="section-copy">从经营角度查看本月技师贡献。</p>
+                </div>
+              </div>
+              <div class="analytics-tech-list" id="analytics-contribution-list">
+                <div class="analytics-tech-row">
+                  <div class="analytics-tech-meta">
+                    <div class="avatar-sm avatar-fallback">林</div>
+                    <div>
+                      <strong>林婉儿</strong>
+                      <p>16 单 · 服务营收</p>
+                    </div>
+                  </div>
+                  <span class="analytics-tech-amount">¥4,280</span>
+                </div>
+                <div class="analytics-tech-row">
+                  <div class="analytics-tech-meta">
+                    <div class="avatar-sm avatar-fallback">张</div>
+                    <div>
+                      <strong>张子墨</strong>
+                      <p>18 单 · 服务营收</p>
+                    </div>
+                  </div>
+                  <span class="analytics-tech-amount">¥5,160</span>
+                </div>
+                <div class="analytics-tech-row">
+                  <div class="analytics-tech-meta">
+                    <div class="avatar-sm avatar-fallback">沈</div>
+                    <div>
+                      <strong>沈清秋</strong>
+                      <p>14 单 · 服务营收</p>
+                    </div>
+                  </div>
+                  <span class="analytics-tech-amount">¥4,010</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="./app.js?v=20260410a"></script>
+  </body>
+</html>

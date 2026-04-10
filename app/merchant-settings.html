@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>足宝 | 门店设置</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght@300;400;500&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css?v=20260410a" />
+  </head>
+  <body data-page="merchant-settings">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">足宝</div>
+        <div class="brand-subtitle">门店设置</div>
+        <nav class="nav-list">
+          <a class="nav-item" href="./merchant-dashboard.html"><span class="material-symbols-outlined">dashboard</span>首页</a>
+          <a class="nav-item" href="./merchant-technicians.html"><span class="material-symbols-outlined">spa</span>技师</a>
+          <a class="nav-item" href="./merchant-orders.html"><span class="material-symbols-outlined">receipt_long</span>订单</a>
+          <a class="nav-item" href="./merchant-master-data.html"><span class="material-symbols-outlined">inventory_2</span>基础资料</a>
+          <a class="nav-item" href="./merchant-analytics.html"><span class="material-symbols-outlined">analytics</span>统计</a>
+          <a class="nav-item active" href="./merchant-settings.html"><span class="material-symbols-outlined">settings</span>设置</a>
+        </nav>
+      </aside>
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <div class="small" style="text-transform: uppercase; letter-spacing: 0.14em">门店设置</div>
+            <div style="font-weight: 800; font-family: Manrope, sans-serif; font-size: 1.2rem">店铺信息、二维码与订阅</div>
+          </div>
+          <div class="topbar-actions">
+            <button class="pill-button" id="settings-save-button">保存设置</button>
+          </div>
+        </header>
+        <section class="grid-2">
+          <article class="white-card card-pad">
+            <h2 class="section-title" style="font-size: 1.8rem">店铺信息</h2>
+            <div class="form-grid-2" style="margin-top: 18px">
+              <label class="form-field">
+                <span class="field-label">店铺名称</span>
+                <input id="settings-shop-name-input" placeholder="请输入店铺名称" />
+              </label>
+              <label class="form-field">
+                <span class="field-label">负责人</span>
+                <input id="settings-manager-name-input" placeholder="请输入负责人姓名" />
+              </label>
+              <label class="form-field">
+                <span class="field-label">联系电话</span>
+                <input id="settings-contact-phone-input" placeholder="请输入联系电话" />
+              </label>
+              <label class="form-field">
+                <span class="field-label">门店地址</span>
+                <input id="settings-address-input" placeholder="请输入门店地址" />
+              </label>
+              <label class="form-field form-field-full">
+                <span class="field-label">二维码链接</span>
+                <input id="settings-qr-code-input" placeholder="用于后续接真实二维码地址，可先留空" />
+              </label>
+            </div>
+            <div class="form-actions">
+              <p class="small" id="settings-feedback" hidden></p>
+            </div>
+            <div class="record-list" style="margin-top: 18px" id="settings-shop-info">
+              <div class="record-row" style="grid-template-columns: 120px 1fr">
+                <div class="small">店铺名称</div>
+                <div>足宝旗舰店</div>
+              </div>
+              <div class="record-row" style="grid-template-columns: 120px 1fr">
+                <div class="small">负责人</div>
+                <div>张庆浩</div>
+              </div>
+              <div class="record-row" style="grid-template-columns: 120px 1fr">
+                <div class="small">联系电话</div>
+                <div>138 0000 8888</div>
+              </div>
+              <div class="record-row" style="grid-template-columns: 120px 1fr">
+                <div class="small">门店地址</div>
+                <div>上海市静安区南京西路 88 号</div>
+              </div>
+            </div>
+          </article>
+          <article class="surface-card card-pad" style="display: grid; place-items: center">
+            <div style="text-align: center">
+              <div class="avatar-lg avatar-fallback" style="width: 160px; height: 160px; border-radius: 28px">QR</div>
+              <h2 class="section-title" style="font-size: 1.8rem; margin-top: 18px">技师加入二维码</h2>
+              <p class="section-copy">技师扫码后可直接进入申请加入门店流程。</p>
+            </div>
+          </article>
+        </section>
+        <section class="grid-2" style="margin-top: 22px">
+          <article class="hero-card hero-pad">
+            <p class="metric-label" style="color: rgba(255,255,255,0.72)">当前套餐</p>
+            <p class="metric-value">免费试用</p>
+            <div class="hero-meta" style="margin-top: 18px">
+              <span class="status-chip">剩余 18 天</span>
+              <span class="status-chip">到期后只读</span>
+            </div>
+          </article>
+          <article class="white-card card-pad">
+            <h2 class="section-title" style="font-size: 1.8rem">续费方案</h2>
+            <div class="record-list" style="margin-top: 18px">
+              <div class="record-row" style="grid-template-columns: 1fr auto">
+                <div>
+                  <div style="font-weight: 700">月付方案</div>
+                  <div class="small">适合刚开始试用的门店</div>
+                </div>
+                <div style="font-weight: 800">¥100 / 月</div>
+              </div>
+              <div class="record-row" style="grid-template-columns: 1fr auto">
+                <div>
+                  <div style="font-weight: 700">年付方案</div>
+                  <div class="small">首年优惠价，适合稳定运营门店</div>
+                </div>
+                <div style="font-weight: 800">¥600 / 年</div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="./app.js?v=20260410a"></script>
+  </body>
+</html>

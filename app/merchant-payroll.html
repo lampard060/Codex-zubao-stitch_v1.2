@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>足宝 | 技师工资</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght@300;400;500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260410a" />
+  </head>
+  <body data-page="merchant-payroll">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">足宝</div>
+        <div class="brand-subtitle">薪资结算</div>
+        <nav class="nav-list">
+          <a class="nav-item" href="./merchant-dashboard.html"><span class="material-symbols-outlined">dashboard</span>首页</a>
+          <a class="nav-item" href="./merchant-technicians.html"><span class="material-symbols-outlined">spa</span>技师</a>
+          <a class="nav-item" href="./merchant-orders.html"><span class="material-symbols-outlined">receipt_long</span>订单</a>
+          <a class="nav-item" href="./merchant-master-data.html"><span class="material-symbols-outlined">inventory_2</span>基础资料</a>
+          <a class="nav-item active" href="./merchant-analytics.html"><span class="material-symbols-outlined">analytics</span>统计</a>
+          <a class="nav-item" href="./merchant-settings.html"><span class="material-symbols-outlined">settings</span>设置</a>
+        </nav>
+        <div class="sidebar-footer">
+          <button class="primary-cta">生成工资单</button>
+          <div class="sidebar-meta">
+            <div class="avatar-sm avatar-fallback">财</div>
+            <div>
+              <div class="small">本月工资周期</div>
+              <div style="font-weight: 700" id="payroll-cycle-month-sidebar">2026 年 4 月</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="topbar-tabs">
+            <span class="topbar-tab active">工资管理</span>
+            <span class="topbar-tab">按订单自动汇总</span>
+          </div>
+          <div class="topbar-actions">
+            <a class="ghost-button" href="./merchant-analytics.html">返回统计</a>
+            <button class="ghost-button" data-payroll-export>导出工资表</button>
+            <button class="pill-button" data-payroll-batch-pay>批量发放</button>
+          </div>
+        </header>
+
+        <section class="page-header payroll-header">
+          <p class="eyebrow">薪资管理</p>
+          <h1 class="page-title">工资管理</h1>
+          <div class="payroll-toolbar">
+            <button class="ghost-button">
+              <span class="material-symbols-outlined">calendar_month</span>
+              <span id="payroll-cycle-month-toolbar">2026年4月</span>
+            </button>
+            <div class="inline-group">
+              <button class="ghost-button" data-payroll-export>
+                <span class="material-symbols-outlined">download</span>
+                导出工资表
+              </button>
+              <button class="pill-button" data-payroll-batch-pay>
+                <span class="material-symbols-outlined">payments</span>
+                批量发放
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="payroll-kpi-grid">
+          <article class="payroll-kpi-card accent">
+            <p class="metric-label">本月工资总额</p>
+            <p class="metric-value" id="payroll-total-amount">¥39,610</p>
+            <p class="metric-subtle" style="color: rgba(255,255,255,0.78)">人数 + 8.2% 较上月</p>
+          </article>
+          <article class="payroll-kpi-card">
+            <p class="metric-label">核算人数</p>
+            <p class="metric-value" id="payroll-technician-count">10 人</p>
+            <p class="metric-subtle">在岗技师</p>
+          </article>
+          <article class="payroll-kpi-card">
+            <p class="metric-label">平均薪资</p>
+            <p class="metric-value" id="payroll-average-amount">¥3,961</p>
+            <p class="metric-subtle">人均月薪</p>
+          </article>
+          <article class="payroll-kpi-card">
+            <p class="metric-label">已发 / 未发</p>
+            <p class="metric-value" id="payroll-status-summary">6 / 4</p>
+            <p class="metric-subtle">发放进度</p>
+          </article>
+        </section>
+
+        <section class="payroll-switcher">
+          <button class="topbar-tab active">工资总表</button>
+          <button class="topbar-tab">工资构成设置</button>
+        </section>
+
+        <section class="payroll-table-shell">
+          <div class="payroll-table-head">
+            <div>技师</div>
+            <div>提成规则</div>
+            <div>订单量</div>
+            <div>本月工资</div>
+            <div>发放状态</div>
+            <div>操作</div>
+          </div>
+
+          <div class="payroll-table-body" id="payroll-summary-list">
+            <article class="payroll-row">
+              <div class="payroll-tech">
+                <div class="portrait payroll-portrait"><div class="portrait-fallback">林</div></div>
+                <div>
+                  <div class="payroll-tech-name">林小雅</div>
+                  <div class="small">EMP-001</div>
+                </div>
+              </div>
+              <div class="payroll-rule">
+                <strong>排钟 35% / 点钟费 15%</strong>
+                <div class="small">点钟 45%</div>
+              </div>
+              <div class="payroll-orders">
+                <strong>86 单</strong>
+                <div class="small">点钟 32 / 排钟 54</div>
+              </div>
+              <div class="payroll-amount">¥4,820</div>
+              <div><span class="badge success">已发放</span></div>
+              <div class="payroll-actions">
+                <button class="icon-button"><span class="material-symbols-outlined">visibility</span></button>
+              </div>
+            </article>
+
+            <article class="payroll-row">
+              <div class="payroll-tech">
+                <div class="portrait payroll-portrait" style="background: linear-gradient(135deg, #23343f, #507b72)"><div class="portrait-fallback">王</div></div>
+                <div>
+                  <div class="payroll-tech-name">王志强</div>
+                  <div class="small">EMP-002</div>
+                </div>
+              </div>
+              <div class="payroll-rule">
+                <strong>排钟 35% / 点钟费 15%</strong>
+                <div class="small">点钟 45%</div>
+              </div>
+              <div class="payroll-orders">
+                <strong>72 单</strong>
+                <div class="small">点钟 30 / 排钟 42</div>
+              </div>
+              <div class="payroll-amount">¥3,960</div>
+              <div><span class="badge success">已发放</span></div>
+              <div class="payroll-actions">
+                <button class="icon-button"><span class="material-symbols-outlined">visibility</span></button>
+              </div>
+            </article>
+
+            <article class="payroll-row pending">
+              <div class="payroll-tech">
+                <div class="portrait payroll-portrait" style="background: linear-gradient(135deg, #31546a, #90a6c1)"><div class="portrait-fallback">陈</div></div>
+                <div>
+                  <div class="payroll-tech-name">陈梦涵</div>
+                  <div class="small">EMP-003</div>
+                </div>
+              </div>
+              <div class="payroll-rule">
+                <strong>排钟 40% / 点钟费 18%</strong>
+                <div class="small">点钟 50%</div>
+              </div>
+              <div class="payroll-orders">
+                <strong>94 单</strong>
+                <div class="small">点钟 61 / 排钟 33</div>
+              </div>
+              <div class="payroll-amount">¥5,680</div>
+              <div><span class="badge warning">未发放</span></div>
+              <div class="payroll-actions">
+                <button class="icon-button"><span class="material-symbols-outlined">visibility</span></button>
+                <button class="pill-button small-pill">标记发放</button>
+              </div>
+            </article>
+
+            <article class="payroll-row">
+              <div class="payroll-tech">
+                <div class="portrait payroll-portrait" style="background: linear-gradient(135deg, #dad6d6, #f1eeee)"><div class="portrait-fallback" style="color:#36514a">赵</div></div>
+                <div>
+                  <div class="payroll-tech-name">赵佩瑶</div>
+                  <div class="small">EMP-004</div>
+                </div>
+              </div>
+              <div class="payroll-rule">
+                <strong>排钟 35% / 点钟费 15%</strong>
+                <div class="small">点钟 45%</div>
+              </div>
+              <div class="payroll-orders">
+                <strong>68 单</strong>
+                <div class="small">点钟 40 / 排钟 28</div>
+              </div>
+              <div class="payroll-amount">¥3,740</div>
+              <div><span class="badge success">已发放</span></div>
+              <div class="payroll-actions">
+                <button class="icon-button"><span class="material-symbols-outlined">visibility</span></button>
+              </div>
+            </article>
+
+            <article class="payroll-row pending">
+              <div class="payroll-tech">
+                <div class="portrait payroll-portrait" style="background: linear-gradient(135deg, #21353c, #5e7f73)"><div class="portrait-fallback">苏</div></div>
+                <div>
+                  <div class="payroll-tech-name">苏新雨</div>
+                  <div class="small">EMP-005</div>
+                </div>
+              </div>
+              <div class="payroll-rule">
+                <strong>排钟 38% / 点钟费 16%</strong>
+                <div class="small">点钟 48%</div>
+              </div>
+              <div class="payroll-orders">
+                <strong>79 单</strong>
+                <div class="small">点钟 47 / 排钟 32</div>
+              </div>
+              <div class="payroll-amount">¥4,350</div>
+              <div><span class="badge warning">未发放</span></div>
+              <div class="payroll-actions">
+                <button class="icon-button"><span class="material-symbols-outlined">visibility</span></button>
+                <button class="pill-button small-pill">标记发放</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="white-card card-pad" id="payroll-detail-panel" hidden style="margin-top: 22px">
+          <div class="section-header" style="margin: 0 0 14px">
+            <div>
+              <h2 class="section-title" style="font-size: 1.6rem">工资明细</h2>
+              <p class="section-copy" id="payroll-detail-title">查看指定技师本月订单计薪明细。</p>
+            </div>
+            <button class="ghost-button" id="payroll-detail-close">关闭</button>
+          </div>
+          <div class="record-list" id="payroll-detail-items"></div>
+        </section>
+
+        <section class="grid-2" style="margin-top: 24px">
+          <article class="white-card card-pad">
+            <div class="section-header" style="margin: 0 0 12px">
+              <div>
+                <h2 class="section-title" style="font-size: 1.7rem">工资构成设置</h2>
+                <p class="section-copy">门店默认规则先执行，单独规则自动覆盖。</p>
+              </div>
+            </div>
+            <div class="record-list" id="payroll-default-rule-list">
+              <article class="record-row" style="grid-template-columns: 1fr auto">
+                <div>
+                  <div style="font-weight: 800">门店默认底薪</div>
+                  <div class="small">适用于未设置单独规则的技师</div>
+                </div>
+                <div class="amount">¥3,000</div>
+              </article>
+              <article class="record-row" style="grid-template-columns: 1fr auto">
+                <div>
+                  <div style="font-weight: 800">排钟提成比例</div>
+                  <div class="small">排钟订单服务金额 × 35%</div>
+                </div>
+                <div class="amount">35%</div>
+              </article>
+              <article class="record-row" style="grid-template-columns: 1fr auto">
+                <div>
+                  <div style="font-weight: 800">点钟提成比例</div>
+                  <div class="small">点钟订单服务金额 × 45%</div>
+                </div>
+                <div class="amount">45%</div>
+              </article>
+              <article class="record-row" style="grid-template-columns: 1fr auto">
+                <div>
+                  <div style="font-weight: 800">点钟费</div>
+                  <div class="small">每笔点钟订单固定增加</div>
+                </div>
+                <div class="amount">¥15</div>
+              </article>
+            </div>
+            <div class="form-grid-2" style="margin-top: 18px">
+              <label class="form-field">
+                <span class="field-label">默认底薪（元）</span>
+                <input id="payroll-rule-base-salary" type="number" min="0" step="0.01" />
+              </label>
+              <label class="form-field">
+                <span class="field-label">点钟费（元）</span>
+                <input id="payroll-rule-designated-bonus" type="number" min="0" step="0.01" />
+              </label>
+              <label class="form-field">
+                <span class="field-label">排钟提成比例</span>
+                <input id="payroll-rule-scheduled-rate" type="number" min="0" max="100" step="0.1" />
+              </label>
+              <label class="form-field">
+                <span class="field-label">点钟提成比例</span>
+                <input id="payroll-rule-designated-rate" type="number" min="0" max="100" step="0.1" />
+              </label>
+            </div>
+            <div class="form-actions">
+              <p class="small" id="payroll-rule-feedback" hidden></p>
+              <button class="ghost-button" id="payroll-recalculate-button">重算本月工资</button>
+              <button class="pill-button" id="payroll-save-rule-button">保存默认规则</button>
+            </div>
+          </article>
+
+          <article class="white-card card-pad">
+            <div class="section-header" style="margin: 0 0 12px">
+              <div>
+                <h2 class="section-title" style="font-size: 1.7rem">工资计算公式</h2>
+                <p class="section-copy">方便老板按订单逐项复核。</p>
+              </div>
+            </div>
+            <div class="record-list">
+              <article class="record-row" style="grid-template-columns: 1fr">
+                <div>
+                  <div style="font-weight: 800">应发工资 = 底薪 + 排钟提成 + 点钟提成 + 点钟费</div>
+                  <div class="small">只有当月已完成订单计入工资，进行中与已取消订单不参与结算。</div>
+                </div>
+              </article>
+              <article class="record-row" style="grid-template-columns: 1fr">
+                <div>
+                  <div style="font-weight: 800">排钟提成 = 排钟订单服务金额 × 排钟提成比例</div>
+                  <div class="small">点钟提成 = 点钟订单服务金额 × 点钟提成比例；点钟费 = 点钟订单数 × 单笔点钟费。</div>
+                </div>
+              </article>
+              <article class="record-row" style="grid-template-columns: 1fr">
+                <div>
+                  <div style="font-weight: 800">单独规则优先级最高</div>
+                  <div class="small">如陈梦涵设置排钟 40%、点钟 50%、点钟费 18 元，则结算时自动覆盖门店默认规则。</div>
+                </div>
+              </article>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="./app.js?v=20260410a"></script>
+  </body>
+</html>

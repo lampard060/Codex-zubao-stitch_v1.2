@@ -1,0 +1,19 @@
+{
+  "name": "足宝技师端",
+  "short_name": "足宝技师",
+  "description": "足宝技师端移动工作台，支持工作状态、收益统计与资料维护。",
+  "start_url": "./technician-home.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f5f2",
+  "theme_color": "#0b6b53",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./zubao-tech-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
