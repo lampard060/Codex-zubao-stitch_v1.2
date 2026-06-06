@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const zlib = require("zlib");
 const { env } = require("./config/env");
 const healthRoutes = require("./routes/health");
 const authRoutes = require("./routes/auth");
@@ -36,6 +37,39 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
+
+// Gzip compression for all API responses (reduces JSON/text payload size ~10x)
+app.use((req, res, next) => {
+  const acceptEncoding = req.headers["accept-encoding"] || "";
+  if (!acceptEncoding.includes("gzip")) return next();
+  const _send = res.send.bind(res);
+  const _json = res.json.bind(res);
+  const _end = res.end.bind(res);
+
+  res.send = (body) => {
+    if (typeof body === "string" || Buffer.isBuffer(body)) {
+      res.set("Content-Encoding", "gzip");
+      res.set("Vary", "Accept-Encoding");
+      const compressed = require("zlib").gzipSync(body, { level: 6 });
+      res.set("Content-Length", String(compressed.length));
+      return _end(compressed);
+    }
+    return _send(body);
+  };
+
+  res.json = (body) => {
+    res.set("Content-Encoding", "gzip");
+    res.set("Vary", "Accept-Encoding");
+    res.set("Content-Type", "application/json; charset=utf-8");
+    const raw = JSON.stringify(body);
+    const compressed = require("zlib").gzipSync(raw, { level: 6 });
+    res.set("Content-Length", String(compressed.length));
+    return _end(compressed);
+  };
+
+  next();
+});
+
 app.use(attachAuthUser);
 app.use(attachRequestContext);
 

@@ -15,6 +15,9 @@
 - MVP 建表 SQL: `/Users/frankzhang/Desktop/Codex-zubao-stitch_v1.2/db/mvp_schema.sql`
 - 上线前测试方案: `/Users/frankzhang/Desktop/Codex-zubao-stitch_v1.2/docs/go-live-test-plan.md`
 - 正式版技术架构: `/Users/frankzhang/Desktop/Codex-zubao-stitch_v1.2/docs/technical-architecture.md`
+- 当前技术栈说明: `/Users/frankzhang/Desktop/Codex-zubao-stitch_v1.2/docs/tech-stack.md`
+- 项目接手说明: `/Users/frankzhang/Desktop/Codex-zubao-stitch_v1.2/docs/handoff-guide.md`
+- 阿里云单机部署: `/Users/frankzhang/Desktop/Claude-zubao-stitch_v1.2_副本/deploy/alicloud-ubuntu/README.md`
 
 ## 当前状态
 

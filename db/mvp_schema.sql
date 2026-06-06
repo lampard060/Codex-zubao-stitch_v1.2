@@ -9,7 +9,7 @@ create type membership_status as enum ('pending', 'active', 'left', 'removed');
 create type application_status as enum ('pending', 'approved', 'rejected', 'cancelled');
 
 create type order_type as enum ('scheduled', 'designated');
-create type order_status as enum ('in_service', 'completed', 'cancelled');
+create type order_status as enum ('pending', 'in_service', 'completed', 'cancelled');
 create type customer_type as enum ('registered', 'walk_in');
 
 create type attendance_status as enum ('on_duty', 'off_duty', 'resting');
@@ -44,6 +44,12 @@ create table technician_profiles (
   bio text,
   specialties jsonb not null default '[]'::jsonb,
   years_experience integer not null default 0,
+  gender varchar(10),
+  birth_date date,
+  id_card varchar(18),
+  address text,
+  emergency_contact_name varchar(100),
+  emergency_contact_phone varchar(32),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
@@ -56,6 +62,7 @@ create table shops (
   contact_phone varchar(32),
   address text,
   qr_code_url text,
+  opening_hours varchar(32),
   subscription_plan varchar(50) not null default 'trial',
   subscription_status varchar(50) not null default 'active',
   subscription_expires_at timestamptz,
@@ -95,6 +102,25 @@ create table shop_join_applications (
 
 create unique index uq_pending_application_per_shop_technician
 on shop_join_applications (shop_id, technician_user_id)
+where status = 'pending';
+
+create table shop_leave_applications (
+  id uuid primary key default gen_random_uuid(),
+  shop_id uuid not null references shops(id) on delete cascade,
+  technician_user_id uuid not null references users(id) on delete cascade,
+  membership_id uuid references shop_staff_memberships(id) on delete set null,
+  status application_status not null default 'pending',
+  reason text,
+  applied_at timestamptz not null default now(),
+  reviewed_at timestamptz,
+  reviewed_by uuid references users(id),
+  review_note text,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create unique index uq_pending_leave_application_per_shop_technician
+on shop_leave_applications (shop_id, technician_user_id)
 where status = 'pending';
 
 create table service_items (
@@ -147,7 +173,7 @@ create table orders (
   customer_id uuid references customers(id),
   order_no varchar(50) not null unique,
   order_type order_type not null,
-  status order_status not null default 'in_service',
+  status order_status not null default 'pending',
   customer_type customer_type not null default 'walk_in',
   room_code varchar(50),
   customer_name varchar(100),
@@ -256,6 +282,7 @@ create table payroll_order_items (
   designated_bonus_amount integer not null default 0,
   included_in_salary boolean not null default true,
   created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
   unique (payroll_summary_id, order_id)
 );
 

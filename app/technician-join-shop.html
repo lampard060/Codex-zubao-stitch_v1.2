@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#0A0A0A" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>申请加入门店 - 足宝</title>
+<link rel="stylesheet" href="./fonts/fonts.css" />
+<link rel="stylesheet" href="./styles.css?v=20260515-redesign" />
+<script defer src="./js/icon-fallback-inline.js?v=20260514-icons"></script>
+<link rel="stylesheet" href="./technician-redesign.css?v=20260515-obsidian" />
+</head>
+<body data-page="technician-join-shop">
+<div class="technician-app-shell">
+  <div class="technician-topbar" id="technician-topbar"></div>
+
+  <main class="technician-page technician-join-page">
+    <section class="join-hero">
+      <h1>申请加入门店</h1>
+      <p>寻找您的职业归属。与优质康养中心建立联系，开始您的服务之旅。</p>
+    </section>
+
+    <section class="join-actions">
+      <button class="join-scan-card" id="scan-qr-btn" type="button">
+        <span class="join-scan-icon">
+          <span class="material-symbols-outlined">qr_code_scanner</span>
+        </span>
+        <span class="join-scan-copy">
+          <strong>扫码加入门店</strong>
+          <span>使用门店经理提供的邀请码</span>
+        </span>
+        <span class="material-symbols-outlined join-scan-arrow">chevron_right</span>
+      </button>
+
+      <div class="join-search-box">
+        <span class="material-symbols-outlined">search</span>
+        <input type="text" placeholder="搜索门店名称或 ID..." id="shop-search-input" />
+      </div>
+    </section>
+
+    <section class="join-applications-section" id="applications-section" style="display: none;">
+      <div class="join-applications-heading">
+        <span class="material-symbols-outlined">assignment</span>
+        <h2>我的申请</h2>
+      </div>
+      <div class="join-applications-list" id="applications-list"></div>
+    </section>
+
+    <section class="join-shop-section">
+      <div class="join-shop-heading">
+        <h2>推荐门店</h2>
+      </div>
+      <div class="join-shop-list" id="nearby-shops-list"></div>
+    </section>
+  </main>
+
+  <div class="technician-bottom-nav-mobile" id="technician-bottom-nav"></div>
+</div>
+
+<script type="module" src="./js/pages/technician-join-shop.js?v=20260515-obsidian"></script>
+</body>
+</html>

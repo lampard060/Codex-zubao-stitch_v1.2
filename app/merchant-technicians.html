@@ -3,212 +3,147 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>足宝 | 技师管理</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght@300;400;500&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css?v=20260410a" />
+    <title>足宝 | 技师协作</title>
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260428a" />
   </head>
   <body data-page="merchant-technicians">
-    <div class="app-shell">
-      <aside class="sidebar">
-        <div class="brand">足宝</div>
-        <nav class="nav-list">
-          <a class="nav-item" href="./merchant-dashboard.html"><span class="material-symbols-outlined">dashboard</span>首页</a>
-          <a class="nav-item active" href="./merchant-technicians.html"><span class="material-symbols-outlined">spa</span>技师</a>
-          <a class="nav-item" href="./merchant-orders.html"><span class="material-symbols-outlined">receipt_long</span>订单</a>
-          <a class="nav-item" href="./merchant-master-data.html"><span class="material-symbols-outlined">inventory_2</span>基础资料</a>
-          <a class="nav-item" href="./merchant-analytics.html"><span class="material-symbols-outlined">analytics</span>统计</a>
-          <a class="nav-item" href="./merchant-settings.html"><span class="material-symbols-outlined">settings</span>设置</a>
-        </nav>
-        <div class="sidebar-footer">
-          <button class="primary-cta" data-application-toggle="#applications">处理加入申请</button>
-        </div>
-      </aside>
+    <div class="app-shell merchant-mobile-shell">
+      <main class="main-panel merchant-mobile-main">
+        <header class="topbar merchant-mobile-topbar">
+          <div class="merchant-mobile-titlebar">
+            <img class="merchant-mobile-logo-badge" src="./zubao-tech-icon.png" alt="足宝图标" />
+            <h1 class="merchant-mobile-title">技师协作</h1>
+          </div>
 
-      <main class="main-panel">
-        <header class="topbar">
-          <div class="topbar-tabs">
-            <span class="topbar-tab active">技师列表</span>
-            <span class="topbar-tab">申请审核</span>
-          </div>
-          <div class="topbar-actions">
-            <span class="badge neutral">仅管理在店状态</span>
-            <span class="material-symbols-outlined">notifications</span>
-            <div class="avatar-sm avatar-fallback">店</div>
-          </div>
         </header>
 
-        <section class="page-header">
-          <p class="eyebrow">技师管理</p>
-          <h1 class="page-title">技师管理</h1>
-          <p class="page-copy">用于处理技师加入审核、在店状态管理和业绩查看，不涉及技师个人资料编辑。</p>
-        </section>
-
-        <section class="grid-4">
-          <article class="surface-card card-pad">
-            <p class="metric-label">总容纳量</p>
-            <p class="metric-value" style="font-size: 3rem" id="technician-total-count">5</p>
-            <p class="metric-subtle">当前在册技师</p>
-          </article>
-          <article class="hero-card hero-pad">
-            <p class="metric-label" style="color: rgba(255,255,255,0.72)">今日在岗</p>
-            <p class="metric-value" style="font-size: 3rem" id="technician-on-duty-count">4</p>
-            <p class="metric-subtle" style="color: rgba(255,255,255,0.82)">当前在岗人数</p>
-          </article>
-          <article class="surface-card card-pad">
-            <p class="metric-label">待钟人数</p>
-            <p class="metric-value" style="font-size: 3rem" id="technician-available-count">02</p>
-            <p class="metric-subtle">当前可接单</p>
-          </article>
-          <article class="surface-card card-pad">
-            <p class="metric-label">平均评分</p>
-            <p class="metric-value" style="font-size: 3rem" id="technician-avg-exp">4.92</p>
-            <p class="metric-subtle">星级稳定</p>
-          </article>
-        </section>
-
-        <div class="section-header">
-          <div>
-            <h2 class="section-title">全员名单</h2>
-            <p class="section-copy">商家仅管理在店状态与申请审核，技师个人资料由本人维护。</p>
+        <section class="mobile-hero-card mobile-hero-card-emerald technician-hero-card" id="technician-settlement-card">
+          <div class="mobile-hero-head">
+            <span class="mobile-hero-label">工资与结算摘要</span>
+            <button class="mobile-hero-arrow" type="button" aria-label="查看详情">
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
           </div>
-          <div class="inline-group">
-            <button class="ghost-button" data-technician-filter="all">全部</button>
-            <button class="ghost-button" data-technician-filter="available">待钟</button>
-            <button class="ghost-button" data-technician-filter="in_service">服务中</button>
-          </div>
-        </div>
-
-        <section class="technician-grid" id="technician-grid">
-          <article class="technician-card media">
-            <div class="portrait large"><div class="portrait-fallback">林</div></div>
-            <div class="technician-card-body">
-              <div class="technician-card-top">
-                <div>
-                  <div class="technician-card-name">林婉儿</div>
-                  <div class="small">#ZB-082</div>
-                </div>
-                <span class="badge warning">服务中</span>
-              </div>
-              <div class="technician-card-score">
-                <span style="color: var(--accent)">★ 4.95</span>
-                <span class="small">本月上钟 142 次</span>
-              </div>
-              <div class="technician-card-meta">
-                <span class="badge neutral">足底按摩</span>
-                <span class="badge neutral">中医经络推拿</span>
-              </div>
-              <div class="technician-card-revenue">今日营收 ¥1,180</div>
-              <div class="technician-card-actions">
-                <button class="ghost-button">修改状态</button>
-                <button class="ghost-button">查看详情</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="technician-card media">
-            <div class="portrait large" style="background: linear-gradient(135deg, #30343a, #6f7a72)"><div class="portrait-fallback">张</div></div>
-            <div class="technician-card-body">
-              <div class="technician-card-top">
-                <div>
-                  <div class="technician-card-name">张子墨</div>
-                  <div class="small">#ZB-115</div>
-                </div>
-                <span class="badge success">待钟</span>
-              </div>
-              <div class="technician-card-score">
-                <span style="color: var(--accent)">★ 4.88</span>
-                <span class="small">本月上钟 128 次</span>
-              </div>
-              <div class="technician-card-meta">
-                <span class="badge neutral">精油舒缓</span>
-                <span class="badge neutral">香薰理疗</span>
-              </div>
-              <div class="technician-card-revenue">今日营收 ¥960</div>
-              <div class="technician-card-actions">
-                <button class="ghost-button">修改状态</button>
-                <button class="ghost-button">查看详情</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="technician-card media">
-            <div class="portrait large" style="background: linear-gradient(135deg, #24413c, #5b8f82)"><div class="portrait-fallback">沈</div></div>
-            <div class="technician-card-body">
-              <div class="technician-card-top">
-                <div>
-                  <div class="technician-card-name">沈清秋</div>
-                  <div class="small">#ZB-041</div>
-                </div>
-                <span class="badge success">待钟</span>
-              </div>
-              <div class="technician-card-score">
-                <span style="color: var(--accent)">★ 4.98</span>
-                <span class="small">本月上钟 156 次</span>
-              </div>
-              <div class="technician-card-meta">
-                <span class="badge neutral">经络调理</span>
-                <span class="badge neutral">肩颈舒缓</span>
-              </div>
-              <div class="technician-card-revenue">今日营收 ¥1,360</div>
-              <div class="technician-card-actions">
-                <button class="ghost-button">修改状态</button>
-                <button class="ghost-button">查看详情</button>
-              </div>
-            </div>
-          </article>
-        </section>
-
-        <section class="white-card card-pad" id="technician-detail-panel" hidden style="margin-top: 20px">
-          <div class="section-header" style="margin: 0 0 14px">
-            <div>
-              <h2 class="section-title" style="font-size: 1.6rem">技师详情</h2>
-              <p class="section-copy">快速查看当前在店技师的服务信息与状态。</p>
-            </div>
-            <button class="ghost-button" id="technician-detail-close">关闭</button>
-          </div>
-          <div class="grid-2" style="align-items: start">
-            <div class="record-list" id="technician-detail-info"></div>
-            <div class="record-list" id="technician-detail-performance"></div>
+          <div class="mobile-hero-amount" id="technician-settlement-total">¥24,850.00</div>
+          <p class="mobile-hero-note">本月累计结算金额</p>
+          <div class="mobile-settlement-grid">
+            <article class="mobile-settlement-card">
+              <span>待结算</span>
+              <strong id="technician-settlement-pending">¥1,240</strong>
+            </article>
+            <article class="mobile-settlement-card">
+              <span>已入账</span>
+              <strong id="technician-settlement-paid">¥23,610</strong>
+            </article>
           </div>
         </section>
 
-        <section class="grid-2" style="margin-top: 26px" id="applications">
-          <article class="surface-card card-pad" style="background: linear-gradient(135deg, #dff5eb, #ecfaf4)">
-            <h2 class="section-title" id="application-title">待处理申请 (4)</h2>
-            <p class="section-copy">用于处理技师加入申请，商家可审核申请结果，但不代替技师创建账号。</p>
-            <div class="order-list" style="margin-top: 18px" id="application-list">
-              <article class="application-row" style="grid-template-columns: 1fr auto auto">
-                <div>
-                  <div style="font-weight: 800">苏小艾</div>
-                  <div class="small">申请加入 · 擅长足疗 / 刮痧</div>
-                </div>
-                <button class="ghost-button">拒绝申请</button>
-                <button class="pill-button">通过申请</button>
-              </article>
-              <article class="application-row" style="grid-template-columns: 1fr auto auto">
-                <div>
-                  <div style="font-weight: 800">顾安宁</div>
-                  <div class="small">申请加入 · 擅长精油按摩</div>
-                </div>
-                <button class="ghost-button">拒绝申请</button>
-                <button class="pill-button">通过申请</button>
-              </article>
-            </div>
-          </article>
+        <section class="mobile-tab-shell" id="technician-status-filters">
+          <button class="mobile-tab-pill active" data-technician-status-filter="in_service">服务中</button>
+          <button class="mobile-tab-pill" data-technician-status-filter="scheduled">排钟</button>
+          <button class="mobile-tab-pill" data-technician-status-filter="resting">休息</button>
+          <button class="mobile-tab-pill" data-technician-status-filter="all">全部技师</button>
+        </section>
 
-          <article class="white-card card-pad">
-            <p class="eyebrow">排班效率</p>
-            <h2 class="section-title">本周平均周转率：18.5 分钟</h2>
-            <p class="section-copy">相较上周提升 4.2%。如果继续增加待钟技师，能更稳定承接高峰时段。</p>
+        <section class="mobile-section">
+          <div class="mobile-card-stack" id="technician-grid">
+            <article class="mobile-technician-row">
+              <div class="mobile-technician-main">
+                <div class="merchant-mobile-avatar theme-coral">林</div>
+                <div class="mobile-technician-copy">
+                  <h3>林晓月</h3>
+                  <div class="mobile-technician-meta">
+                    <span class="mobile-status-pill success">待命</span>
+                    <span>工号: #082</span>
+                  </div>
+                </div>
+              </div>
+              <label class="mobile-switch">
+                <input type="checkbox" checked />
+                <span></span>
+              </label>
+            </article>
+          </div>
+        </section>
+
+        <section class="mobile-section">
+          <article class="mobile-star-card">
+            <div class="mobile-star-head">
+              <span class="mobile-star-title">今日服务之星</span>
+            </div>
+            <div class="mobile-star-body">
+              <div class="mobile-star-profile">
+                <div class="merchant-mobile-avatar theme-bronze large" id="technician-star-avatar">林</div>
+                <div>
+                  <h3 id="technician-star-name">林晓月</h3>
+                  <p id="technician-star-rating">★★★★★ 4.9</p>
+                </div>
+              </div>
+              <div class="mobile-star-side">
+                <span>今日订单</span>
+                <strong id="technician-star-orders">12</strong>
+              </div>
+            </div>
           </article>
         </section>
       </main>
     </div>
-    <script src="./app.js?v=20260410a"></script>
+
+    <div class="mobile-sheet-backdrop" id="technician-sheet-backdrop" hidden></div>
+
+    <section class="mobile-bottom-sheet" id="technician-detail-panel" hidden>
+      <div class="mobile-sheet-handle"></div>
+      <div class="mobile-sheet-head">
+        <div>
+          <h2>技师详情</h2>
+          <p id="technician-focus-copy">快速查看当前在店技师的服务信息。</p>
+        </div>
+        <button class="merchant-mobile-icon-button" type="button" id="technician-detail-close" aria-label="关闭详情">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="mobile-sheet-body">
+        <div class="mobile-sheet-records" id="technician-detail-info"></div>
+        <div class="mobile-sheet-records" id="technician-detail-performance"></div>
+      </div>
+    </section>
+
+    <section class="mobile-bottom-sheet" id="applications" hidden>
+      <div class="mobile-sheet-handle"></div>
+      <div class="mobile-sheet-head">
+        <div>
+          <h2 id="application-title">待处理申请</h2>
+          <p>审批通过后可进入门店待排班池。</p>
+        </div>
+        <button class="merchant-mobile-icon-button" type="button" id="technician-applications-close" aria-label="关闭申请列表">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="mobile-sheet-body">
+        <div class="mobile-card-stack" id="application-list"></div>
+      </div>
+    </section>
+
+    <nav class="merchant-bottom-nav-mobile" aria-label="商家端底部导航">
+      <a class="nav-item" href="./merchant-dashboard.html">
+        <span class="material-symbols-outlined">grid_view</span>
+        <span>工作台</span>
+      </a>
+      <a class="nav-item" href="./merchant-orders.html">
+        <span class="material-symbols-outlined">receipt_long</span>
+        <span>订单</span>
+      </a>
+      <a class="nav-item active" href="./merchant-technicians.html">
+        <span class="material-symbols-outlined">groups</span>
+        <span>技师</span>
+      </a>
+      <a class="nav-item" href="./merchant-settings.html">
+        <span class="material-symbols-outlined">storefront</span>
+        <span>店铺</span>
+      </a>
+    </nav>
+
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>

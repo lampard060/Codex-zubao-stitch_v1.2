@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>足宝 | 技师审批</title>
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260429a" />
+  </head>
+  <body data-page="merchant-approvals">
+    <div class="app-shell merchant-subpage-shell">
+      <main class="main-panel merchant-subpage-main">
+        <header class="merchant-subpage-topbar">
+          <div class="merchant-subpage-topbar-left">
+            <a class="merchant-back-button" href="./merchant-settings.html" aria-label="返回店铺页">
+              <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <h1>技师审批</h1>
+          </div>
+          <img
+            class="merchant-subpage-avatar"
+            alt=""
+            src="./zubao-tech-icon.png"
+          />
+        </header>
+
+        <!-- 标签切换 -->
+        <div class="merchant-tabs" style="display: flex; gap: 8px; padding: 0 20px; margin-bottom: 16px;">
+          <button class="merchant-tab active" data-tab="applications" type="button" style="
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            background: #f2ca50;
+            color: #1a1a1a;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+          ">申请列表</button>
+          <button class="merchant-tab" data-tab="signed" type="button" style="
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #8f8777;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+          ">已签约</button>
+        </div>
+
+        <!-- 申请列表模块 -->
+        <section id="applications-section">
+          <section class="merchant-subpage-hero">
+            <span class="merchant-subpage-eyebrow">申请队列</span>
+            <h2>待处理申请</h2>
+            <p id="approval-summary-copy">共有 3 位技师正在等待入驻审批。请根据其专业技能和从业经验进行审核。</p>
+          </section>
+
+          <section class="merchant-subpage-stack" id="approval-list"></section>
+        </section>
+
+        <!-- 已签约列表模块 -->
+        <section id="signed-section" style="display: none;">
+          <section class="merchant-subpage-hero">
+            <span class="merchant-subpage-eyebrow">技师团队</span>
+            <h2>已签约技师</h2>
+            <p id="signed-summary-copy">共有 0 位技师已签约。</p>
+          </section>
+
+          <section class="merchant-subpage-stack" id="signed-list"></section>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

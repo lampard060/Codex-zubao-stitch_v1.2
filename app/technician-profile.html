@@ -1,221 +1,172 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0b6b53" />
-    <link rel="manifest" href="./technician.webmanifest" />
-    <title>足宝 | 技师个人资料</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght@300;400;500&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css?v=20260410a" />
-  </head>
-  <body data-page="technician-profile">
-    <div class="app-shell">
-      <aside class="sidebar">
-        <div class="brand">足宝</div>
-        <div class="brand-subtitle">技师端入口</div>
-        <nav class="sub-list" style="margin-top: 26px">
-          <a class="sub-item" href="./technician-home.html"><span class="material-symbols-outlined">grid_view</span>工作台</a>
-          <a class="sub-item" href="./technician-earnings.html"><span class="material-symbols-outlined">payments</span>收益统计</a>
-          <a class="sub-item active" href="./technician-profile.html"><span class="material-symbols-outlined">person</span>我的资料</a>
-        </nav>
-        <div class="sidebar-footer">
-          <button class="primary-cta" id="technician-profile-save">保存更改</button>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#0A0A0A" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>我的 - 足宝</title>
+<link rel="stylesheet" href="./fonts/fonts.css" />
+<link rel="stylesheet" href="./styles.css?v=20260515-redesign" />
+<script defer src="./js/icon-fallback-inline.js?v=20260514-icons"></script>
+<link rel="stylesheet" href="./technician-redesign.css?v=20260603-modal-scroll" />
+</head>
+<body data-page="technician-profile">
+<div class="technician-app-shell">
+  <div class="technician-topbar" id="technician-topbar"></div>
+
+  <main class="technician-page technician-profile-page">
+    <section class="profile-identity">
+      <div class="profile-avatar-shell">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg93Afg2MS-RSPyZPJGQRHsstIRFFOpGiMO1c4-BuDGqYrEPQEsb3F2gkURVdQ2iCpB_0AxtWIzgY7AlW1t4lj3mnlfgkO5TVY5g4e-kbAFlsFxzNEDVp0ZaNws1T7IXgce-MPHl2lXs438UFO9FPlHYk8P1Ku3odlRf0oHp5zX-xwQyhoWw52OzjAf1IRPLpCJMmaZ--d07pVIuwQxxQa6QTzX_4_HBeuyWZ3AuFM3tlOe-Cgi-r9UMF74m6p2v4ik2L35t8QPvv2" alt="技师头像" class="profile-avatar-large" id="profile-avatar" />
+      </div>
+      <div class="profile-identity-copy">
+        <h1 class="profile-name" id="profile-name">Elena Rostova</h1>
+        <div class="profile-badge-row">
+          <span class="profile-number" id="profile-number">ID: 8842</span>
+          <span class="profile-rating-pill">
+            <span class="material-symbols-outlined">star</span>
+            <span id="profile-rating-chip">4.9</span>
+          </span>
         </div>
-      </aside>
+        <p class="profile-bio" id="profile-bio">专注身心愈合，以指尖传递宁静的力量。</p>
+      </div>
+    </section>
 
-      <main class="main-panel">
-        <header class="topbar">
-          <div>
-            <div class="small" style="text-transform: uppercase; letter-spacing: 0.14em">个人资料</div>
-            <div style="font-weight: 800; font-family: Manrope, sans-serif; font-size: 1.2rem">技师个人资料</div>
-          </div>
-          <div class="topbar-actions">
-            <button class="icon-button" id="technician-topbar-notice" type="button"><span class="material-symbols-outlined">notifications</span></button>
-            <button class="icon-button" id="technician-topbar-settings" type="button"><span class="material-symbols-outlined">settings</span></button>
-            <div class="avatar-sm avatar-fallback">林</div>
-          </div>
-        </header>
+    <section class="profile-stat-grid" aria-label="技师统计">
+      <article class="profile-stat-card">
+        <strong id="stat-hours">1,240</strong>
+        <span id="stat-primary-label">累计单数</span>
+        <span class="sr-only" id="stat-primary-unit">单</span>
+      </article>
+      <article class="profile-stat-card">
+        <strong id="stat-rating">4.98</strong>
+        <span>客户评分</span>
+      </article>
+    </section>
 
-        <section class="white-card card-pad technician-profile-shell">
-          <div class="section-header" style="margin: 0 0 18px">
-            <div>
-              <h1 class="section-title" style="font-size: 2rem; margin: 0">个人资料</h1>
-              <p class="section-copy">集中展示技师基本资料、擅长项目与个人简介。</p>
-            </div>
-            <button class="ghost-button" id="technician-profile-edit-button">修改资料</button>
-          </div>
-          <div class="grid-2 technician-panel-grid" style="align-items: start">
-            <article class="technician-profile-main">
-            <div class="inline-group technician-profile-head" style="align-items: center; gap: 18px">
-              <div class="avatar-lg avatar-fallback" id="technician-profile-avatar">林</div>
-              <div>
-                <div style="font-weight: 800; font-size: 1.8rem; font-family: Manrope, sans-serif" id="technician-profile-name">林婉儿</div>
-                <div class="small" id="technician-profile-id">工号 #ZB-082</div>
-                <div class="inline-group technician-profile-badges" style="margin-top: 12px" id="technician-profile-badges">
-                  <span class="badge success">足宝旗舰店</span>
-                  <span class="badge success">在岗</span>
-                </div>
-              </div>
-            </div>
-            <div class="record-list" style="margin-top: 22px" id="technician-profile-info">
-              <div class="record-row" style="grid-template-columns: 120px 1fr">
-                <div class="small">姓名</div>
-                <div>林婉儿</div>
-              </div>
-              <div class="record-row" style="grid-template-columns: 120px 1fr">
-                <div class="small">手机号</div>
-                <div>138 1234 5678</div>
-              </div>
-              <div class="record-row" style="grid-template-columns: 120px 1fr">
-                <div class="small">从业年限</div>
-                <div>6 年</div>
-              </div>
-              <div class="record-row" style="grid-template-columns: 120px 1fr">
-                <div class="small">当前门店</div>
-                <div>足宝旗舰店</div>
-              </div>
-            </div>
-            </article>
+    <section class="profile-shop-card hidden" id="shop-card">
+      <p class="profile-card-label">当前门店</p>
+      <div class="profile-shop-content">
+        <div class="profile-shop-icon">
+          <span class="material-symbols-outlined">storefront</span>
+        </div>
+        <div>
+          <h2 id="shop-name">Zen Spa Downtown</h2>
+          <p id="shop-area">128 Lotus Avenue, Financial District</p>
+          <p class="profile-shop-schedule" id="shop-schedule">
+            <span class="material-symbols-outlined">schedule</span>
+            今日：10:00 - 20:00
+          </p>
+        </div>
+      </div>
+      <button class="tech-primary-button" id="shop-detail-btn" type="button">查看门店详情</button>
+    </section>
 
-            <article class="technician-profile-editor">
-              <h2 class="section-title" style="font-size: 1.8rem">擅长项目与简介</h2>
-              <div class="form-grid-2" style="margin-top: 18px">
-                <label class="form-field">
-                  <span class="field-label">姓名</span>
-                  <input id="technician-profile-name-input" placeholder="请输入姓名" />
-                </label>
-                <label class="form-field">
-                  <span class="field-label">从业年限</span>
-                  <input id="technician-profile-years-input" type="number" min="0" step="1" />
-                </label>
-                <label class="form-field form-field-full">
-                  <span class="field-label">擅长项目</span>
-                  <input id="technician-profile-specialties-input" placeholder="多个项目请用中文逗号分隔" />
-                </label>
-                <label class="form-field form-field-full">
-                  <span class="field-label">个人简介</span>
-                  <textarea id="technician-profile-bio-input" rows="4" placeholder="请输入个人简介"></textarea>
-                </label>
-              </div>
-              <div class="inline-group" style="margin-top: 18px" id="technician-profile-specialties">
-                <span class="badge success">足底按摩</span>
-                <span class="badge success">中医经络推拿</span>
-                <span class="badge success">香薰理疗</span>
-              </div>
-              <p class="section-copy" style="margin-top: 18px" id="technician-profile-bio">
-                擅长舒缓疲劳、经络放松与点钟服务，服务风格稳定细致，长期在足宝旗舰店服务。
-              </p>
-              <div class="menu-list" style="margin-top: 22px">
-                <div class="menu-item">
-                  <div class="menu-meta">
-                    <div class="icon-pill"><span class="material-symbols-outlined">image</span></div>
-                    <div>
-                      <div style="font-weight: 700">头像管理</div>
-                      <div class="small">用于商家端和个人页面展示</div>
-                    </div>
-                  </div>
-                  <div class="inline-group">
-                    <button class="ghost-button" id="technician-profile-avatar-button">更换头像</button>
-                    <button class="ghost-button" id="technician-profile-avatar-reset">恢复默认</button>
-                  </div>
-                </div>
-                <div class="menu-item">
-                  <div class="menu-meta">
-                    <div class="icon-pill"><span class="material-symbols-outlined">edit</span></div>
-                    <div>
-                      <div style="font-weight: 700">资料维护</div>
-                      <div class="small">修改姓名、电话、简介和擅长项目</div>
-                    </div>
-                  </div>
-                  <button class="ghost-button" id="technician-profile-edit-shortcut">修改资料</button>
-                </div>
-              </div>
-              <div class="form-actions">
-                <input id="technician-profile-avatar-input" type="file" accept="image/*" hidden />
-                <p class="small" id="technician-profile-feedback" hidden></p>
-              </div>
-            </article>
-          </div>
-        </section>
+    <section class="profile-menu-panel" aria-label="个人中心菜单">
+      <a href="./technician-membership-history.html" class="profile-menu-item">
+        <span class="material-symbols-outlined">history</span>
+        <span>服务历史</span>
+        <span class="material-symbols-outlined menu-chevron">chevron_right</span>
+      </a>
+      <a href="#" class="profile-menu-item">
+        <span class="material-symbols-outlined">info</span>
+        <span>关于足宝</span>
+        <span class="material-symbols-outlined menu-chevron">chevron_right</span>
+      </a>
+    </section>
 
-        <section class="grid-2" style="margin-top: 24px">
-          <article class="surface-card card-pad">
-            <h2 class="section-title" style="font-size: 1.8rem">门店关系</h2>
-            <div class="menu-list" style="margin-top: 18px" id="technician-membership-info">
-              <div class="menu-item">
-                <div class="menu-meta">
-                  <div class="icon-pill"><span class="material-symbols-outlined">storefront</span></div>
-                  <div>
-                    <div style="font-weight: 700">当前签约门店</div>
-                    <div class="small">足宝旗舰店 · 已签约 · 在岗</div>
-                  </div>
-                </div>
-                <span class="badge success">工号 #ZB-082</span>
-              </div>
-              <div class="menu-item">
-                <div class="menu-meta">
-                  <div class="icon-pill"><span class="material-symbols-outlined">lock</span></div>
-                  <div>
-                    <div style="font-weight: 700">申请权限状态</div>
-                    <div class="small">签约期间不可申请其它门店，需先完成解约后再重新申请。</div>
-                  </div>
-                </div>
-                <span class="badge warning">已锁定</span>
-              </div>
-              <div class="menu-item">
-                <div class="menu-meta">
-                  <div class="icon-pill"><span class="material-symbols-outlined">info</span></div>
-                  <div>
-                    <div style="font-weight: 700">签约说明</div>
-                    <div class="small">当前门店解约后，系统将重新开放门店申请入口。</div>
-                  </div>
-                </div>
-                <span class="badge neutral">解约后可申请</span>
-              </div>
-            </div>
-          </article>
-          <article class="white-card card-pad">
-            <h2 class="section-title" style="font-size: 1.8rem">门店记录</h2>
-            <div class="record-list" style="margin-top: 18px" id="technician-membership-history">
-              <div class="record-row" style="grid-template-columns: 1fr auto">
-                <div>
-                  <div style="font-weight: 800">足宝旗舰店</div>
-                  <div class="small">2026-01-12 通过审核并完成签约</div>
-                </div>
-                <span class="badge success">当前签约中</span>
-              </div>
-              <div class="record-row" style="grid-template-columns: 1fr auto">
-                <div>
-                  <div style="font-weight: 800">门店申请规则</div>
-                  <div class="small">每位技师同一时间仅可签约一家门店，解约后恢复申请资格。</div>
-                </div>
-                <span class="badge neutral">单门店签约</span>
-              </div>
-            </div>
-          </article>
-        </section>
-      </main>
+    <div class="profile-action-hidden" aria-hidden="true">
+      <button id="edit-profile-btn" type="button">编辑资料</button>
+      <button id="avatar-edit-btn" type="button">上传照片</button>
+      <button id="terminate-btn" type="button">申请解约</button>
     </div>
-    <nav class="technician-bottom-nav" aria-label="技师端底部导航">
-      <a class="technician-bottom-item" href="./technician-home.html">
-        <span class="material-symbols-outlined">grid_view</span>
-        <span>工作台</span>
-      </a>
-      <a class="technician-bottom-item" href="./technician-earnings.html">
-        <span class="material-symbols-outlined">payments</span>
-        <span>收益</span>
-      </a>
-      <a class="technician-bottom-item active" href="./technician-profile.html">
-        <span class="material-symbols-outlined">person</span>
-        <span>我的</span>
-      </a>
-    </nav>
-    <script src="./app.js?v=20260410a"></script>
-  </body>
+
+    <!-- 设置弹窗 -->
+    <div class="modal-overlay" id="settings-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>设置</h3>
+          <button class="modal-close" id="modal-close-btn" type="button">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <button class="modal-menu-item" id="modal-edit-profile" type="button">
+            <span class="material-symbols-outlined">edit</span>
+            <span>资料编辑</span>
+          </button>
+          <button class="modal-menu-item modal-menu-danger" id="modal-logout" type="button">
+            <span class="material-symbols-outlined">logout</span>
+            <span>退出登录</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 资料编辑弹窗 -->
+    <div class="modal-overlay" id="edit-profile-modal">
+      <div class="modal-content modal-content-full">
+        <div class="modal-header">
+          <h3>编辑资料</h3>
+          <button class="modal-close" id="edit-modal-close-btn" type="button">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="edit-avatar-section">
+            <div class="edit-avatar-wrapper">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg93Afg2MS-RSPyZPJGQRHsstIRFFOpGiMO1c4-BuDGqYrEPQEsb3F2gkURVdQ2iCpB_0AxtWIzgY7AlW1t4lj3mnlfgkO5TVY5g4e-kbAFlsFxzNEDVp0ZaNws1T7IXgce-MPHl2lXs438UFO9FPlHYk8P1Ku3odlRf0oHp5zX-xwQyhoWw52OzjAf1IRPLpCJMmaZ--d07pVIuwQxxQa6QTzX_4_HBeuyWZ3AuFM3tlOe-Cgi-r9UMF74m6p2v4ik2L35t8QPvv2" alt="技师头像" class="edit-avatar-img" id="edit-avatar-img" />
+              <button class="edit-avatar-btn" id="change-avatar-btn" type="button">
+                <span class="material-symbols-outlined">camera_alt</span>
+              </button>
+            </div>
+          </div>
+          <form class="edit-form" id="edit-profile-form">
+            <div class="edit-form-group">
+              <label for="edit-name">姓名</label>
+              <input type="text" id="edit-name" name="name" value="Elena Rostova" placeholder="请输入姓名" />
+            </div>
+            <div class="edit-form-row">
+              <div class="edit-form-group edit-form-group-half">
+                <label for="edit-gender">性别</label>
+                <select id="edit-gender" name="gender">
+                  <option value="">请选择</option>
+                  <option value="male">男</option>
+                  <option value="female">女</option>
+                </select>
+              </div>
+              <div class="edit-form-group edit-form-group-half">
+                <label for="edit-birthday">出生年月</label>
+                <input type="date" id="edit-birthday" name="birthday" placeholder="请选择出生年月" />
+              </div>
+            </div>
+            <div class="edit-form-group">
+              <label for="edit-phone">手机号</label>
+              <input type="tel" id="edit-phone" name="phone" value="138****8888" placeholder="请输入手机号" />
+            </div>
+            <div class="edit-form-group">
+              <label for="edit-skills">擅长项目</label>
+              <input type="text" id="edit-skills" name="skills" value="足底按摩、中式推拿、经络疏通" placeholder="请输入擅长项目，用顿号分隔" />
+            </div>
+            <div class="edit-form-group">
+              <label for="edit-bio">个人简介</label>
+              <textarea id="edit-bio" name="bio" rows="3" placeholder="请输入个人简介">专注身心愈合，以指尖传递宁静的力量。</textarea>
+            </div>
+            <div class="edit-form-actions">
+              <button type="button" class="btn-outline" id="edit-cancel-btn">取消</button>
+              <button type="submit" class="btn-primary">保存</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="technician-bottom-nav-mobile" id="technician-bottom-nav"></div>
+</div>
+
+<script type="module" src="./js/pages/technician-profile.js?v=20260603-modal-unified-scroll"></script>
+</body>
 </html>

@@ -4,128 +4,171 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>足宝 | 登录</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;600;700;800&family=Material+Symbols+Outlined:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css?v=20260410a" />
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260513c" />
   </head>
   <body class="login-page" data-page="login">
-    <main class="login-shell">
-      <section class="login-visual">
-        <p class="eyebrow" style="color: #9df4c8">足宝</p>
-        <h1 class="page-title" style="color: white">重拾身心<br />平衡之美</h1>
-        <p class="page-copy" style="color: rgba(255,255,255,0.82)">
-          连接门店管理、技师协作与服务流程，让足疗养生行业的经营与服务更有秩序、更有效率。
-        </p>
-      </section>
+    <main class="stitch-login-shell">
+      <div class="stitch-login-scene" aria-hidden="true">
+        <img
+          class="stitch-login-bg-image"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDztDkj_6paa-OIHBaFhJKng5f5p7FhFCT3H9yH7Qb9-mv4zY2A_dn_wu-9fMGejstjHzgE4tari3Z4hJgPp0sNBHQ8r-M7zhtg2twVjKG2FvKBFZGEiQFGi11AGt9KYS5guNymefpjf2oiSjP-FqEt3YFoql5b3PXLsFDs_6oXhV0nHhUotnpE4Z3VkJK8aVl6I8S_BKOYY-VO9ilfvPU1aXe3N7dEq26kAnp3KVyiRV1rf6VzeyBXJy8JbLSY2GvL3EfY0g_MDPv7"
+          alt=""
+        />
+        <div class="stitch-login-overlay"></div>
+      </div>
 
-      <section class="login-panel">
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 30px">
-          <div class="avatar-sm avatar-fallback" style="width: 46px; height: 46px">足</div>
-          <div class="brand" style="font-size: 2rem">ZuBao</div>
-        </div>
+      <div class="stitch-login-stage">
+        <section class="stitch-login-brand" aria-label="足宝 ZuBao">
+          <img class="stitch-login-symbol" src="./assets/brand/zubao-logo-symbol.png?v=20260513c" alt="" aria-hidden="true" />
+          <h1 class="stitch-login-wordmark">
+            <span class="stitch-login-wordmark-en">ZuBao</span>
+            <span class="stitch-login-wordmark-cn">足宝</span>
+          </h1>
+          <p class="stitch-login-slogan">
+            <span aria-hidden="true"></span>
+            <span>让养生触手可及</span>
+            <span aria-hidden="true"></span>
+          </p>
+        </section>
 
-        <div class="role-switch" data-role-tabs="login">
-          <button class="active" data-role="merchant">商家端</button>
-          <button data-role="technician">技师端</button>
-          <button data-role="consumer">消费者端</button>
-        </div>
-
-        <div class="white-card card-pad" id="session-banner" hidden style="margin: 18px 0 22px">
-          <p class="metric-label">当前已登录</p>
-          <p class="section-copy" id="session-banner-text">你当前已登录，可继续进入工作台或先退出。</p>
-          <div class="inline-group" style="margin-top: 14px">
-            <button class="ghost-button" id="session-continue-button">继续进入</button>
-            <button class="pill-button" id="session-logout-button">退出当前账号</button>
+        <section class="stitch-login-card">
+          <div class="role-switch stitch-role-switch" data-role-tabs="login">
+            <button class="active" data-role="merchant">商家端</button>
+            <button data-role="technician">技师端</button>
+            <button data-role="consumer">消费者端</button>
           </div>
-        </div>
 
-        <p class="footer-note" id="login-feedback" hidden></p>
+          <p class="stitch-login-feedback" id="login-feedback" hidden></p>
 
-        <section data-role-panel="login" data-role="merchant">
-          <div class="form-stack">
-            <div>
-              <h2 class="section-title" style="font-size: 2rem">欢迎回来</h2>
-              <p class="section-copy">请输入账号信息，进入门店管理系统。</p>
+          <section class="stitch-role-panel" data-role-panel="login" data-role="merchant">
+            <div class="stitch-panel-head">
+              <h2>欢迎回来</h2>
+              <p>请输入凭据以管理您的足疗事业</p>
             </div>
-            <label class="field-stack">
-              <span class="field-label">账号 / 手机号</span>
-              <div class="field">
-                <input id="merchant-phone" placeholder="输入您的手机号" value="13800000001" />
-                <span class="material-symbols-outlined">smartphone</span>
-              </div>
-            </label>
-            <label class="field-stack">
-              <span class="field-label">登录密码</span>
-              <div class="field">
-                <input id="merchant-password" type="password" value="Zubao123!" />
+
+            <div class="stitch-form-stack">
+              <label class="stitch-input-wrap">
+                <span class="sr-only">商家端账号或手机号</span>
+                <span class="material-symbols-outlined">person</span>
+                <input id="merchant-phone" placeholder="手机号 / 账号" value="13800000001" />
+              </label>
+
+              <label class="stitch-input-wrap">
+                <span class="sr-only">商家端登录密码</span>
                 <span class="material-symbols-outlined">lock</span>
-              </div>
-            </label>
-          </div>
-          <div class="login-actions">
-            <button class="pill-button" id="merchant-login-button">登录商家端</button>
-            <p class="center-note">其他登录方式</p>
-            <div class="inline-group" style="justify-content: center">
-              <span class="icon-pill"><span class="material-symbols-outlined">mail</span></span>
-              <span class="icon-pill"><span class="material-symbols-outlined">qr_code_2</span></span>
+                <input id="merchant-password" type="password" placeholder="请输入登录密码" value="Zubao123!" />
+                <button class="stitch-password-toggle" type="button" data-password-toggle="merchant-password" aria-label="显示或隐藏密码">
+                  <span class="material-symbols-outlined">visibility_off</span>
+                </button>
+              </label>
             </div>
-          </div>
-        </section>
 
-        <section data-role-panel="login" data-role="technician" hidden>
-          <div class="form-stack">
-            <div>
-              <h2 class="section-title" style="font-size: 2rem">技师登录</h2>
-              <p class="section-copy">查看工作状态、收益记录和个人资料。</p>
+            <div class="stitch-help-row">
+              <a href="javascript:void(0)">忘记密码?</a>
             </div>
-            <div class="white-card card-pad" style="padding: 18px 20px">
-              <p class="metric-label">移动端建议</p>
-              <p class="section-copy" style="margin: 8px 0 0">
-                登录后可将技师端添加到手机主屏幕，后续将按 PWA 应用方式使用。
-              </p>
-            </div>
-            <label class="field-stack">
-              <span class="field-label">手机号</span>
-              <div class="field">
-                <input id="technician-phone" placeholder="输入绑定手机号" value="13800000011" />
-                <span class="material-symbols-outlined">call</span>
-              </div>
-            </label>
-            <label class="field-stack">
-              <span class="field-label">登录密码</span>
-              <div class="field">
-                <input id="technician-password" type="password" value="Zubao123!" />
-                <span class="material-symbols-outlined">password</span>
-              </div>
-            </label>
-          </div>
-          <div class="login-actions">
-            <button class="pill-button" id="technician-login-button">登录技师端</button>
-          </div>
-        </section>
 
-        <section data-role-panel="login" data-role="consumer" hidden>
-          <div class="form-stack">
-            <div>
-              <h2 class="section-title" style="font-size: 2rem">消费者服务入口</h2>
-              <p class="section-copy">消费者服务入口将用于预约、到店与服务连接，当前展示为品牌预告页面。</p>
+            <button class="stitch-login-button" id="merchant-login-button" type="button">立即登录</button>
+          </section>
+
+          <section class="stitch-role-panel" data-role-panel="login" data-role="technician" hidden>
+            <div class="stitch-panel-head">
+              <h2>欢迎回来</h2>
+              <p>请输入凭据以进入您的技师工作台</p>
             </div>
-            <div class="white-card card-pad">
-              <p class="metric-label">当前状态</p>
-              <p class="metric-value" style="font-size: 2.4rem">即将开放</p>
-              <p class="metric-subtle">后续将提供预约、到店与服务评价等功能。</p>
+
+            <div class="stitch-form-stack">
+              <label class="stitch-input-wrap">
+                <span class="sr-only">技师端账号或手机号</span>
+                <span class="material-symbols-outlined">person</span>
+                <input id="technician-phone" placeholder="手机号 / 账号" value="13800000011" />
+              </label>
+
+              <label class="stitch-input-wrap">
+                <span class="sr-only">技师端登录密码</span>
+                <span class="material-symbols-outlined">lock</span>
+                <input id="technician-password" type="password" placeholder="请输入登录密码" value="Zubao123!" />
+                <button class="stitch-password-toggle" type="button" data-password-toggle="technician-password" aria-label="显示或隐藏密码">
+                  <span class="material-symbols-outlined">visibility_off</span>
+                </button>
+              </label>
+            </div>
+
+            <div class="stitch-help-row">
+              <a href="javascript:void(0)">忘记密码?</a>
+            </div>
+
+            <button class="stitch-login-button" id="technician-login-button" type="button">立即登录</button>
+          </section>
+
+          <section class="stitch-role-panel" data-role-panel="login" data-role="consumer" hidden>
+            <div class="stitch-panel-head">
+              <h2>欢迎回来</h2>
+              <p>消费者端正在规划中，后续将开放预约与服务连接能力</p>
+            </div>
+
+            <div class="stitch-coming-card">
+              <div>
+                <p class="stitch-panel-note">当前状态</p>
+                <h3>即将开放</h3>
+              </div>
+              <p>当前版本仅保留展示入口，后续将接入预约、到店与服务评价能力。</p>
+            </div>
+          </section>
+
+          <div class="stitch-alt-login">
+            <div class="stitch-divider">
+              <span></span>
+              <p>其他登录</p>
+              <span></span>
+            </div>
+            <div class="stitch-alt-actions">
+              <button class="stitch-alt-button" type="button" aria-label="手机验证码登录">
+                <span class="material-symbols-outlined">smartphone</span>
+              </button>
+              <button class="stitch-alt-button stitch-alt-button-square" type="button" aria-label="二维码登录">
+                <span class="stitch-alt-square-mark" aria-hidden="true"></span>
+              </button>
             </div>
           </div>
-        </section>
 
-        <p class="footer-note">还没有账号？请联系门店管理员或平台客服开通。</p>
-      </section>
+          <p class="stitch-signup-note">还没有账号？ <a href="javascript:void(0)">申请入驻</a></p>
+        </section>
+      </div>
+
+      <footer class="stitch-login-footer">
+        <p>© 2024 ZuBao Wellness Ecosystem</p>
+        <div>
+          <a href="javascript:void(0)">隐私政策</a>
+          <a href="javascript:void(0)">服务条款</a>
+        </div>
+      </footer>
     </main>
 
-    <script src="./app.js?v=20260410a"></script>
+    <script type="module" src="./js/main.js"></script>
+    <script>
+      // Password visibility toggle — works with both icon font spans and SVG polyfill
+      document.querySelectorAll("[data-password-toggle]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const input = document.getElementById(button.dataset.passwordToggle);
+          if (!input) return;
+          const iconEl = button.querySelector(".material-symbols-outlined");
+          const isPassword = input.type === "password";
+          const targetName = isPassword ? "visibility" : "visibility_off";
+          input.type = isPassword ? "text" : "password";
+          if (iconEl) {
+            if (iconEl.tagName === "svg") {
+              // SVG polyfill: swap the path data
+              const path = (window.__MATERIAL_ICONS || {})[targetName];
+              const pathEl = iconEl.querySelector("path");
+              if (path && pathEl) pathEl.setAttribute("d", path);
+            } else {
+              // Icon font span: swap the text
+              iconEl.textContent = targetName;
+            }
+          }
+        });
+      });
+    </script>
   </body>
 </html>

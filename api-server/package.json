@@ -10,8 +10,12 @@
     "check": "node --check src/server.js",
     "db:schema": "node scripts/run-sql-file.js ../db/mvp_schema.sql",
     "db:upgrade:masterdata": "node scripts/run-sql-file.js ../db/mvp_masterdata_upgrade.sql",
+    "db:upgrade:refresh-tokens": "node scripts/run-sql-file.js ../db/add_refresh_tokens.sql",
+    "db:upgrade:leave-applications": "node scripts/run-sql-file.js ../db/add_leave_applications.sql",
+    "db:upgrade": "npm run db:upgrade:masterdata && npm run db:upgrade:refresh-tokens && npm run db:upgrade:leave-applications",
     "db:seed": "node scripts/run-sql-file.js ../db/mvp_seed.sql",
-    "smoke": "node scripts/smoke-test.js"
+    "smoke": "node scripts/smoke-test.js",
+    "hash:password": "node scripts/hash-password.js"
   },
   "engines": {
     "node": ">=22"

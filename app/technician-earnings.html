@@ -1,160 +1,71 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0b6b53" />
-    <link rel="manifest" href="./technician.webmanifest" />
-    <title>足宝 | 技师收益统计</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght@300;400;500&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css?v=20260410a" />
-  </head>
-  <body data-page="technician-earnings">
-    <div class="app-shell">
-      <aside class="sidebar">
-        <div class="brand">足宝</div>
-        <div class="brand-subtitle">技师端入口</div>
-        <nav class="sub-list" style="margin-top: 26px">
-          <a class="sub-item" href="./technician-home.html"><span class="material-symbols-outlined">grid_view</span>工作台</a>
-          <a class="sub-item active" href="./technician-earnings.html"><span class="material-symbols-outlined">payments</span>收益统计</a>
-          <a class="sub-item" href="./technician-profile.html"><span class="material-symbols-outlined">person</span>我的资料</a>
-        </nav>
-        <div class="sidebar-footer">
-          <a class="primary-cta" href="./technician-home.html" style="display: inline-flex; justify-content: center">返回工作台</a>
-        </div>
-      </aside>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#0A0A0A" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>我的收益 - 足宝</title>
+<link rel="stylesheet" href="./fonts/fonts.css" />
+<link rel="stylesheet" href="./styles.css?v=20260515-redesign" />
+<script defer src="./js/icon-fallback-inline.js?v=20260516-iconfix7"></script>
+<link rel="stylesheet" href="./technician-redesign.css?v=20260519-order-total" />
+</head>
+<body data-page="technician-earnings">
+<div class="technician-app-shell">
+  <div class="technician-topbar" id="technician-topbar"></div>
 
-      <main class="main-panel">
-        <header class="topbar">
-          <div>
-            <div class="small" style="text-transform: uppercase; letter-spacing: 0.14em">收益统计</div>
-            <div style="font-weight: 800; font-family: Manrope, sans-serif; font-size: 1.2rem">本月收入统计</div>
-          </div>
-          <div class="topbar-actions">
-            <button class="icon-button" id="technician-topbar-notice" type="button"><span class="material-symbols-outlined">notifications</span></button>
-            <button class="icon-button" id="technician-topbar-settings" type="button"><span class="material-symbols-outlined">settings</span></button>
-            <div class="avatar-sm avatar-fallback">林</div>
-          </div>
-        </header>
-
-        <section class="page-header">
-          <p class="eyebrow">收益统计</p>
-          <h1 class="page-title">收益详情</h1>
-        </section>
-
-        <section class="hero-card hero-pad technician-summary-hero">
-          <div class="inline-group technician-summary-head" style="justify-content: space-between; align-items: flex-start; width: 100%">
-            <div class="technician-summary-main">
-              <p class="metric-label" style="color: rgba(255,255,255,0.72)">本月总收益</p>
-              <p class="metric-value" style="font-size: 3rem" id="technician-earnings-total">¥8,000.00</p>
-            </div>
-            <div class="inline-group technician-summary-badges">
-              <span class="badge neutral" id="technician-earnings-name">林婉儿</span>
-              <span class="badge neutral" id="technician-earnings-count">16 笔服务</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="grid-2 technician-panel-grid" style="margin-top: 22px">
-          <article class="surface-card card-pad">
-            <p class="metric-label">累计服务项</p>
-            <p class="metric-value" style="font-size: 3rem; color: var(--primary)" id="technician-earnings-service-count">16</p>
-          </article>
-          <article class="surface-card card-pad">
-            <p class="metric-label">已发放期数</p>
-            <p class="metric-value" style="font-size: 3rem; color: var(--primary)" id="technician-earnings-paid-count">2 期</p>
-          </article>
-        </section>
-
-        <section class="chart-shell" style="margin-top: 22px">
-          <div class="section-header" style="margin: 0 0 16px">
-            <div>
-              <h2 class="section-title" style="font-size: 1.6rem">最近 7 天收益趋势</h2>
-              <p class="section-copy">查看最近 7 天的收益变化</p>
-            </div>
-            <div class="inline-group" id="technician-earnings-trend-badges">
-              <span class="badge success">最近 7 天</span>
-            </div>
-          </div>
-          <div class="bar-chart" style="height: 200px" id="technician-earnings-trend-chart">
-            <div class="bar-group"><div class="bar" style="height: 12%"></div><span class="bar-label">周一</span></div>
-            <div class="bar-group"><div class="bar" style="height: 10%"></div><span class="bar-label">周二</span></div>
-            <div class="bar-group"><div class="bar" style="height: 9%"></div><span class="bar-label">周三</span></div>
-            <div class="bar-group"><div class="bar active" style="height: 20%"></div><span class="bar-label" style="color: var(--accent)">周四</span></div>
-            <div class="bar-group"><div class="bar" style="height: 8%"></div><span class="bar-label">周五</span></div>
-            <div class="bar-group"><div class="bar" style="height: 7%"></div><span class="bar-label">周六</span></div>
-            <div class="bar-group"><div class="bar" style="height: 6%"></div><span class="bar-label">周日</span></div>
-          </div>
-        </section>
-
-        <section style="margin-top: 22px">
-          <div class="section-header" style="margin: 0 0 14px">
-            <h2 class="section-title" style="font-size: 1.6rem">收益记录</h2>
-            <a class="action-link" href="./technician-home.html">返回工作台 <span class="material-symbols-outlined">arrow_forward</span></a>
-          </div>
-          <div class="record-list" id="technician-earnings-records">
-            <div class="record-row">
-              <div class="inline-group">
-                <div class="icon-pill"><span class="material-symbols-outlined">payments</span></div>
-                <div>
-                  <div style="font-weight: 700">#ZB-8921 足底按摩</div>
-                  <div class="small">点钟订单 · 服务金额 ¥398</div>
-                </div>
-              </div>
-              <div style="text-align: right">
-                <div style="font-weight: 800">+¥187.36</div>
-                <div class="small" style="color: var(--success)">已结算</div>
-              </div>
-            </div>
-            <div class="record-row">
-              <div class="inline-group">
-                <div class="icon-pill"><span class="material-symbols-outlined">payments</span></div>
-                <div>
-                  <div style="font-weight: 700">#ZB-8897 经络调理</div>
-                  <div class="small">排钟订单 · 服务金额 ¥268</div>
-                </div>
-              </div>
-              <div style="text-align: right">
-                <div style="font-weight: 800">+¥75.04</div>
-                <div class="small" style="color: var(--success)">已结算</div>
-              </div>
-            </div>
-            <div class="record-row">
-              <div class="inline-group">
-                <div class="icon-pill"><span class="material-symbols-outlined">payments</span></div>
-                <div>
-                  <div style="font-weight: 700">#ZB-8879 香薰理疗</div>
-                  <div class="small">点钟订单 · 服务金额 ¥458</div>
-                </div>
-              </div>
-              <div style="text-align: right">
-                <div style="font-weight: 800">+¥206.56</div>
-                <div class="small" style="color: var(--success)">已结算</div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
+  <main class="technician-page technician-earnings-page">
+    <div class="tech-segmented" id="time-tab">
+      <button class="tech-segmented-pill" data-period="today" type="button">今日</button>
+      <button class="tech-segmented-pill active" data-period="month" type="button">本月</button>
+      <button class="tech-segmented-pill" data-period="salary" type="button">工资</button>
+      <button class="tech-segmented-pill" data-period="year" type="button">年度</button>
     </div>
-    <nav class="technician-bottom-nav" aria-label="技师端底部导航">
-      <a class="technician-bottom-item" href="./technician-home.html">
-        <span class="material-symbols-outlined">grid_view</span>
-        <span>工作台</span>
-      </a>
-      <a class="technician-bottom-item active" href="./technician-earnings.html">
-        <span class="material-symbols-outlined">payments</span>
-        <span>收益</span>
-      </a>
-      <a class="technician-bottom-item" href="./technician-profile.html">
-        <span class="material-symbols-outlined">person</span>
-        <span>我的</span>
-      </a>
-    </nav>
-    <script src="./app.js?v=20260410a"></script>
-  </body>
+
+    <section class="earnings-total-block" aria-labelledby="earnings-label">
+      <p class="earnings-kicker" id="earnings-label">累计收益</p>
+      <h1 class="earnings-total" id="earnings-total">¥12,450.00</h1>
+      <p class="earnings-trend" id="earnings-trend">
+        <span class="material-symbols-outlined">trending_up</span>
+        较上月增长 15%
+      </p>
+    </section>
+
+    <section class="earnings-metric-row" aria-label="收益统计">
+      <article class="earnings-metric-card">
+        <span class="earnings-metric-label">完成订单</span>
+        <strong id="earnings-orders">142</strong>
+      </article>
+      <article class="earnings-metric-card">
+        <span class="earnings-metric-label" id="earnings-amount-label">服务总额</span>
+        <strong id="earnings-amount">¥87.6</strong>
+      </article>
+    </section>
+
+    <section class="tech-section">
+      <div class="tech-section-head">
+        <h2>收益趋势</h2>
+        <span class="material-symbols-outlined section-chart-icon">monitoring</span>
+      </div>
+      <div class="earnings-chart-card">
+        <div class="earnings-chart-bars" id="earnings-chart"></div>
+      </div>
+    </section>
+
+    <section class="tech-section">
+      <div class="tech-section-head">
+        <h2>最近明细</h2>
+        <a href="#" id="view-all-details" class="tech-subtle-link">查看全部</a>
+      </div>
+      <div class="earnings-detail-list" id="earnings-details"></div>
+    </section>
+  </main>
+
+  <div class="technician-bottom-nav-mobile" id="technician-bottom-nav"></div>
+</div>
+
+<script type="module" src="./js/pages/technician-earnings.js?v=20260519-order-total"></script>
+</body>
 </html>

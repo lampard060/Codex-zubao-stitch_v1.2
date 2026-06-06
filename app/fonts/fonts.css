@@ -1,0 +1,46 @@
+/* ===========================================================
+   ZuBao Font Configuration
+   ===========================================================
+   字体文件已由 SVG polyfill (js/utils/icon-fallback.js) 替代。
+   Material Symbols 图标通过内联 SVG 渲染，无需下载字体文件。
+   Inter / Manrope 字体回退到系统字体，不影响中文显示。
+   =========================================================== */
+
+/*
+  如果需要使用自托管字体文件，请运行 scripts/download-fonts.sh
+  下载完成后，取消注释下方 @font-face 规则即可。
+
+  --- Inter (Variable) ---
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('./Inter-Variable.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('./Inter-Variable-Italic.woff2') format('woff2');
+  }
+
+  --- Manrope (Variable) ---
+  @font-face {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('./Manrope-Variable.woff2') format('woff2');
+  }
+
+  --- Material Symbols Outlined ---
+  @font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 300 500;
+    font-display: block;
+    src: url('./MaterialSymbolsOutlined.woff2') format('woff2');
+  }
+*/

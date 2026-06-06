@@ -1,13 +1,18 @@
 const express = require("express");
 const { ok } = require("../lib/respond");
 const { query } = require("../lib/db");
+const { requireAuth } = require("../middleware/auth");
+const { requireMerchantShopAccess } = require("../middleware/authorization");
 const { requireShopContext } = require("../lib/request-context");
 const { mapMoneyFields } = require("../lib/formatters");
 const { resolveMonthRange, resolveAnalyticsRange } = require("../lib/date-range");
+const { wrap } = require("../lib/async-handler");
 
 const router = express.Router();
 
-router.get("/merchant/dashboard", requireShopContext, async (req, res) => {
+router.use("/merchant", requireAuth, requireMerchantShopAccess);
+
+router.get("/merchant/dashboard", requireShopContext, wrap(async (req, res) => {
   const { shopId } = req.ctx;
   const { monthStart, monthEnd, monthLabel } = resolveMonthRange();
 
@@ -21,10 +26,12 @@ router.get("/merchant/dashboard", requireShopContext, async (req, res) => {
     query(
       `select
          count(*)::int as today_order_count,
-         coalesce(sum(actual_amount), 0)::int as today_revenue,
-         count(*) filter (where status = 'in_service')::int as in_service_count
-       from orders
-       where shop_id = $1
+         coalesce(sum(actual_amount) filter (where o.status = 'completed'), 0)::int as today_revenue,
+         count(*) filter (where o.status = 'pending')::int as pending_order_count,
+         count(*) filter (where o.status = 'in_service')::int as in_service_count
+       from orders o
+       left join service_items si on si.id = o.service_item_id
+       where o.shop_id = $1
          and start_time >= current_date
          and start_time < current_date + interval '1 day'`,
       [shopId]
@@ -48,14 +55,21 @@ router.get("/merchant/dashboard", requireShopContext, async (req, res) => {
          o.order_type,
          o.status,
          o.start_time,
+         o.duration_minutes,
+         o.technician_user_id,
          tp.name as technician_name,
-         si.name as service_name
+         si.name as service_name,
+         r.name as room_name
        from orders o
        join technician_profiles tp on tp.user_id = o.technician_user_id
        left join service_items si on si.id = o.service_item_id
+       left join rooms r on r.id = o.room_id
        where o.shop_id = $1
-         and o.status = 'in_service'
-       order by o.start_time asc
+         and o.status in ('pending', 'in_service')
+       order by
+         case o.status when 'in_service' then 0 else 1 end,
+         o.start_time asc nulls last,
+         o.created_at asc
        limit 5`,
       [shopId]
     ),
@@ -89,14 +103,27 @@ router.get("/merchant/dashboard", requireShopContext, async (req, res) => {
       [shopId]
     ),
     query(
-      `select
+      `with latest_status as (
+         select distinct on (technician_user_id)
+           technician_user_id,
+           attendance_status,
+           service_status,
+           changed_at
+         from technician_work_status_logs
+         where shop_id = $1
+         order by technician_user_id, changed_at desc
+       )
+       select
          tp.user_id as technician_user_id,
          tp.name,
          tp.avatar_url,
          count(o.id)::int as completed_order_count,
-         coalesce(sum(o.actual_amount), 0)::int as contributed_revenue
+         coalesce(sum(o.actual_amount), 0)::int as contributed_revenue,
+         coalesce(ls.attendance_status::text, 'off_duty') as attendance_status,
+         coalesce(ls.service_status::text, 'available') as service_status
        from shop_staff_memberships sm
        join technician_profiles tp on tp.user_id = sm.user_id
+       left join latest_status ls on ls.technician_user_id = sm.user_id
        left join orders o
          on o.shop_id = sm.shop_id
         and o.technician_user_id = sm.user_id
@@ -106,7 +133,8 @@ router.get("/merchant/dashboard", requireShopContext, async (req, res) => {
        where sm.shop_id = $1
          and sm.role_in_shop = 'technician'
          and sm.membership_status = 'active'
-       group by tp.user_id, tp.name, tp.avatar_url
+         and coalesce(ls.attendance_status::text, 'off_duty') != 'resting'
+       group by tp.user_id, tp.name, tp.avatar_url, ls.attendance_status, ls.service_status
        order by contributed_revenue desc, completed_order_count desc, tp.name asc
        limit 3`,
       [shopId, monthStart, monthEnd]
@@ -122,9 +150,9 @@ router.get("/merchant/dashboard", requireShopContext, async (req, res) => {
     waitingTechnicians: waitingTechniciansResult.rows,
     technicianRanking: rankingResult.rows.map((row) => mapMoneyFields(row, ["contributed_revenue"]))
   });
-});
+}));
 
-router.get("/merchant/analytics", requireShopContext, async (req, res) => {
+router.get("/merchant/analytics", requireShopContext, wrap(async (req, res) => {
   const { shopId } = req.ctx;
   const range = resolveAnalyticsRange(req.query.period, req.query.month);
 
@@ -292,34 +320,47 @@ router.get("/merchant/analytics", requireShopContext, async (req, res) => {
     ])),
     technicianContributionRanking: technicianContributionResult.rows.map((row) => mapMoneyFields(row, ["service_revenue"]))
   });
-});
+}));
 
-router.get("/merchant/settings", requireShopContext, async (req, res) => {
+router.get("/merchant/settings", requireShopContext, wrap(async (req, res) => {
   const { shopId } = req.ctx;
-  const result = await query(
-    `select
-       id,
-       name,
-       manager_name,
-       contact_phone,
-       address,
-       qr_code_url,
-       subscription_plan,
-       subscription_status,
-       subscription_expires_at
-     from shops
-     where id = $1`,
-    [shopId]
-  );
+  const [shopResult, statsResult] = await Promise.all([
+    query(
+      `select
+         id,
+         name,
+         manager_name,
+         contact_phone,
+         address,
+         qr_code_url,
+         opening_hours,
+         subscription_plan,
+         subscription_status,
+         subscription_expires_at
+       from shops
+       where id = $1`,
+      [shopId]
+    ),
+    query(
+      `select
+         (select count(*) from rooms where shop_id = $1 and is_active = true)::int as total_rooms,
+         (select count(r.id) from rooms r where r.shop_id = $1 and r.is_active = true and not exists (select 1 from orders o where o.room_id = r.id and o.status = 'in_service'))::int as available_rooms,
+         (select count(*) from customers where shop_id = $1 and is_active = true)::int as total_customers,
+         (select count(*) from service_items where shop_id = $1 and is_active = true)::int as total_services,
+         (select count(*) from shop_join_applications where shop_id = $1 and status = 'pending')::int as pending_applications`,
+      [shopId]
+    )
+  ]);
 
   return ok(res, {
-    shop: result.rows[0] || null
+    shop: shopResult.rows[0] || null,
+    stats: statsResult.rows[0] || {}
   });
-});
+}));
 
-router.put("/merchant/settings", requireShopContext, async (req, res) => {
+router.put("/merchant/settings", requireShopContext, wrap(async (req, res) => {
   const { shopId } = req.ctx;
-  const { name, managerName, contactPhone, address, qrCodeUrl } = req.body || {};
+  const { name, managerName, contactPhone, address, qrCodeUrl, openingHours } = req.body || {};
   const result = await query(
     `update shops
      set
@@ -328,6 +369,7 @@ router.put("/merchant/settings", requireShopContext, async (req, res) => {
        contact_phone = coalesce($4, contact_phone),
        address = coalesce($5, address),
        qr_code_url = coalesce($6, qr_code_url),
+       opening_hours = coalesce($7, opening_hours),
        updated_at = now()
      where id = $1
      returning
@@ -337,15 +379,16 @@ router.put("/merchant/settings", requireShopContext, async (req, res) => {
        contact_phone,
        address,
        qr_code_url,
+       opening_hours,
        subscription_plan,
        subscription_status,
        subscription_expires_at`,
-    [shopId, name, managerName, contactPhone, address, qrCodeUrl]
+    [shopId, name, managerName, contactPhone, address, qrCodeUrl, openingHours]
   );
 
   return ok(res, {
     shop: result.rows[0] || null
   });
-});
+}));
 
 module.exports = router;

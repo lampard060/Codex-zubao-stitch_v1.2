@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#0A0A0A" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>历史签约店铺 - 足宝</title>
+<link rel="stylesheet" href="./fonts/fonts.css" />
+<link rel="stylesheet" href="./styles.css?v=20260515-redesign" />
+<script defer src="./js/icon-fallback-inline.js?v=20260516-iconfix7"></script>
+<link rel="stylesheet" href="./technician-redesign.css?v=20260603-membership-history" />
+</head>
+<body data-page="technician-membership-history">
+<div class="technician-app-shell">
+  <div class="technician-topbar" id="technician-topbar"></div>
+
+  <main class="technician-page technician-membership-history-page">
+    <section class="membership-history-hero" aria-labelledby="membership-history-title">
+      <p class="membership-history-kicker">门店关系</p>
+      <h1 class="membership-history-title" id="membership-history-title">历史签约店铺</h1>
+      <p class="membership-history-copy">这里会保留你当前与过往合作过的门店记录，方便回看签约状态与服务轨迹。</p>
+    </section>
+
+    <section class="membership-history-summary" aria-label="签约概览">
+      <article class="membership-summary-card">
+        <span class="membership-summary-label">累计签约</span>
+        <strong id="membership-total-shops">0</strong>
+        <span class="membership-summary-unit">家门店</span>
+      </article>
+      <article class="membership-summary-card">
+        <span class="membership-summary-label">当前状态</span>
+        <strong id="membership-current-status">未签约</strong>
+        <span class="membership-summary-unit" id="membership-latest-date">暂无记录</span>
+      </article>
+    </section>
+
+    <section class="tech-section" id="technician-membership-history">
+      <div class="tech-section-head">
+        <h2>签约记录</h2>
+        <span class="tech-subtle-caption" id="membership-history-count">0 条记录</span>
+      </div>
+      <div class="membership-history-list" id="membership-history-list"></div>
+    </section>
+  </main>
+
+  <div class="technician-bottom-nav-mobile" id="technician-bottom-nav"></div>
+</div>
+
+<script type="module" src="./js/pages/technician-membership-history.js?v=20260603-membership-history"></script>
+</body>
+</html>

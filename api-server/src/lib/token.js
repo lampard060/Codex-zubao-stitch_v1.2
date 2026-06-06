@@ -40,22 +40,31 @@ function verifyToken(token) {
     return null;
   }
 
-  const [header, body, signature] = token.split(".");
-  if (!header || !body || !signature) {
+  try {
+    const [header, body, signature] = token.split(".");
+    if (!header || !body || !signature) {
+      return null;
+    }
+
+    const expectedSignature = sign(`${header}.${body}`);
+    // Use timingSafeEqual style check or simple comparison
+    if (expectedSignature !== signature) {
+      return null;
+    }
+
+    const payload = JSON.parse(fromBase64Url(body));
+    if (payload.exp && Date.now() >= payload.exp * 1000) {
+      return null;
+    }
+
+    return payload;
+  } catch (error) {
     return null;
   }
+}
 
-  const expectedSignature = sign(`${header}.${body}`);
-  if (expectedSignature !== signature) {
-    return null;
-  }
-
-  const payload = JSON.parse(fromBase64Url(body));
-  if (payload.exp && Date.now() >= payload.exp * 1000) {
-    return null;
-  }
-
-  return payload;
+function generateRandomString(length = 32) {
+  return crypto.randomBytes(length).toString("hex");
 }
 
 function readBearerToken(req) {
@@ -70,5 +79,6 @@ function readBearerToken(req) {
 module.exports = {
   issueToken,
   verifyToken,
+  generateRandomString,
   readBearerToken
 };

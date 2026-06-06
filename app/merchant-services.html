@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>足宝 | 项目管理</title>
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260429a" />
+  </head>
+  <body data-page="merchant-services">
+    <div class="app-shell merchant-subpage-shell">
+      <main class="main-panel merchant-subpage-main">
+        <header class="merchant-subpage-topbar">
+          <div class="merchant-subpage-topbar-left">
+            <a class="merchant-back-button" href="./merchant-settings.html" aria-label="返回店铺页">
+              <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <h1>项目管理</h1>
+          </div>
+          <img
+            class="merchant-subpage-avatar"
+            alt=""
+            src="./zubao-tech-icon.png"
+          />
+        </header>
+
+        <button class="merchant-add-tile" type="button" id="service-create-toggle">
+          <span class="merchant-add-icon">
+            <span class="material-symbols-outlined">add</span>
+          </span>
+          <span>新增服务项目</span>
+        </button>
+
+        <section class="merchant-subpage-stack merchant-service-stack" id="service-list"></section>
+      </main>
+    </div>
+
+    <div class="mobile-sheet-backdrop" id="service-sheet-backdrop" hidden></div>
+
+    <section class="mobile-bottom-sheet" id="service-edit-panel" hidden>
+      <div class="mobile-sheet-handle"></div>
+      <div class="mobile-sheet-head">
+        <div>
+          <h2 id="service-sheet-title">编辑项目</h2>
+          <p>维护服务内容、价格和时长。</p>
+        </div>
+        <button class="merchant-mobile-icon-button" type="button" id="service-edit-close" aria-label="关闭项目弹层">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="mobile-sheet-body">
+        <label class="mobile-form-field">
+          <span>项目名称</span>
+          <input id="service-item-name-input" placeholder="请输入项目名称" />
+        </label>
+        <label class="mobile-form-field">
+          <span>标签风格</span>
+          <select id="service-item-mode-input">
+            <option value="scheduled">推荐</option>
+            <option value="designated">高端</option>
+          </select>
+        </label>
+        <label class="mobile-form-field">
+          <span>项目价格（元）</span>
+          <input id="service-item-price-input" type="number" min="0" step="0.01" placeholder="例如：398" />
+        </label>
+        <label class="mobile-form-field">
+          <span>服务时长（分钟）</span>
+          <input id="service-item-duration-input" type="number" min="1" step="1" placeholder="例如：60" />
+        </label>
+        <label class="mobile-form-field">
+          <span>项目内容</span>
+          <textarea id="service-item-description-input" rows="4" placeholder="请输入项目说明"></textarea>
+        </label>
+        <p class="small" id="service-item-feedback" hidden></p>
+        <div class="mobile-sheet-inline-actions" id="service-item-edit-actions">
+          <button class="mobile-sheet-secondary danger" type="button" id="service-item-toggle-button">删除项目</button>
+          <button class="mobile-sheet-primary" type="button" id="service-item-save-button">保存项目</button>
+        </div>
+        <button class="mobile-sheet-primary" type="button" id="service-item-create-button" hidden>保存项目</button>
+      </div>
+    </section>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

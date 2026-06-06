@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>足宝 | 工资发放</title>
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260430a" />
+  </head>
+  <body data-page="merchant-payroll-detail">
+    <div class="app-shell merchant-mobile-shell">
+      <main class="main-panel merchant-mobile-main">
+        <header class="topbar merchant-mobile-topbar">
+          <div class="merchant-mobile-titlebar">
+            <button class="merchant-mobile-back-button" type="button" id="payroll-back">
+              <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 class="merchant-mobile-title">工资发放</h1>
+          </div>
+        </header>
+
+        <section class="mobile-hero-card mobile-hero-card-emerald payroll-summary-card">
+          <div class="payroll-summary-header">
+            <span class="mobile-hero-label">本月应发薪资总计</span>
+            <span class="payroll-technician-count">12位技师</span>
+            <span class="material-symbols-outlined payroll-summary-arrow">chevron_right</span>
+          </div>
+          <div class="payroll-total-amount">¥128,450.00</div>
+          <p class="payroll-summary-caption">本月累计结算金额</p>
+          <div class="payroll-summary-grid">
+            <article class="payroll-summary-item">
+              <span>已发放</span>
+              <strong>¥92,000</strong>
+              <span class="payroll-summary-sub">8人</span>
+            </article>
+            <article class="payroll-summary-item">
+              <span>待发放</span>
+              <strong>¥36,450</strong>
+              <span class="payroll-summary-sub">4人</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="mobile-tab-shell" id="payroll-status-filters">
+          <button class="mobile-tab-pill active" data-payroll-filter="realtime">实时收入</button>
+          <button class="mobile-tab-pill" data-payroll-filter="pending">上月待发</button>
+          <button class="mobile-tab-pill" data-payroll-filter="paid">上月已发</button>
+        </section>
+
+        <section class="mobile-card-stack" id="payroll-list" style="display: none; padding-top: 16px;">
+          <article class="payroll-item-card">
+            <div class="payroll-item-avatar">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=zhang" alt="张明" />
+            </div>
+            <div class="payroll-item-info">
+              <h3>张明</h3>
+              <p>高级理疗师</p>
+            </div>
+            <div class="payroll-item-amount">
+              <strong>¥9,800.00</strong>
+              <span class="mobile-status-pill warning">待结算</span>
+            </div>
+          </article>
+          <article class="payroll-item-card">
+            <div class="payroll-item-avatar">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=lin" alt="林晓月" />
+            </div>
+            <div class="payroll-item-info">
+              <h3>林晓月</h3>
+              <p>资深技师</p>
+            </div>
+            <div class="payroll-item-amount">
+              <strong>¥8,450.00</strong>
+              <span class="mobile-status-pill warning">待结算</span>
+            </div>
+          </article>
+          <article class="payroll-item-card">
+            <div class="payroll-item-avatar">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=chen" alt="陈伟" />
+            </div>
+            <div class="payroll-item-info">
+              <h3>陈伟</h3>
+              <p>高级按摩师</p>
+            </div>
+            <div class="payroll-item-amount">
+              <strong>¥11,200.00</strong>
+              <span class="mobile-status-pill warning">待结算</span>
+            </div>
+          </article>
+          <article class="payroll-item-card">
+            <div class="payroll-item-avatar">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=wang" alt="王雪儿" />
+            </div>
+            <div class="payroll-item-info">
+              <h3>王雪儿</h3>
+              <p>理疗师</p>
+            </div>
+            <div class="payroll-item-amount">
+              <strong>¥7,000.00</strong>
+              <span class="mobile-status-pill warning">待结算</span>
+            </div>
+          </article>
+        </section>
+        
+        <section class="mobile-card-stack" id="realtime-list" style="padding-top: 16px;"></section>
+      </main>
+
+      <button class="merchant-mobile-fab" id="payroll-generate-fab" title="生成工资单">
+        <span class="material-symbols-outlined">add</span>
+      </button>
+    </div>
+
+    <nav class="merchant-bottom-nav-mobile" aria-label="商家端底部导航">
+      <a class="nav-item" href="./merchant-dashboard.html">
+        <span class="material-symbols-outlined">grid_view</span>
+        <span>工作台</span>
+      </a>
+      <a class="nav-item" href="./merchant-orders.html">
+        <span class="material-symbols-outlined">receipt_long</span>
+        <span>订单</span>
+      </a>
+      <a class="nav-item active" href="./merchant-technicians.html">
+        <span class="material-symbols-outlined">groups</span>
+        <span>技师</span>
+      </a>
+      <a class="nav-item" href="./merchant-settings.html">
+        <span class="material-symbols-outlined">storefront</span>
+        <span>店铺</span>
+      </a>
+    </nav>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

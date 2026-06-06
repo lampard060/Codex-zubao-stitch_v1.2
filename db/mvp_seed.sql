@@ -16,9 +16,9 @@ truncate table users restart identity cascade;
 
 insert into users (id, role, phone, password_hash)
 values
-  ('10000000-0000-0000-0000-000000000001', 'merchant', '13800000001', 'scrypt$ab5247ae9c7c8b0a7598ab4d9465bc5b$6f3841b2a3a16368dab0ccf6c41e8bf38cc5f8b1e072fc49b3f0ea964e4760fcf8f42c10dcf325c509cf48cdd74743eb71bca6ba4d73dd3698d81f668e7699ec'),
-  ('20000000-0000-0000-0000-000000000001', 'technician', '13800000011', 'scrypt$ab5247ae9c7c8b0a7598ab4d9465bc5b$6f3841b2a3a16368dab0ccf6c41e8bf38cc5f8b1e072fc49b3f0ea964e4760fcf8f42c10dcf325c509cf48cdd74743eb71bca6ba4d73dd3698d81f668e7699ec'),
-  ('20000000-0000-0000-0000-000000000002', 'technician', '13800000012', 'scrypt$ab5247ae9c7c8b0a7598ab4d9465bc5b$6f3841b2a3a16368dab0ccf6c41e8bf38cc5f8b1e072fc49b3f0ea964e4760fcf8f42c10dcf325c509cf48cdd74743eb71bca6ba4d73dd3698d81f668e7699ec');
+  ('10000000-0000-0000-0000-000000000001', 'merchant', '13800000001', 'scrypt$e337f958e62ca19999cb87e86e019986$c0b98b8607a17412205d8f45def4ca45030eeeb64d69d802f1ef63286e09787abe11e02e40e27085abe30060c93f8060acf4ca459b46cd9b04cc2a13ffe27031'),
+  ('20000000-0000-0000-0000-000000000001', 'technician', '13800000011', 'scrypt$e337f958e62ca19999cb87e86e019986$c0b98b8607a17412205d8f45def4ca45030eeeb64d69d802f1ef63286e09787abe11e02e40e27085abe30060acf4ca459b46cd9b04cc2a13ffe27031'),
+  ('20000000-0000-0000-0000-000000000002', 'technician', '13800000012', 'scrypt$e337f958e62ca19999cb87e86e019986$c0b98b8607a17412205d8f45def4ca45030eeeb64d69d802f1ef63286e09787abe11e02e40e27085abe30060acf4ca459b46cd9b04cc2a13ffe27031');
 
 insert into merchant_profiles (user_id, display_name)
 values
@@ -36,6 +36,7 @@ insert into shops (
   manager_name,
   contact_phone,
   address,
+  opening_hours,
   subscription_plan,
   subscription_status,
   subscription_expires_at
@@ -47,6 +48,7 @@ values (
   'Frank Zhang',
   '021-88886666',
   '上海市浦东新区示例路 88 号',
+  '10:00-22:00',
   'professional',
   'active',
   now() + interval '180 days'

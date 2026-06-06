@@ -1,15 +1,31 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="512" height="512" rx="128" fill="#0B6B53"/>
-  <rect x="92" y="92" width="328" height="328" rx="96" fill="url(#paint0_linear)"/>
-  <path d="M176 192C176 183.163 183.163 176 192 176H320C328.837 176 336 183.163 336 192V214C336 222.837 328.837 230 320 230H192C183.163 230 176 222.837 176 214V192Z" fill="white" fill-opacity="0.95"/>
-  <path d="M176 262C176 253.163 183.163 246 192 246H282C290.837 246 298 253.163 298 262V284C298 292.837 290.837 300 282 300H192C183.163 300 176 292.837 176 284V262Z" fill="white" fill-opacity="0.92"/>
-  <circle cx="323" cy="273" r="37" fill="#F2FFF8"/>
-  <path d="M323 252V294" stroke="#0B6B53" stroke-width="14" stroke-linecap="round"/>
-  <path d="M302 273H344" stroke="#0B6B53" stroke-width="14" stroke-linecap="round"/>
   <defs>
-    <linearGradient id="paint0_linear" x1="114" y1="120" x2="396" y2="404" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#147A5E"/>
-      <stop offset="1" stop-color="#1FB989"/>
+    <linearGradient id="zubaoIconGradient" x1="122" y1="94" x2="344" y2="374" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF6B00"/>
+      <stop offset="1" stop-color="#FFB347"/>
     </linearGradient>
+    <filter id="zubaoShadow" x="18" y="18" width="476" height="476" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="22"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0666667 0 0 0 0 0.0941176 0 0 0 0 0.152941 0 0 0 0.12 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_2"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_2" result="shape"/>
+    </filter>
   </defs>
+  <g filter="url(#zubaoShadow)">
+    <rect x="62" y="44" width="388" height="388" rx="112" fill="#FFF7F0"/>
+    <g transform="translate(-20 -8) scale(0.78)">
+      <path
+        d="M134 166C167 145 215 129 290 107C315 100 334 95 352 89C366 84 380 92 385 105C391 117 387 132 375 140C366 148 351 150 337 147C294 153 243 166 198 181C168 191 147 204 134 219C124 232 122 246 128 256C133 267 147 273 166 273H313L201 385C187 400 188 418 202 427C236 447 299 457 391 457C425 457 456 452 481 441"
+        stroke="url(#zubaoIconGradient)"
+        stroke-width="42"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <circle cx="400" cy="84" r="34" fill="url(#zubaoIconGradient)"/>
+      <circle cx="454" cy="446" r="34" fill="url(#zubaoIconGradient)"/>
+    </g>
+  </g>
 </svg>

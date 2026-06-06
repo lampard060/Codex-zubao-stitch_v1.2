@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>足宝 | 房间管理</title>
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260429a" />
+  </head>
+  <body data-page="merchant-rooms">
+    <div class="app-shell merchant-subpage-shell">
+      <main class="main-panel merchant-subpage-main">
+        <header class="merchant-subpage-topbar">
+          <div class="merchant-subpage-topbar-left">
+            <a class="merchant-back-button" href="./merchant-settings.html" aria-label="返回店铺页">
+              <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <h1>房间管理</h1>
+          </div>
+          <img class="merchant-subpage-avatar" src="./zubao-tech-icon.png" alt="足宝图标" />
+        </header>
+
+        <section class="merchant-subpage-head-row">
+          <h2>所有房间</h2>
+          <button class="merchant-primary-pill" type="button" id="room-create-toggle">
+            <span class="material-symbols-outlined">add</span>
+            <span>新增房间</span>
+          </button>
+        </section>
+
+        <section class="merchant-subpage-stack" id="room-card-list"></section>
+      </main>
+    </div>
+
+    <div class="mobile-sheet-backdrop" id="room-sheet-backdrop" hidden></div>
+
+    <section class="mobile-bottom-sheet" id="room-edit-panel" hidden>
+      <div class="mobile-sheet-handle"></div>
+      <div class="mobile-sheet-head">
+        <div>
+          <h2 id="room-sheet-title">房间详情</h2>
+          <p>维护房间名称、类型和使用状态。</p>
+        </div>
+        <button class="merchant-mobile-icon-button" type="button" id="room-edit-close" aria-label="关闭房间弹层">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="mobile-sheet-body">
+        <label class="mobile-form-field">
+          <span>房间名称</span>
+          <input id="room-name-input" placeholder="请输入房间名称" />
+        </label>
+        <label class="mobile-form-field">
+          <span>容纳人数</span>
+          <input id="room-type-input" type="number" placeholder="例如：4" />
+        </label>
+        <label class="mobile-form-field">
+          <span>房间备注</span>
+          <textarea id="room-note-input" rows="4" placeholder="请输入房间备注"></textarea>
+        </label>
+        <p class="small" id="room-feedback" hidden></p>
+        <div class="mobile-sheet-inline-actions" id="room-edit-actions">
+          <button class="mobile-sheet-secondary danger" type="button" id="room-toggle-button">删除房间</button>
+          <button class="mobile-sheet-primary" type="button" id="room-save-button">保存房间</button>
+        </div>
+        <button class="mobile-sheet-primary" type="button" id="room-create-button" hidden>保存房间</button>
+      </div>
+    </section>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
