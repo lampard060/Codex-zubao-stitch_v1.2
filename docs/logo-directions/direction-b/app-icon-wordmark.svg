@@ -1,9 +1,0 @@
-<svg width="1280" height="1024" viewBox="0 0 1280 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1280" height="1024" fill="none"/>
-  <rect x="96" y="144" width="736" height="736" rx="188" fill="#FFFFFF" stroke="#EEF1F5" stroke-width="10"/>
-  <path d="M288 564C288 421 396 312 538 312C656 312 750 400 750 512C750 612 677 686 585 686C528 686 479 660 435 618" stroke="#FF9933" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M332 446C376 398 434 372 502 372C568 372 622 395 668 446" stroke="#FF9933" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M296 548C352 604 420 632 494 632C571 632 634 602 677 546C705 509 728 466 756 414C795 344 857 294 938 280" stroke="#FF9933" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="900" y="494" fill="#10161F" font-size="168" font-weight="700" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif">足宝</text>
-  <text x="904" y="620" fill="#B9C0CA" font-size="88" font-weight="600" letter-spacing="3" font-family="SF Pro Display, Avenir Next, Helvetica Neue, Arial, sans-serif">ZuBao</text>
-</svg>

@@ -6,10 +6,13 @@ function readValue(req, headerName, queryName) {
 
 function attachRequestContext(req, _res, next) {
   const authUserId = req.authUser?.id || null;
+  const requestedTechnicianUserId = readValue(req, "x-technician-user-id", "technicianUserId");
   req.ctx = {
     shopId: readValue(req, "x-shop-id", "shopId"),
-    userId: readValue(req, "x-user-id", "userId") || authUserId,
-    technicianUserId: readValue(req, "x-technician-user-id", "technicianUserId") || authUserId
+    userId: authUserId || readValue(req, "x-user-id", "userId"),
+    technicianUserId: req.authUser?.role === "technician"
+      ? authUserId
+      : (requestedTechnicianUserId || null)
   };
 
   next();

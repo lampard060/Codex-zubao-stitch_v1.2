@@ -1,194 +1,73 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0b6b53" />
-    <link rel="manifest" href="./technician.webmanifest" />
-    <title>足宝 | 技师主页</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght@300;400;500&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css?v=20260410a" />
-  </head>
-  <body data-page="technician-home">
-    <div class="app-shell">
-      <aside class="sidebar">
-        <div class="brand">足宝</div>
-        <div class="brand-subtitle">技师端入口</div>
-        <nav class="sub-list" style="margin-top: 26px">
-          <a class="sub-item active" href="./technician-home.html"><span class="material-symbols-outlined">grid_view</span>工作台</a>
-          <a class="sub-item" href="./technician-earnings.html"><span class="material-symbols-outlined">payments</span>收益统计</a>
-          <a class="sub-item" href="./technician-profile.html"><span class="material-symbols-outlined">person</span>我的资料</a>
-        </nav>
-        <div class="sidebar-footer">
-          <a class="primary-cta" href="./technician-profile.html" style="display: inline-flex; justify-content: center">编辑资料</a>
-          <div class="sidebar-meta">
-            <div class="small"><span class="material-symbols-outlined" style="font-size: 18px">help</span></div>
-            <div class="small">使用帮助</div>
-          </div>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#0A0A0A" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>技师工作台 - 足宝</title>
+<link rel="stylesheet" href="./fonts/fonts.css" />
+<link rel="stylesheet" href="./styles.css?v=20260515-redesign" />
+<script defer src="./js/icon-fallback-inline.js?v=20260514-icons"></script>
+<link rel="stylesheet" href="./technician-redesign.css?v=20260603-homehero1" />
+</head>
+<body data-page="technician-home">
+<div class="technician-app-shell">
+  <div class="technician-topbar" id="technician-topbar"></div>
+
+  <main class="technician-page technician-home-page">
+    <section class="home-hero-card" id="home-hero-section" style="display: none;"></section>
+
+    <section class="home-stat-grid" aria-label="今日概览" id="stat-grid-section" style="display: none;">
+      <article class="home-stat-card">
+        <div class="stat-icon">
+          <span class="material-symbols-outlined">receipt</span>
         </div>
-      </aside>
+        <div class="stat-content">
+          <span class="stat-label">今日单数</span>
+          <strong class="stat-value" id="today-orders">0</strong>
+        </div>
+      </article>
+      <article class="home-stat-card">
+        <div class="stat-icon">
+          <span class="material-symbols-outlined">account_balance_wallet</span>
+        </div>
+        <div class="stat-content">
+          <span class="stat-label">预估收益</span>
+          <strong class="stat-value">¥<span id="today-income">0</span></strong>
+        </div>
+      </article>
+    </section>
 
-      <main class="main-panel">
-        <header class="topbar">
-          <div>
-            <div class="small" style="text-transform: uppercase; letter-spacing: 0.14em">技师工作台</div>
-            <div style="font-weight: 800; font-family: Manrope, sans-serif; font-size: 1.2rem">今日工作台</div>
-          </div>
-          <div class="topbar-actions">
-            <button class="icon-button" id="technician-topbar-notice" type="button"><span class="material-symbols-outlined">notifications</span></button>
-            <button class="icon-button" id="technician-topbar-settings" type="button"><span class="material-symbols-outlined">settings</span></button>
-            <div class="avatar-sm avatar-fallback">林</div>
-          </div>
-        </header>
+    <div class="home-current-task" id="task-section"></div>
 
-        <section class="profile-hero technician-hero">
-          <div class="avatar-lg avatar-fallback">林</div>
-          <div class="technician-hero-main">
-            <div class="inline-group technician-hero-header" style="justify-content: space-between; align-items: flex-start">
-              <div>
-                <h1 class="page-title" style="margin-bottom: 10px" id="technician-home-name">林婉儿</h1>
-                <div class="inline-group technician-hero-meta">
-                  <span class="badge neutral" id="technician-home-id">工号 #ZB-082</span>
-                  <span id="technician-home-specialties">
-                    <span class="badge success">足底按摩</span>
-                    <span class="badge success">中医经络推拿</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <p class="page-copy" style="margin-top: 14px" id="technician-home-copy">当前门店 足宝旗舰店　状态 在岗 · 待钟</p>
-          </div>
-          <div class="stack technician-hero-action" style="align-items: flex-end">
-            <button class="pill-button" id="technician-toggle-status">调整状态</button>
-            <span class="small" id="technician-toggle-status-copy">可切换待钟、休息和在岗状态</span>
-          </div>
-        </section>
+    <section class="home-current-orders-section" id="current-orders-section" style="display: none;">
+      <div class="section-header">
+        <h2>当前任务</h2>
+      </div>
+      <div class="current-orders-list" id="current-orders-container"></div>
+    </section>
 
-        <section class="grid-4 technician-metrics-grid" style="margin-top: 22px">
-          <article class="hero-card hero-pad">
-            <p class="metric-label" style="color: rgba(255,255,255,0.72)">今日状态</p>
-            <p class="metric-value" style="font-size: 2.6rem" id="technician-home-status">待钟</p>
-            <p class="section-copy" style="color: rgba(255,255,255,0.82)">当前已在岗，可继续接单</p>
-          </article>
-          <article class="white-card card-pad">
-            <p class="metric-label">本月收入</p>
-            <p class="metric-value" style="font-size: 2.6rem" id="technician-home-income">¥8,000</p>
-            <p class="metric-subtle">已完成 85% 目标</p>
-          </article>
-          <article class="white-card card-pad">
-            <p class="metric-label">本月服务</p>
-            <p class="metric-value" style="font-size: 2.6rem" id="technician-home-service-count">16 次</p>
-            <p class="metric-subtle">点钟与排钟累计</p>
-          </article>
-          <article class="white-card card-pad">
-            <p class="metric-label">评分</p>
-            <p class="metric-value" style="font-size: 2.6rem" id="technician-home-exp">4.95</p>
-            <p class="metric-subtle">本月顾客反馈</p>
-          </article>
-        </section>
-        <section class="grid-2 technician-panel-grid" style="margin-top: 24px">
-          <article class="surface-card card-pad">
-            <div class="section-header" style="margin: 0 0 12px">
-              <div>
-                <h2 class="section-title" style="font-size: 1.8rem">今日工作状态</h2>
-                <p class="section-copy">集中展示当前工作状态、门店信息和申请进度。</p>
-              </div>
-            </div>
-            <div class="menu-list" id="technician-home-membership-list">
-              <div class="menu-item">
-                <div class="menu-meta">
-                  <div class="icon-pill"><span class="material-symbols-outlined">storefront</span></div>
-                  <div>
-                    <div style="font-weight: 700">当前门店</div>
-                    <div class="small">足宝旗舰店</div>
-                  </div>
-                </div>
-                <span class="badge success">已加入门店</span>
-              </div>
-              <div class="menu-item">
-                <div class="menu-meta">
-                  <div class="icon-pill"><span class="material-symbols-outlined">schedule</span></div>
-                  <div>
-                    <div style="font-weight: 700">出勤状态</div>
-                    <div class="small">今日在岗，当前服务状态为待钟</div>
-                  </div>
-                </div>
-                <span class="badge success">待钟</span>
-              </div>
-              <div class="menu-item">
-                <div class="menu-meta">
-                  <div class="icon-pill"><span class="material-symbols-outlined">link</span></div>
-                  <div>
-                    <div style="font-weight: 700">门店关系</div>
-                    <div class="small">已签约足宝旗舰店，解约后方可重新申请其它门店</div>
-                  </div>
-                </div>
-                <a class="action-link" href="./technician-profile.html">查看详情 <span class="material-symbols-outlined">arrow_forward</span></a>
-              </div>
-            </div>
-          </article>
-          <article class="white-card card-pad">
-            <div class="section-header" style="margin: 0 0 12px">
-              <div>
-                <h2 class="section-title" style="font-size: 1.8rem">最近结算记录</h2>
-                <p class="section-copy">方便技师快速确认刚完成的收入。</p>
-              </div>
-            </div>
-            <div class="menu-list" id="technician-home-recent-orders">
-              <div class="menu-item">
-                <div class="menu-meta">
-                  <div class="icon-pill"><span class="material-symbols-outlined">payments</span></div>
-                  <div>
-                    <div style="font-weight: 700">#ZB-8921 足底按摩</div>
-                    <div class="small">点钟订单，已计入本月收益</div>
-                  </div>
-                </div>
-                <span class="badge success">+¥187.36</span>
-              </div>
-              <div class="menu-item">
-                <div class="menu-meta">
-                  <div class="icon-pill"><span class="material-symbols-outlined">payments</span></div>
-                  <div>
-                    <div style="font-weight: 700">#ZB-8897 经络调理</div>
-                    <div class="small">排钟订单，已计入本月收益</div>
-                  </div>
-                </div>
-                <span class="badge success">+¥75.04</span>
-              </div>
-              <div class="menu-item">
-                <div class="menu-meta">
-                  <div class="icon-pill"><span class="material-symbols-outlined">query_stats</span></div>
-                  <div>
-                    <div style="font-weight: 700">查看收益明细</div>
-                    <div class="small">进入收益统计页查看本月全部记录</div>
-                  </div>
-                </div>
-                <a class="action-link" href="./technician-earnings.html">查看明细 <span class="material-symbols-outlined">arrow_forward</span></a>
-              </div>
-            </div>
-          </article>
-        </section>
-      </main>
-    </div>
-    <nav class="technician-bottom-nav" aria-label="技师端底部导航">
-      <a class="technician-bottom-item active" href="./technician-home.html">
-        <span class="material-symbols-outlined">grid_view</span>
-        <span>工作台</span>
-      </a>
-      <a class="technician-bottom-item" href="./technician-earnings.html">
-        <span class="material-symbols-outlined">payments</span>
-        <span>收益</span>
-      </a>
-      <a class="technician-bottom-item" href="./technician-profile.html">
-        <span class="material-symbols-outlined">person</span>
-        <span>我的</span>
-      </a>
-    </nav>
-    <script src="./app.js?v=20260410a"></script>
-  </body>
+    <section class="home-orders-section" id="completed-orders-section" style="display: none;">
+      <div class="section-header">
+        <h2>今日已完成订单</h2>
+        <a href="#" class="view-all">查看全部 <span class="material-symbols-outlined">chevron_right</span></a>
+      </div>
+      <div class="orders-list" id="completed-orders-container"></div>
+    </section>
+
+    <section class="home-checkout-section" id="checkout-section" style="display: none;">
+      <button class="btn-outline" id="attendance-btn" type="button">
+        <span class="material-symbols-outlined">logout</span>
+        下班打卡
+      </button>
+    </section>
+  </main>
+
+  <div class="technician-bottom-nav-mobile" id="technician-bottom-nav"></div>
+</div>
+
+<script type="module" src="./js/pages/technician-home.js?v=20260603-homehero1"></script>
+</body>
 </html>

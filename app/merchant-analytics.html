@@ -4,18 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>足宝 | 经营统计</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght@300;400;500&amp;display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="./fonts/fonts.css" />
     <link rel="stylesheet" href="./styles.css?v=20260410a" />
   </head>
   <body data-page="merchant-analytics">
     <div class="app-shell">
       <aside class="sidebar">
-        <div class="brand">足宝</div>
+        <div class="brand"><img src="./assets/brand/zubao-logo-full.png" alt="足宝 Logo" /></div>
         <div class="brand-subtitle">经营统计</div>
         <nav class="nav-list">
           <a class="nav-item" href="./merchant-dashboard.html"><span class="material-symbols-outlined">dashboard</span>首页</a>
@@ -29,7 +24,7 @@
 
       <main class="main-panel">
         <header class="topbar">
-          <div>
+          <div class="merchant-topbar-head">
             <div class="small" style="text-transform: uppercase; letter-spacing: 0.14em">经营统计</div>
             <div style="font-weight: 800; font-family: Manrope, sans-serif; font-size: 1.2rem">经营统计总览</div>
           </div>
@@ -40,10 +35,18 @@
           </div>
         </header>
 
-        <section class="page-header dashboard-header">
-          <p class="eyebrow">经营概览</p>
-          <h1 class="page-title">经营统计</h1>
-          <p class="page-copy" id="analytics-page-copy">统一查看收入、工资支出、净营收与技师贡献，辅助门店经营判断。</p>
+        <section class="merchant-page-hero">
+          <div class="merchant-page-hero-head">
+            <div class="merchant-page-hero-copy">
+              <p class="eyebrow">经营概览</p>
+              <h1 class="page-title">别看全报表，先抓今天最关键的经营变化</h1>
+              <p class="page-copy" id="analytics-page-copy">统一查看收入、工资支出、净营收与技师贡献，辅助门店经营判断。</p>
+            </div>
+          </div>
+          <div class="merchant-page-chip-row" id="analytics-period-badges-hero">
+            <span class="merchant-page-chip strong">本年</span>
+            <span class="merchant-page-chip" id="analytics-chip-focus">已切换为经营总览</span>
+          </div>
         </section>
 
         <section class="dashboard-kpi-grid">
@@ -207,6 +210,23 @@
         </section>
       </main>
     </div>
-    <script src="./app.js?v=20260410a"></script>
+    <script type="module" src="./js/main.js"></script>
+    <nav class="merchant-bottom-nav">
+      <a class="nav-item" href="./merchant-dashboard.html">
+        <span class="material-symbols-outlined">dashboard</span>首页
+      </a>
+      <a class="nav-item" href="./merchant-orders.html">
+        <span class="material-symbols-outlined">receipt_long</span>订单
+      </a>
+      <a class="nav-item" href="./merchant-technicians.html">
+        <span class="material-symbols-outlined">spa</span>技师
+      </a>
+      <a class="nav-item active" href="./merchant-analytics.html">
+        <span class="material-symbols-outlined">analytics</span>统计
+      </a>
+      <a class="nav-item" href="./merchant-settings.html">
+        <span class="material-symbols-outlined">settings</span>设置
+      </a>
+    </nav>
   </body>
 </html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>足宝 | 提成设置</title>
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260430a" />
+  </head>
+  <body data-page="merchant-commission-settings">
+    <div class="app-shell commission-settings-shell">
+      <main class="main-panel commission-settings-main">
+        <header class="commission-header">
+          <a class="commission-back-btn" href="./merchant-settings.html" aria-label="返回店铺页">
+            <span class="material-symbols-outlined">arrow_back</span>
+          </a>
+          <h1 class="commission-header-title">提成设置</h1>
+          <img class="merchant-subpage-avatar" src="./zubao-tech-icon.png" alt="足宝图标" />
+        </header>
+
+        <section class="commission-section">
+          <div class="commission-section-header">
+            <h3 class="commission-section-title">门店默认规则</h3>
+          </div>
+
+          <div class="commission-form-card">
+            <div class="commission-form-group">
+              <label class="commission-form-label">默认底薪（¥）</label>
+              <input type="number" class="commission-form-input" id="commission-base-salary" placeholder="5000" min="0" step="0.01" inputmode="decimal">
+            </div>
+
+            <div class="commission-form-group">
+              <label class="commission-form-label">点钟费（¥）</label>
+              <input type="number" class="commission-form-input" id="commission-designated-bonus" placeholder="50" min="0" step="0.01" inputmode="decimal">
+            </div>
+
+            <div class="commission-form-group">
+              <label class="commission-form-label">排钟提成比例（%）</label>
+              <input type="number" class="commission-form-input" id="commission-scheduled-rate" placeholder="20" min="0" max="100" step="0.1" inputmode="decimal">
+            </div>
+
+            <div class="commission-form-group">
+              <label class="commission-form-label">点钟提成比例（%）</label>
+              <input type="number" class="commission-form-input" id="commission-designated-rate" placeholder="35" min="0" max="100" step="0.1" inputmode="decimal">
+            </div>
+
+            <button type="submit" class="commission-primary-btn" id="save-default-rule">更新默认设置</button>
+          </div>
+        </section>
+
+
+
+        <section class="commission-section">
+          <div class="commission-section-header">
+            <h3 class="commission-section-title">单独规则</h3>
+            <button class="commission-add-rule-btn" id="add-technician-rule">
+              <span class="material-symbols-outlined">add</span>
+              <span>添加个体化规则</span>
+            </button>
+          </div>
+
+          <div class="commission-rules-container" id="technician-rules-list">
+            <div class="commission-empty-state">
+              <div class="commission-empty-icon">
+                <span class="material-symbols-outlined">badge</span>
+                <span class="commission-empty-badge">
+                  <span class="material-symbols-outlined">add_circle</span>
+                </span>
+              </div>
+              <h3 class="commission-empty-title">暂无个别提成设置</h3>
+              <p class="commission-empty-desc">所有技师目前都遵循门店默认规则。您可以为高级技师或特聘专家设置专属比例。</p>
+
+            </div>
+          </div>
+        </section>
+
+
+
+
+      </main>
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

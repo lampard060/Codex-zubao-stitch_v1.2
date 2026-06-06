@@ -1,5 +1,44 @@
 # ZuBao API Server
 
+## 快速启动（3 分钟）
+
+前置条件：Node >= 22, PostgreSQL 运行中
+
+```bash
+# 1. 创建数据库
+createdb zubao
+createuser zubao_user -P   # 输入密码，如 zubao123
+
+# 2. 配置环境变量（修改 DATABASE_URL 中的密码）
+cp .env.example .env
+# 编辑 .env: DATABASE_URL=postgresql://zubao_user:zubao123@127.0.0.1:5432/zubao
+
+# 3. 安装依赖 + 建表 + 种子数据
+npm install
+npm run db:schema
+npm run db:upgrade
+npm run db:seed          # 基线数据
+
+# 4. 启动服务
+npm run dev              # → http://localhost:3001
+
+# 5. 验证
+curl http://localhost:3001/api/v1/health
+```
+
+**演示账号**（密码在 seed 中为 scrypt 哈希，登录时会验证）：
+- 商家：13800000001
+- 技师：13800000011 ~ 13800000015
+
+**启动前端**（新开终端）：
+```bash
+cd app
+python3 -m http.server 8080
+# 浏览器打开 http://localhost:8080/login.html
+```
+
+---
+
 ## 当前状态
 
 当前目录提供足宝 MVP 的 API 骨架，覆盖：
@@ -60,7 +99,18 @@ cp .env.example .env
 npm run db:schema
 ```
 
-7. 导入测试基线数据
+7. 执行升级脚本
+
+```bash
+npm run db:upgrade
+```
+
+其中会包含：
+
+- `db:upgrade:masterdata`
+- `db:upgrade:refresh-tokens`
+
+8. 导入测试基线数据
 
 ```bash
 npm run db:seed
@@ -77,9 +127,15 @@ npm run db:seed
 node scripts/run-sql-file.js ../db/mvp_demo_seed.sql
 ```
 
-8. 开发期请求上下文
+9. 请求上下文与鉴权
 
-当前还没接正式登录态，开发时通过 header 或 query 传上下文：
+当前接口已接入 Bearer token 登录态，服务端会优先使用已认证用户身份。
+
+- 商家端请求需要携带有效 token，并继续提供 `x-shop-id` 或 `?shopId=` 指定门店
+- `x-user-id` 在已登录场景下会被服务端忽略，不再允许伪造操作者身份
+- 技师端接口会强制绑定当前登录技师本人，不再信任外部传入的 `technicianUserId`
+
+开发调试时，仍可通过 header 或 query 传补充上下文：
 
 - 商家端：
   - `x-shop-id`
@@ -97,13 +153,13 @@ curl "http://localhost:3001/api/v1/merchant/dashboard?shopId=30000000-0000-0000-
 curl "http://localhost:3001/api/v1/technician/home?technicianUserId=20000000-0000-0000-0000-000000000001"
 ```
 
-9. 种子账号
+10. 种子账号
 
 - 默认密码：`Zubao123!`
 - 商家账号：`13800000001`
 - 技师账号：`13800000011`
 
-10. 当前已完成的真实写接口
+11. 当前已完成的真实写接口
 
 - `POST /api/v1/auth/login`
 - `GET /api/v1/auth/me`
@@ -119,13 +175,13 @@ curl "http://localhost:3001/api/v1/technician/home?technicianUserId=20000000-000
 - `POST /api/v1/merchant/payroll/cycles/:cycleId/recalculate`
 - `POST /api/v1/merchant/payroll/summaries/:summaryId/mark-paid`
 
-11. 常用烟测
+12. 常用烟测
 
 ```bash
 npm run smoke
 ```
 
-12. 常用调试示例
+13. 常用调试示例
 
 ```bash
 curl -X POST "http://localhost:3001/api/v1/auth/login" \

@@ -70,11 +70,14 @@ img {
 }
 
 .brand {
-  font-family: "Manrope", sans-serif;
-  font-weight: 800;
-  font-size: 1.76rem;
-  color: var(--primary-deep);
-  letter-spacing: -0.04em;
+  display: flex;
+  justify-content: center;
+}
+
+.brand img {
+  width: min(132px, 100%);
+  height: auto;
+  display: block;
 }
 
 .brand-subtitle {
@@ -1840,7 +1843,7 @@ img {
   inset: 0;
   background:
     linear-gradient(90deg, rgba(252, 248, 251, 0.82), rgba(252, 248, 251, 0.12)),
-    url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1800&q=80") center/cover;
+    linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 50%, #a5d6a7 100%) center/cover;
 }
 
 .hero-glass {
@@ -1882,7 +1885,7 @@ img {
   text-align: center;
   background:
     linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34)),
-    url("https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1800&q=80") center/cover;
+    linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #388e3c 100%) center/cover;
 }
 
 .login-page {
@@ -1892,7 +1895,7 @@ img {
   padding: 24px;
   background:
     linear-gradient(rgba(252,248,251,0.32), rgba(252,248,251,0.24)),
-    url("https://images.unsplash.com/photo-1519822473471-5f9c0f1d34ea?auto=format&fit=crop&w=1800&q=80") center/cover;
+    linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 50%, #a5d6a7 100%) center/cover;
 }
 
 .login-shell {
@@ -1916,7 +1919,7 @@ img {
   justify-content: end;
   background:
     linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0, 81, 54, 0.84)),
-    url("https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80") center/cover;
+    linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #388e3c 100%) center/cover;
 }
 
 .login-panel {
@@ -1980,6 +1983,1068 @@ img {
   margin-top: 30px;
   color: #868b91;
   font-size: 0.82rem;
+}
+
+/* === 技师端移动端专用样式 === */
+
+body[data-page^="technician-"] {
+  background: #f5f5f5;
+}
+
+body[data-page^="technician-"] .app-shell {
+  display: block;
+  width: 100%;
+  max-width: 390px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: #f5f5f5;
+}
+
+body[data-page^="technician-"] .main-panel {
+  width: 100%;
+  padding: 16px 20px 100px;
+}
+
+.technician-mobile-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  margin-bottom: 16px;
+  border-radius: 0;
+  background: transparent;
+  color: #1a1a1a;
+  box-shadow: none;
+}
+
+.technician-mobile-topbar-left,
+.technician-mobile-actions {
+  display: flex;
+  align-items: center;
+}
+
+.technician-mobile-topbar-left {
+  gap: 14px;
+  min-width: 0;
+}
+
+.technician-mobile-avatar {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.technician-mobile-brand-stack {
+  min-width: 0;
+}
+
+.technician-mobile-brand {
+  color: #1a1a1a;
+  font-family: "Manrope", "PingFang SC", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.technician-mobile-subtitle {
+  margin-top: 3px;
+  padding-left: 1px;
+  font-size: 11px;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topbar-btn,
+.topbar-back {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+  color: #1a1a1a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.topbar-title {
+  flex: 1 1 auto;
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 1.04rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.status-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.status-header-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.status-checkout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  color: #666;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.technician-status-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.technician-status-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  color: #666;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 180ms ease;
+}
+
+.technician-status-option.active {
+  border-color: #006c49;
+  background: #e8f5e9;
+  color: #006c49;
+}
+
+.technician-today-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.technician-today-stat {
+  padding: 18px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: none;
+}
+
+.technician-today-stat-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.technician-today-stat-value {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #1a1a1a;
+}
+
+.technician-today-stat-unit {
+  font-size: 0.85rem;
+  color: #666;
+  margin-left: 2px;
+}
+
+.technician-empty-card {
+  padding: 32px 20px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: none;
+  text-align: center;
+  color: #666;
+}
+
+.technician-empty-card .material-symbols-outlined {
+  font-size: 40px;
+  color: #e0e0e0;
+  margin-bottom: 10px;
+}
+
+.technician-empty-card p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.technician-bottom-nav-mobile {
+  position: fixed;
+  left: 50%;
+  right: auto;
+  bottom: 0;
+  width: min(100%, 390px);
+  transform: translateX(-50%);
+  z-index: 40;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  border-radius: 20px 20px 0 0;
+  background: #ffffff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  border: none;
+}
+
+.technician-bottom-nav-mobile.nav-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.technician-bottom-nav-mobile.nav-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.technician-bottom-nav-mobile .nav-item,
+.technician-bottom-nav-mobile .technician-bottom-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #999;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 6px;
+  border-radius: 12px;
+  transition: 180ms ease;
+}
+
+.technician-bottom-nav-mobile .nav-item.active,
+.technician-bottom-nav-mobile .technician-bottom-item.active {
+  color: #1a1a1a;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* 收益页 */
+.technician-tab-shell {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.technician-tab-pill {
+  flex: 1;
+  padding: 12px;
+  border-radius: 999px;
+  border: 1.5px solid var(--outline);
+  background: white;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 180ms ease;
+}
+
+.technician-tab-pill.active {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.earnings-hero-card {
+  padding: 24px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+}
+
+.earnings-hero-label {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin-bottom: 6px;
+}
+
+.earnings-hero-amount {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 18px;
+}
+
+.earnings-hero-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.earnings-hero-stat-label {
+  font-size: 0.78rem;
+  opacity: 0.75;
+  margin-bottom: 4px;
+}
+
+.earnings-hero-stat-value {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.earnings-chart-container {
+  padding: 20px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: none;
+  margin-bottom: 20px;
+}
+
+.earnings-chart-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 10px;
+  height: 140px;
+}
+
+.earnings-chart-bar {
+  flex: 1;
+  max-width: 32px;
+  border-radius: 8px 8px 0 0;
+  background: #e8f5e9;
+  transition: height 400ms ease;
+}
+
+.earnings-chart-bar.active {
+  background: linear-gradient(180deg, #2e7d32, #1b5e20);
+}
+
+.section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px 0 14px;
+}
+
+.section-title-row h3 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 1.15rem;
+  color: #1a1a1a;
+}
+
+.section-title-row a {
+  font-size: 0.82rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.earnings-detail-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.earnings-detail-row:last-child {
+  border-bottom: none;
+}
+
+.earnings-detail-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.earnings-detail-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  display: grid;
+  place-items: center;
+}
+
+.earnings-detail-title {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #1a1a1a;
+}
+
+.earnings-detail-time {
+  font-size: 0.78rem;
+  color: #666;
+  margin-top: 2px;
+}
+
+.earnings-detail-amount {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+.earnings-detail-amount.positive {
+  color: #2e7d32;
+}
+
+/* 个人资料页 */
+.profile-header-card {
+  padding: 18px 8px 34px;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.profile-avatar-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.profile-avatar-large {
+  width: 112px;
+  height: 112px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 8px solid white;
+  background: #fff7f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.profile-avatar-edit {
+  position: absolute;
+  bottom: 4px;
+  right: 2px;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #006c49;
+  color: white;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.profile-name-section h2 {
+  margin: 0;
+  color: #1a1a1a;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.profile-name-section {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 12px;
+}
+
+.profile-number {
+  color: #666;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.profile-bio {
+  margin: 16px 0 0;
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+}
+
+.profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.profile-tag {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.profile-tag.primary {
+  background: #fff8e1;
+  color: #f9a825;
+}
+
+.profile-tag.secondary {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.profile-gallery-section {
+  margin-bottom: 24px;
+}
+
+.profile-gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 10px 18px;
+}
+
+.profile-gallery-header h3 {
+  margin: 0;
+  color: #1a1a1a;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profile-gallery-upload {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #666;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.profile-gallery-grid {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 0 0 4px;
+  scroll-snap-type: x proximity;
+}
+
+.profile-gallery-card {
+  flex: 0 0 184px;
+  min-height: 244px;
+  padding: 22px 10px 14px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: none;
+  text-align: center;
+  scroll-snap-align: start;
+}
+
+.profile-gallery-card img {
+  width: 92px;
+  height: 92px;
+  border-radius: 999px;
+  object-fit: cover;
+  margin: 0 auto 18px;
+  background: #fff7f0;
+}
+
+.profile-gallery-card h4 {
+  margin: 0 0 8px;
+  color: #1a1a1a;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.profile-gallery-number {
+  color: #666;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.profile-gallery-bio {
+  margin: 0;
+  font-size: 11px;
+  color: #666;
+  font-style: italic;
+}
+
+.profile-gallery-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 16px;
+}
+
+.profile-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 34px;
+}
+
+.profile-stat-card {
+  min-height: 106px;
+  padding: 22px 18px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: none;
+  text-align: left;
+}
+
+.profile-stat-label {
+  font-size: 0.8rem;
+  color: #1a1a1a;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.profile-stat-value {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #1a1a1a;
+}
+
+.profile-stat-unit {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.shop-card {
+  padding: 24px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: none;
+  margin-bottom: 28px;
+}
+
+.shop-card.hidden {
+  display: none;
+}
+
+.shop-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.shop-card-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.shop-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  display: grid;
+  place-items: center;
+}
+
+.shop-card-name {
+  margin: 0 0 2px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1a1a1a;
+}
+
+.shop-card-area {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #666;
+}
+
+.shop-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.shop-card-schedule {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.shop-card-schedule-label {
+  font-size: 0.78rem;
+  color: #666;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.shop-card-schedule-time {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #1a1a1a;
+}
+
+.shop-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.shop-card-action-link {
+  font-size: 0.82rem;
+  color: #006c49;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.shop-card-action-link.detail {
+  color: #666;
+}
+
+.profile-menu-list {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 42px;
+}
+
+.profile-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 66px;
+  padding: 0 18px;
+  border-radius: 16px;
+  border: none;
+  background: white;
+  color: #1a1a1a;
+  font-size: 20px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.profile-menu-item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #666;
+}
+
+.profile-menu-item-left .material-symbols-outlined {
+  font-size: 22px;
+}
+
+.profile-logout-btn {
+  width: auto;
+  margin: 0 auto 88px;
+  padding: 14px 20px;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  color: #c01818;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* 申请加入门店页 */
+.apply-qr-card {
+  padding: 32px 24px;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: none;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.apply-qr-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 24px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+}
+
+.apply-qr-icon .material-symbols-outlined {
+  font-size: 36px;
+}
+
+.apply-qr-title {
+  margin: 0 0 8px;
+  font-family: "Manrope", sans-serif;
+  font-size: 1.25rem;
+  color: #1a1a1a;
+}
+
+.apply-qr-desc {
+  margin: 0 0 20px;
+  font-size: 0.88rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.apply-primary-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 999px;
+  border: none;
+  background: #1b5e20;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
+}
+
+.apply-qr-note {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #666;
+}
+
+.apply-search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: none;
+  margin-bottom: 18px;
+}
+
+.apply-search-box .material-symbols-outlined {
+  color: #666;
+  font-size: 20px;
+}
+
+.apply-search-box input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 0.92rem;
+  outline: none;
+  color: #1a1a1a;
+}
+
+.shop-list-section {
+  margin-bottom: 100px;
+}
+
+.shop-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.shop-list-header h3 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 1.05rem;
+  color: #1a1a1a;
+}
+
+.shop-list-header a {
+  font-size: 0.82rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.shop-nearby-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: none;
+  margin-bottom: 10px;
+}
+
+.shop-nearby-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.shop-nearby-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.shop-nearby-name {
+  margin: 0 0 2px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1a1a1a;
+}
+
+.shop-nearby-meta {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #666;
+}
+
+.shop-nearby-action {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1.5px solid #1b5e20;
+  background: transparent;
+  color: #1b5e20;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* 订单卡片 */
+.order-card {
+  padding: 18px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: none;
+  margin-bottom: 12px;
+}
+
+.order-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.order-card-id {
+  font-size: 0.78rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.order-card-status {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.order-card-status.pending {
+  background: rgba(245,158,11,0.12);
+  color: #f59e0b;
+}
+
+.order-card-status.in_service {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.order-card-status.completed {
+  background: rgba(22,163,74,0.12);
+  color: #16a34a;
+}
+
+.order-card-body {
+  margin-bottom: 14px;
+}
+
+.order-card-service {
+  margin: 0 0 4px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+.order-card-room,
+.order-card-time {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.order-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.order-card-price {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+}
+
+.order-card-action-btn {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: none;
+  background: #1b5e20;
+  color: white;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.order-card-action-btn.secondary {
+  background: #f5f5f5;
+  color: #1a1a1a;
+  box-shadow: none;
 }
 
 @media (max-width: 1100px) {
@@ -2306,4 +3371,3569 @@ img {
     padding: 16px;
     border-radius: 22px;
   }
+}
+
+.stitch-login-shell {
+  position: relative;
+  width: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
+  padding: 48px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #cfb69f;
+}
+
+body.login-page {
+  display: block;
+  padding: 0;
+  background: #cfb69f;
+}
+
+.stitch-login-scene,
+.stitch-login-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.stitch-login-scene {
+  z-index: 0;
+}
+
+.stitch-login-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(0.88) contrast(0.95) brightness(0.99);
+}
+
+.stitch-login-overlay {
+  background:
+    linear-gradient(180deg, rgba(70, 43, 22, 0.46) 0%, rgba(165, 123, 88, 0.2) 27%, rgba(247, 240, 231, 0.12) 54%, rgba(241, 234, 225, 0.58) 100%),
+    radial-gradient(circle at 18% 18%, rgba(255, 225, 196, 0.16), transparent 30%),
+    radial-gradient(circle at 50% 49%, rgba(255, 239, 212, 0.22), transparent 30%);
+  z-index: 1;
+}
+
+.stitch-login-stage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  transform: translateY(-4%);
+}
+
+.stitch-login-brand,
+.stitch-login-card,
+.stitch-login-footer {
+  position: relative;
+  z-index: 2;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.stitch-login-brand {
+  width: 100%;
+  max-width: 536px;
+  min-height: 6vh;
+  padding-top: 18px;
+  padding-bottom: 8px;
+  text-align: center;
+  color: #07111f;
+}
+
+.stitch-login-symbol {
+  width: min(184px, 42vw);
+  height: auto;
+  margin: 0 auto;
+  filter: drop-shadow(0 18px 34px rgba(17, 24, 39, 0.1));
+}
+
+.stitch-login-wordmark {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  margin: 10px 0 0;
+}
+
+.stitch-login-wordmark-en {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: clamp(2.2rem, 7.2vw, 3.35rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: 0;
+}
+
+.stitch-login-wordmark-cn {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: clamp(1.32rem, 4.2vw, 2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: 0.16em;
+  text-indent: 0.16em;
+}
+
+.stitch-login-slogan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 9px 0 0;
+  color: rgba(226, 229, 235, 0.88);
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: clamp(0.72rem, 2.1vw, 0.9rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+}
+
+.stitch-login-slogan span:first-child,
+.stitch-login-slogan span:last-child {
+  width: 52px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.72;
+}
+
+.stitch-login-card {
+  position: relative;
+  width: min(100%, 536px);
+  min-height: 0;
+  margin-top: 16px;
+  padding: 34px 40px 24px;
+  border-radius: 33px;
+  background:
+    linear-gradient(135deg, rgba(251, 241, 231, 0.78) 0%, rgba(246, 241, 236, 0.72) 54%, rgba(243, 241, 239, 0.78) 100%);
+  backdrop-filter: blur(22px) saturate(170%);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 24px 52px rgba(120, 81, 49, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.stitch-login-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 16% 30%, rgba(255, 241, 216, 0.36), transparent 28%),
+    radial-gradient(circle at 84% 76%, rgba(255, 255, 255, 0.22), transparent 24%);
+  pointer-events: none;
+}
+
+.role-switch.stitch-role-switch {
+  gap: 0;
+  margin: 0 0 38px;
+  padding: 6px;
+  border-radius: 20px;
+  background: rgba(232, 227, 223, 0.92);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.role-switch.stitch-role-switch button {
+  flex: 1;
+  min-height: 44px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  color: rgba(37, 33, 30, 0.82);
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  transition: background-color 200ms ease-out, color 200ms ease-out, box-shadow 200ms ease-out, transform 200ms ease-out;
+}
+
+.role-switch.stitch-role-switch button.active {
+  color: #1d1a17;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.11),
+    0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.stitch-session-banner {
+  margin-bottom: 24px;
+  padding: 18px 18px 16px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(255, 255, 255, 0.58);
+}
+
+.stitch-session-text {
+  margin: 6px 0 0;
+  font-size: 1.36rem;
+  line-height: 1.6;
+  color: rgba(56, 50, 46, 0.84);
+}
+
+.stitch-session-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.stitch-login-feedback {
+  margin: 0 0 16px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #b42318;
+}
+
+.stitch-role-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.stitch-panel-head {
+  margin-bottom: 22px;
+}
+
+.stitch-panel-head h2 {
+  margin: 0;
+  font-family: "Inter", "PingFang SC", sans-serif;
+  font-size: 31px;
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+  color: #1e1916;
+}
+
+.stitch-panel-head p {
+  margin: 10px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(28, 28, 30, 0.78);
+}
+
+.stitch-panel-note {
+  margin: 0;
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(55, 50, 46, 0.56);
+}
+
+.stitch-form-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.stitch-input-wrap {
+  position: relative;
+  display: block;
+}
+
+.stitch-input-wrap > .material-symbols-outlined {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  font-size: 20px;
+  color: rgba(189, 190, 187, 0.92);
+  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 24;
+  pointer-events: none;
+}
+
+.stitch-input-wrap input {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 56px 0 50px;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.87);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f1b18;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.62),
+    0 6px 18px rgba(255, 244, 232, 0.18);
+}
+
+.stitch-input-wrap input::placeholder {
+  color: rgba(182, 183, 180, 0.96);
+}
+
+.stitch-input-wrap input:focus {
+  outline: 0;
+  border-color: rgba(0, 92, 66, 0.24);
+  box-shadow:
+    0 0 0 4px rgba(2, 90, 63, 0.06),
+    0 10px 24px rgba(255, 244, 232, 0.3);
+}
+
+.stitch-password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: rgba(190, 191, 187, 0.92);
+  cursor: pointer;
+  transition: color 200ms ease-out, opacity 200ms ease-out;
+}
+
+.stitch-password-toggle .material-symbols-outlined {
+  font-size: 22px;
+  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 24;
+}
+
+.stitch-password-toggle:hover {
+  color: rgba(125, 126, 123, 0.96);
+}
+
+.stitch-help-row {
+  display: flex;
+  justify-content: flex-end;
+  margin: 8px 8px 0;
+}
+
+.stitch-help-row a {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(0, 77, 56, 0.86);
+}
+
+.stitch-login-button {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 20px;
+  border: 0;
+  border-radius: 17px;
+  background: linear-gradient(180deg, #00573c 0%, #005037 100%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow:
+    0 12px 24px rgba(0, 82, 56, 0.22),
+    0 26px 34px rgba(218, 204, 180, 0.76);
+  transition: transform 180ms ease, opacity 180ms ease, box-shadow 180ms ease;
+  cursor: pointer;
+}
+
+.stitch-login-button:hover {
+  opacity: 0.94;
+}
+
+.stitch-login-button:focus-visible,
+.stitch-password-toggle:focus-visible,
+.stitch-alt-button:focus-visible,
+.role-switch.stitch-role-switch button:focus-visible,
+.stitch-help-row a:focus-visible,
+.stitch-signup-note a:focus-visible,
+.stitch-login-footer a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 82, 56, 0.14);
+}
+
+.stitch-login-button:active {
+  transform: scale(0.985);
+}
+
+.stitch-login-button:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.stitch-coming-card {
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.stitch-coming-card h3 {
+  margin: 8px 0 0;
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #1d1a17;
+}
+
+.stitch-coming-card p:last-child {
+  margin: 14px 0 0;
+  font-size: 1.38rem;
+  line-height: 1.65;
+  color: rgba(62, 57, 53, 0.78);
+}
+
+.stitch-alt-login {
+  margin-top: 24px;
+}
+
+.stitch-divider {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.stitch-divider span {
+  flex: 1;
+  height: 1px;
+  background: rgba(91, 80, 71, 0.16);
+}
+
+.stitch-divider p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgba(120, 108, 100, 0.72);
+}
+
+.stitch-alt-actions {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  margin-top: 18px;
+}
+
+.stitch-alt-button {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  color: rgba(116, 111, 105, 0.88);
+  box-shadow: 0 6px 18px rgba(255, 248, 239, 0.18);
+  cursor: pointer;
+  transition: background-color 200ms ease-out, box-shadow 200ms ease-out, transform 200ms ease-out;
+}
+
+.stitch-alt-button .material-symbols-outlined {
+  font-size: 15px;
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+}
+
+.stitch-alt-button:hover {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 20px rgba(223, 210, 189, 0.28);
+}
+
+.stitch-alt-button:active {
+  transform: scale(0.97);
+}
+
+.stitch-alt-button-square {
+  position: relative;
+}
+
+.stitch-alt-square-mark {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #77787a 0%, #5e5f61 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.stitch-alt-square-mark::after {
+  content: "";
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.stitch-signup-note {
+  margin: 22px 0 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(34, 34, 34, 0.82);
+}
+
+.stitch-signup-note a {
+  color: #00422f;
+  font-weight: 800;
+}
+
+.stitch-login-footer {
+  width: 100%;
+  max-width: 536px;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.stitch-login-footer p {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(103, 93, 83, 0.42);
+}
+
+.stitch-login-footer div {
+  display: flex;
+  justify-content: center;
+  gap: 34px;
+  margin-top: 26px;
+}
+
+.stitch-login-footer a {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: rgba(103, 93, 83, 0.68);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .role-switch.stitch-role-switch button,
+  .stitch-password-toggle,
+  .stitch-login-button,
+  .stitch-alt-button {
+    transition: none;
+  }
+
+  .stitch-login-button:active,
+  .stitch-alt-button:active {
+    transform: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .stitch-login-shell {
+    padding: 54px 24px 30px;
+  }
+}
+
+@media (max-width: 720px) {
+  .stitch-login-shell {
+    padding: 38px 16px 24px;
+  }
+
+  .stitch-login-stage {
+    justify-content: center;
+    transform: translateY(-4%);
+  }
+
+  .stitch-login-brand {
+    max-width: 560px;
+    min-height: auto;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+  }
+
+  .stitch-login-symbol {
+    width: min(150px, 36vw);
+  }
+
+  .stitch-login-wordmark {
+    margin-top: 8px;
+  }
+
+  .stitch-login-wordmark-en {
+    font-size: clamp(2rem, 7.4vw, 2.6rem);
+  }
+
+  .stitch-login-wordmark-cn {
+    font-size: clamp(1.16rem, 4.4vw, 1.56rem);
+  }
+
+  .stitch-login-slogan {
+    gap: 9px;
+    margin-top: 7px;
+    font-size: 12px;
+  }
+
+  .stitch-login-slogan span:first-child,
+  .stitch-login-slogan span:last-child {
+    width: 42px;
+  }
+
+  .stitch-login-card {
+    width: min(90%, 560px);
+    min-height: auto;
+    padding: 22px 20px 20px;
+    border-radius: 30px;
+  }
+
+  .role-switch.stitch-role-switch {
+    margin-bottom: 24px;
+    padding: 5px;
+    border-radius: 18px;
+  }
+
+  .role-switch.stitch-role-switch button {
+    min-height: 42px;
+    font-size: 12px;
+  }
+
+  .stitch-panel-head {
+    margin-bottom: 16px;
+  }
+
+  .stitch-panel-head h2 {
+    font-size: 20px;
+  }
+
+  .stitch-panel-head p,
+  .stitch-help-row a,
+  .stitch-signup-note {
+    font-size: 12px;
+  }
+
+  .stitch-form-stack {
+    gap: 12px;
+  }
+
+  .stitch-input-wrap > .material-symbols-outlined {
+    left: 16px;
+    font-size: 18px;
+  }
+
+  .stitch-input-wrap input {
+    min-height: 41px;
+    padding: 0 44px 0 42px;
+    border-radius: 15px;
+    font-size: 12px;
+  }
+
+  .stitch-password-toggle {
+    right: 8px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .stitch-password-toggle .material-symbols-outlined {
+    font-size: 18px;
+  }
+
+  .stitch-login-button {
+    min-height: 42px;
+    margin-top: 16px;
+    border-radius: 15px;
+    font-size: 12px;
+  }
+
+  .stitch-alt-login {
+    margin-top: 26px;
+  }
+
+  .stitch-alt-actions {
+    gap: 24px;
+    margin-top: 14px;
+  }
+
+  .stitch-alt-button {
+    width: 29px;
+    height: 29px;
+  }
+
+  .stitch-alt-square-mark {
+    width: 13px;
+    height: 13px;
+  }
+
+  .stitch-signup-note {
+    margin-top: 26px;
+  }
+
+  .stitch-login-footer {
+    margin-top: 28px;
+  }
+
+  .stitch-login-footer div {
+    margin-top: 22px;
+  }
+}
+
+/* Merchant mobile UI restoration */
+body[data-page^="merchant-"] {
+  min-height: 100vh;
+  background: #fcf8fb;
+  color: #1b1b1d;
+  font-family: "Inter", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+body[data-page^="merchant-"] .merchant-mobile-shell {
+  display: block;
+  min-height: 100vh;
+  background: #fcf8fb;
+}
+
+body[data-page^="merchant-"] .merchant-mobile-main {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 92px 24px 124px;
+}
+
+body[data-page^="merchant-"] .merchant-mobile-topbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 50;
+  width: 100%;
+  max-width: 430px;
+  height: 64px;
+  margin: 0;
+  padding: 0 24px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0;
+  background: rgba(252, 248, 251, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 12px 32px rgba(27, 27, 29, 0.06);
+}
+
+body[data-page^="merchant-"] .merchant-mobile-titlebar,
+body[data-page^="merchant-"] .mobile-section-head,
+body[data-page^="merchant-"] .mobile-hero-head,
+body[data-page^="merchant-"] .mobile-service-main,
+body[data-page^="merchant-"] .mobile-list-main,
+body[data-page^="merchant-"] .mobile-order-head,
+body[data-page^="merchant-"] .mobile-order-foot,
+body[data-page^="merchant-"] .mobile-progress-meta,
+body[data-page^="merchant-"] .mobile-technician-main,
+body[data-page^="merchant-"] .mobile-technician-meta,
+body[data-page^="merchant-"] .mobile-star-head,
+body[data-page^="merchant-"] .mobile-star-body,
+body[data-page^="merchant-"] .mobile-store-main,
+body[data-page^="merchant-"] .mobile-entry-card,
+body[data-page^="merchant-"] .mobile-insight-card {
+  display: flex;
+  align-items: center;
+}
+
+body[data-page^="merchant-"] .merchant-mobile-titlebar {
+  gap: 12px;
+}
+
+body[data-page^="merchant-"] .merchant-mobile-logo-badge {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(17, 24, 39, 0.12);
+}
+
+body[data-page^="merchant-"] .merchant-mobile-logo-badge-small {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+}
+
+body[data-page^="merchant-"] .merchant-mobile-title {
+  margin: 0;
+  color: #00422f;
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+body[data-page^="merchant-"] .merchant-mobile-avatar {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ff7a59, #0f8e6f);
+}
+
+body[data-page^="merchant-"] .merchant-mobile-avatar.large {
+  width: 56px;
+  height: 56px;
+  font-size: 20px;
+}
+
+body[data-page^="merchant-"] .merchant-mobile-avatar.theme-coral {
+  background: linear-gradient(135deg, #ff715b, #ff9e7a);
+}
+
+body[data-page^="merchant-"] .merchant-mobile-avatar.theme-ocean {
+  background: linear-gradient(135deg, #21b7bd, #1d6c8f);
+}
+
+body[data-page^="merchant-"] .merchant-mobile-avatar.theme-slate {
+  background: linear-gradient(135deg, #6b7280, #a3a9b4);
+}
+
+body[data-page^="merchant-"] .merchant-mobile-avatar.theme-bronze {
+  background: linear-gradient(135deg, #a05212, #e7a75c);
+}
+
+body[data-page^="merchant-"] .merchant-mobile-icon-button,
+body[data-page^="merchant-"] .merchant-mobile-settings-button,
+body[data-page^="merchant-"] .merchant-mobile-back-button {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #00422f;
+  cursor: pointer;
+}
+
+body[data-page^="merchant-"] .mobile-hero-card {
+  margin-bottom: 32px;
+  padding: 30px 32px;
+  border-radius: 32px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(27, 27, 29, 0.06);
+}
+
+body[data-page^="merchant-"] .mobile-hero-card-emerald {
+  color: #ffffff;
+  background: linear-gradient(135deg, #00422f, #005c42);
+  box-shadow: 0 12px 32px rgba(0, 66, 47, 0.2);
+}
+
+body[data-page="merchant-technicians"] .technician-hero-card {
+  position: relative;
+  min-height: 236px;
+  padding: 26px 28px 24px;
+  overflow: hidden;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 85% 22%, rgba(166, 242, 208, 0.12), transparent 24%),
+    linear-gradient(145deg, #00422f 0%, #00513a 58%, #00563d 100%);
+  box-shadow: 0 18px 34px rgba(0, 66, 47, 0.22);
+}
+
+body[data-page="merchant-technicians"] .technician-hero-card::before {
+  content: "";
+  position: absolute;
+  right: 34px;
+  top: 74px;
+  width: 104px;
+  height: 64px;
+  border: 10px solid rgba(166, 242, 208, 0.12);
+  border-radius: 12px;
+}
+
+body[data-page="merchant-technicians"] .technician-hero-card::after {
+  content: "";
+  position: absolute;
+  right: 72px;
+  top: 90px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(166, 242, 208, 0.12);
+  box-shadow:
+    -36px 0 0 -9px rgba(166, 242, 208, 0.12),
+    36px 0 0 -9px rgba(166, 242, 208, 0.12);
+}
+
+body[data-page="merchant-technicians"] .technician-hero-card .mobile-hero-head,
+body[data-page="merchant-technicians"] .technician-hero-card .mobile-hero-amount,
+body[data-page="merchant-technicians"] .technician-hero-card .mobile-hero-note,
+body[data-page="merchant-technicians"] .technician-hero-card .mobile-settlement-grid {
+  position: relative;
+  z-index: 1;
+}
+
+body[data-page="merchant-technicians"] .technician-hero-card .mobile-hero-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+body[data-page="merchant-technicians"] .technician-hero-card .mobile-hero-label {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+body[data-page="merchant-technicians"] .technician-hero-card .mobile-hero-arrow {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #ffffff;
+}
+
+body[data-page="merchant-technicians"] .technician-hero-card .mobile-hero-arrow .material-symbols-outlined {
+  font-size: 28px;
+  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 24;
+}
+
+body[data-page="merchant-technicians"] .technician-hero-card .mobile-hero-amount {
+  margin-top: 0;
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+body[data-page="merchant-technicians"] .technician-hero-card .mobile-hero-note {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+body[data-page="merchant-technicians"] .technician-hero-card .mobile-settlement-grid {
+  gap: 18px;
+  margin-top: 26px;
+}
+
+body[data-page="merchant-technicians"] .technician-hero-card .mobile-settlement-card {
+  min-height: 92px;
+  padding: 18px 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+body[data-page="merchant-technicians"] .technician-hero-card .mobile-settlement-card span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+body[data-page="merchant-technicians"] .technician-hero-card .mobile-settlement-card strong {
+  margin-top: 8px;
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+body[data-page="merchant-payroll-detail"] .payroll-summary-card {
+  position: relative;
+  min-height: 250px;
+  margin-top: 24px;
+  padding: 32px;
+  overflow: hidden;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 86% 22%, rgba(166, 242, 208, 0.18), transparent 28%),
+    linear-gradient(145deg, #00422f 0%, #005139 58%, #006348 100%);
+  box-shadow: 0 18px 36px rgba(0, 66, 47, 0.24);
+}
+
+body[data-page="merchant-payroll-detail"] .payroll-summary-card::before {
+  content: "";
+  position: absolute;
+  right: 34px;
+  top: 72px;
+  width: 112px;
+  height: 68px;
+  border: 12px solid rgba(166, 242, 208, 0.12);
+  border-radius: 12px;
+  opacity: 0.9;
+}
+
+body[data-page="merchant-payroll-detail"] .payroll-summary-card::after {
+  content: "";
+  position: absolute;
+  right: 78px;
+  top: 94px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(166, 242, 208, 0.12);
+  box-shadow:
+    -38px 0 0 -9px rgba(166, 242, 208, 0.12),
+    38px 0 0 -9px rgba(166, 242, 208, 0.12);
+}
+
+body[data-page="merchant-payroll-detail"] .payroll-summary-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+body[data-page="merchant-payroll-detail"] .payroll-summary-arrow {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-size: 28px;
+  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 24;
+}
+
+body[data-page="merchant-payroll-detail"] .payroll-technician-count {
+  margin-left: auto;
+  padding: 7px 12px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(166, 242, 208, 0.16);
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+body[data-page="merchant-payroll-detail"] .payroll-total-amount {
+  position: relative;
+  z-index: 1;
+  margin-top: 8px;
+  color: #ffffff;
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+body[data-page="merchant-payroll-detail"] .payroll-summary-caption {
+  position: relative;
+  z-index: 1;
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+body[data-page="merchant-payroll-detail"] .payroll-summary-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 34px;
+}
+
+body[data-page="merchant-payroll-detail"] .payroll-summary-item {
+  min-height: 78px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+body[data-page="merchant-payroll-detail"] .payroll-summary-item span,
+body[data-page="merchant-payroll-detail"] .payroll-summary-item strong {
+  display: block;
+}
+
+body[data-page="merchant-payroll-detail"] .payroll-summary-item span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+body[data-page="merchant-payroll-detail"] .payroll-summary-item strong {
+  margin-top: 4px;
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+body[data-page="merchant-payroll-detail"] .payroll-summary-sub {
+  margin-top: 2px;
+}
+
+body[data-page^="merchant-"] .mobile-hero-head {
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+body[data-page^="merchant-"] .mobile-hero-label {
+  display: block;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+body[data-page^="merchant-"] .mobile-hero-amount {
+  margin-top: 6px;
+  color: inherit;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+body[data-page^="merchant-"] .mobile-hero-note {
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+body[data-page^="merchant-"] .mobile-stat-chip,
+body[data-page^="merchant-"] .mobile-status-pill,
+body[data-page^="merchant-"] .mobile-rank-pill,
+body[data-page^="merchant-"] .mobile-mini-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  white-space: nowrap;
+  font-weight: 800;
+}
+
+body[data-page^="merchant-"] .mobile-stat-chip {
+  padding: 6px 9px;
+  color: #ffffff;
+  background: rgba(166, 242, 208, 0.2);
+  font-size: 10px;
+}
+
+body[data-page^="merchant-"] .mobile-kpi-grid,
+body[data-page^="merchant-"] .mobile-stat-grid,
+body[data-page^="merchant-"] .mobile-settlement-grid {
+  display: grid;
+  gap: 16px;
+}
+
+body[data-page^="merchant-"] .mobile-kpi-grid-two,
+body[data-page^="merchant-"] .mobile-stat-grid,
+body[data-page^="merchant-"] .mobile-settlement-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body[data-page^="merchant-"] .mobile-kpi-grid {
+  margin-bottom: 32px;
+}
+
+body[data-page^="merchant-"] .mobile-kpi-card {
+  min-height: 114px;
+  padding: 24px;
+  border-radius: 32px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(27, 27, 29, 0.06);
+}
+
+body[data-page^="merchant-"] .mobile-kpi-label {
+  display: block;
+  margin-bottom: 14px;
+  color: #3f4943;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+body[data-page^="merchant-"] .mobile-kpi-value {
+  color: #00422f;
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+body[data-page^="merchant-"] .mobile-kpi-value.is-amber,
+body[data-page^="merchant-"] .is-amber-text {
+  color: #904d00;
+}
+
+body[data-page^="merchant-"] .mobile-kpi-value.is-emerald {
+  color: #00422f;
+}
+
+body[data-page^="merchant-"] .mobile-kpi-icon {
+  float: right;
+  margin-top: -28px;
+  color: #ffa454;
+}
+
+body[data-page^="merchant-"] .mobile-kpi-icon.is-mint {
+  color: #8bd6b4;
+}
+
+body[data-page^="merchant-"] .mobile-section {
+  margin: 0 0 32px;
+}
+
+body[data-page^="merchant-"] .mobile-section-head {
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+body[data-page^="merchant-"] .mobile-section-title {
+  margin: 0;
+  color: #111113;
+  font-size: 22px;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+body[data-page^="merchant-"] .mobile-section-link {
+  border: 0;
+  background: transparent;
+  color: #00422f;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+body[data-page^="merchant-"] .mobile-card-stack,
+body[data-page^="merchant-"] .mobile-order-stack {
+  display: grid;
+  gap: 16px;
+}
+
+body[data-page^="merchant-"] .mobile-service-card,
+body[data-page^="merchant-"] .mobile-order-card {
+  padding: 20px;
+  border-radius: 32px;
+  background: #f6f3f5;
+}
+
+body[data-page^="merchant-"] .mobile-service-main,
+body[data-page^="merchant-"] .mobile-order-head {
+  align-items: flex-start;
+  gap: 14px;
+}
+
+body[data-page^="merchant-"] .mobile-service-copy,
+body[data-page^="merchant-"] .mobile-order-copy,
+body[data-page^="merchant-"] .mobile-list-copy,
+body[data-page^="merchant-"] .mobile-technician-copy,
+body[data-page^="merchant-"] .mobile-entry-copy,
+body[data-page^="merchant-"] .mobile-store-copy {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+body[data-page^="merchant-"] .mobile-service-copy h3,
+body[data-page^="merchant-"] .mobile-order-copy h3,
+body[data-page^="merchant-"] .mobile-list-copy h3,
+body[data-page^="merchant-"] .mobile-technician-copy h3,
+body[data-page^="merchant-"] .mobile-star-profile h3 {
+  margin: 0;
+  color: #1b1b1d;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+body[data-page^="merchant-"] .mobile-service-copy p,
+body[data-page^="merchant-"] .mobile-order-copy p,
+body[data-page^="merchant-"] .mobile-list-copy p,
+body[data-page^="merchant-"] .mobile-technician-copy p,
+body[data-page^="merchant-"] .mobile-store-copy p,
+body[data-page^="merchant-"] .mobile-entry-copy p,
+body[data-page^="merchant-"] .mobile-star-profile p {
+  margin: 4px 0 0;
+  color: #3f4943;
+  font-size: 12px;
+}
+
+body[data-page^="merchant-"] .mobile-status-pill {
+  padding: 7px 12px;
+  font-size: 12px;
+}
+
+body[data-page^="merchant-"] .mobile-status-pill.success,
+body[data-page^="merchant-"] .mobile-rank-pill.active {
+  color: #00422f;
+  background: rgba(166, 242, 208, 0.38);
+}
+
+body[data-page^="merchant-"] .mobile-status-pill.warning {
+  color: #904d00;
+  background: rgba(255, 164, 84, 0.28);
+}
+
+body[data-page^="merchant-"] .mobile-status-pill.neutral,
+body[data-page^="merchant-"] .mobile-rank-pill {
+  color: #3f4943;
+  background: #eae7ea;
+}
+
+body[data-page^="merchant-"] .mobile-progress-meta {
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  color: #3f4943;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+body[data-page^="merchant-"] .mobile-progress-track {
+  height: 8px;
+  margin-top: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e4e2e4;
+}
+
+body[data-page^="merchant-"] .mobile-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #00422f;
+}
+
+body[data-page^="merchant-"] .mobile-progress-fill.is-amber {
+  background: #904d00;
+}
+
+body[data-page^="merchant-"] .mobile-list-row,
+body[data-page^="merchant-"] .mobile-technician-row,
+body[data-page^="merchant-"] .mobile-entry-card,
+body[data-page^="merchant-"] .mobile-store-card,
+body[data-page^="merchant-"] .mobile-insight-card,
+body[data-page^="merchant-"] .mobile-star-card {
+  padding: 18px 20px;
+  border-radius: 32px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(27, 27, 29, 0.06);
+}
+
+body[data-page^="merchant-"] .mobile-list-row,
+body[data-page^="merchant-"] .mobile-technician-row,
+body[data-page^="merchant-"] .mobile-entry-card,
+body[data-page^="merchant-"] .mobile-store-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+body[data-page^="merchant-"] .mobile-list-main,
+body[data-page^="merchant-"] .mobile-technician-main,
+body[data-page^="merchant-"] .mobile-store-main {
+  gap: 14px;
+  min-width: 0;
+}
+
+body[data-page^="merchant-"] .mobile-rank-pill {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+body[data-page^="merchant-"] .mobile-insight-card {
+  min-height: 92px;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+body[data-page^="merchant-"] .mobile-insight-icon,
+body[data-page^="merchant-"] .mobile-entry-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #00422f;
+  background: #a6f2d0;
+}
+
+body[data-page^="merchant-"] .theme-gold {
+  color: #735c00;
+  background: #ffe088;
+}
+
+body[data-page^="merchant-"] .theme-mint {
+  color: #00422f;
+  background: #a6f2d0;
+}
+
+body[data-page^="merchant-"] .mobile-insight-copy {
+  flex: 1 1 auto;
+}
+
+body[data-page^="merchant-"] .mobile-insight-copy span,
+body[data-page^="merchant-"] .mobile-insight-side span {
+  display: block;
+  color: #3f4943;
+  font-size: 12px;
+}
+
+body[data-page^="merchant-"] .mobile-insight-copy strong {
+  display: block;
+  margin-top: 4px;
+  color: #111113;
+  font-size: 24px;
+  line-height: 1;
+}
+
+body[data-page^="merchant-"] .mobile-insight-side {
+  text-align: right;
+}
+
+body[data-page^="merchant-"] .mobile-insight-side strong {
+  display: block;
+  margin-top: 4px;
+  color: #00422f;
+  font-size: 15px;
+}
+
+body[data-page^="merchant-"] .merchant-bottom-nav-mobile {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  z-index: 45;
+  width: 100%;
+  max-width: 430px;
+  min-height: 80px;
+  padding: 10px 24px calc(10px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  border-radius: 24px 24px 0 0;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 -12px 32px rgba(27, 27, 29, 0.08);
+}
+
+body[data-page^="merchant-"] .merchant-bottom-nav-mobile .nav-item {
+  min-width: 0;
+  height: 58px;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 999px;
+  color: #7b7f84;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+body[data-page^="merchant-"] .merchant-bottom-nav-mobile .nav-item.active {
+  color: #00422f;
+  background: rgba(0, 66, 47, 0.1);
+}
+
+body[data-page^="merchant-"] .merchant-bottom-nav-mobile .material-symbols-outlined {
+  font-size: 22px;
+}
+
+body[data-page^="merchant-"] .merchant-mobile-fab,
+body[data-page^="merchant-"] .floating-fab.merchant-mobile-fab {
+  position: fixed;
+  right: max(24px, calc((100vw - 430px) / 2 + 24px));
+  bottom: calc(92px + env(safe-area-inset-bottom));
+  z-index: 46;
+  width: 58px;
+  height: 58px;
+  border: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: #006c49;
+  box-shadow: 0 12px 28px rgba(0, 66, 47, 0.28);
+  cursor: pointer;
+}
+
+body[data-page^="merchant-"] .mobile-tab-shell,
+body[data-page^="merchant-"] .mobile-order-type-options,
+body[data-page^="merchant-"] .mobile-date-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 6px;
+  border-radius: 999px;
+  background: #f0edef;
+}
+
+body[data-page^="merchant-"] .mobile-tab-pill,
+body[data-page^="merchant-"] .mobile-order-type-btn {
+  flex: 1;
+  min-height: 36px;
+  border: 0;
+  border-radius: 999px;
+  color: #3f4943;
+  background: transparent;
+  font-weight: 800;
+}
+
+body[data-page^="merchant-"] .mobile-tab-pill.active,
+body[data-page^="merchant-"] .mobile-order-type-btn.active {
+  color: #00422f;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(27, 27, 29, 0.08);
+}
+
+body[data-page^="merchant-"] .mobile-date-nav {
+  justify-content: space-between;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(27, 27, 29, 0.06);
+}
+
+body[data-page^="merchant-"] .mobile-date-nav-btn {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  color: #00422f;
+  background: #f0edef;
+}
+
+body[data-page^="merchant-"] .mobile-date-nav-center {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  font-weight: 800;
+}
+
+body[data-page^="merchant-"] .mobile-date-nav-picker {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+body[data-page^="merchant-"] .mobile-stat-grid {
+  margin-top: 24px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+body[data-page^="merchant-"] .mobile-stat-grid span,
+body[data-page^="merchant-"] .mobile-stat-grid strong {
+  display: block;
+}
+
+body[data-page^="merchant-"] .mobile-stat-grid strong {
+  margin-top: 4px;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+body[data-page^="merchant-"] .mobile-action-button {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  color: #ffffff;
+  background: #00422f;
+  font-weight: 800;
+}
+
+body[data-page^="merchant-"] .mobile-action-button.secondary,
+body[data-page^="merchant-"] .mobile-sheet-secondary {
+  color: #00422f;
+  background: #eae7ea;
+}
+
+body[data-page^="merchant-"] .mobile-action-button.danger,
+body[data-page^="merchant-"] .mobile-sheet-secondary.danger {
+  color: #ba1a1a;
+  background: #ffdad6;
+}
+
+body[data-page^="merchant-"] .mobile-order-actions,
+body[data-page^="merchant-"] .mobile-sheet-inline-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+body[data-page^="merchant-"] .mobile-order-actions > *,
+body[data-page^="merchant-"] .mobile-sheet-inline-actions > * {
+  flex: 1;
+}
+
+body[data-page^="merchant-"] .mobile-order-foot {
+  justify-content: space-between;
+  margin-top: 14px;
+  color: #3f4943;
+  font-size: 12px;
+}
+
+body[data-page^="merchant-"] .mobile-load-more {
+  margin-top: 20px;
+  text-align: center;
+}
+
+body[data-page^="merchant-"] .mobile-load-more-btn {
+  min-height: 40px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 999px;
+  color: #00422f;
+  background: #eae7ea;
+  font-weight: 800;
+}
+
+body[data-page^="merchant-"] .mobile-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+body[data-page^="merchant-"] .mobile-bottom-sheet {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  z-index: 90;
+  width: 100%;
+  max-width: 430px;
+  max-height: 88vh;
+  padding: 12px 24px calc(24px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  overflow: auto;
+  border-radius: 28px 28px 0 0;
+  background: #ffffff;
+  box-shadow: 0 -18px 48px rgba(27, 27, 29, 0.16);
+}
+
+body[data-page^="merchant-"] .mobile-sheet-handle {
+  width: 44px;
+  height: 5px;
+  margin: 0 auto 18px;
+  border-radius: 999px;
+  background: #dcd9dc;
+}
+
+body[data-page^="merchant-"] .mobile-sheet-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+body[data-page^="merchant-"] .mobile-sheet-head h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+body[data-page^="merchant-"] .mobile-sheet-head p {
+  margin: 6px 0 0;
+  color: #3f4943;
+  font-size: 13px;
+}
+
+body[data-page^="merchant-"] .mobile-sheet-body,
+body[data-page^="merchant-"] .mobile-sheet-records {
+  display: grid;
+  gap: 14px;
+}
+
+body[data-page^="merchant-"] .mobile-form-field {
+  display: grid;
+  gap: 8px;
+}
+
+body[data-page^="merchant-"] .mobile-form-field > span {
+  color: #3f4943;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+body[data-page^="merchant-"] .mobile-form-field input,
+body[data-page^="merchant-"] .mobile-form-field select,
+body[data-page^="merchant-"] .mobile-form-field textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid #e4e2e4;
+  border-radius: 16px;
+  background: #fcf8fb;
+  color: #1b1b1d;
+  font: inherit;
+}
+
+body[data-page^="merchant-"] .mobile-form-field textarea {
+  min-height: 92px;
+  padding-top: 12px;
+}
+
+body[data-page^="merchant-"] .mobile-sheet-primary,
+body[data-page^="merchant-"] .mobile-sheet-secondary {
+  min-height: 46px;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+body[data-page^="merchant-"] .mobile-sheet-primary {
+  color: #ffffff;
+  background: #00422f;
+}
+
+body[data-page^="merchant-"] .mobile-switch {
+  position: relative;
+  width: 52px;
+  height: 32px;
+  flex: 0 0 auto;
+}
+
+body[data-page^="merchant-"] .mobile-switch input {
+  position: absolute;
+  opacity: 0;
+}
+
+body[data-page^="merchant-"] .mobile-switch span {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: #dcd9dc;
+}
+
+body[data-page^="merchant-"] .mobile-switch span::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(27, 27, 29, 0.18);
+  transition: transform 160ms ease;
+}
+
+body[data-page^="merchant-"] .mobile-switch input:checked + span {
+  background: #00422f;
+}
+
+body[data-page^="merchant-"] .mobile-switch input:checked + span::after {
+  transform: translateX(20px);
+}
+
+body[data-page^="merchant-"] .mobile-settlement-grid {
+  margin-top: 20px;
+}
+
+body[data-page^="merchant-"] .mobile-settlement-card {
+  padding: 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+body[data-page^="merchant-"] .mobile-settlement-card span,
+body[data-page^="merchant-"] .mobile-settlement-card strong {
+  display: block;
+}
+
+body[data-page^="merchant-"] .mobile-settlement-card span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+body[data-page^="merchant-"] .mobile-settlement-card strong {
+  margin-top: 4px;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+body[data-page^="merchant-"] .mobile-star-card {
+  display: grid;
+  gap: 18px;
+}
+
+body[data-page^="merchant-"] .mobile-star-head,
+body[data-page^="merchant-"] .mobile-star-body {
+  justify-content: space-between;
+}
+
+body[data-page^="merchant-"] .mobile-star-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #3f4943;
+}
+
+body[data-page^="merchant-"] .mobile-star-profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+body[data-page^="merchant-"] .mobile-star-side {
+  text-align: right;
+}
+
+body[data-page^="merchant-"] .mobile-star-side span {
+  color: #3f4943;
+  font-size: 12px;
+}
+
+body[data-page^="merchant-"] .mobile-star-side strong {
+  display: block;
+  color: #00422f;
+  font-size: 28px;
+}
+
+body[data-page^="merchant-"] .mobile-entry-card {
+  text-align: left;
+}
+
+body[data-page^="merchant-"] .mobile-entry-copy h3,
+body[data-page^="merchant-"] .mobile-store-copy h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+body[data-page^="merchant-"] .mobile-entry-arrow {
+  color: #9aa09d;
+}
+
+body[data-page^="merchant-"] .mobile-store-thumb,
+body[data-page^="merchant-"] .mobile-recruit-qr {
+  width: 72px;
+  height: 72px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #eae7ea;
+}
+
+body[data-page^="merchant-"] .mobile-store-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+body[data-page^="merchant-"] .mobile-recruit-card {
+  padding: 20px;
+  border-radius: 28px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #00422f, #006c49);
+}
+
+body[data-page^="merchant-"] .mobile-time-range {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+body[data-page^="merchant-"] .mobile-time-separator {
+  color: #3f4943;
+  font-weight: 800;
+}
+
+body[data-page^="merchant-"] .mobile-empty-state,
+body[data-page^="merchant-"] .small {
+  color: #3f4943;
+}
+
+@media (max-width: 430px) {
+  body[data-page^="merchant-"] .merchant-mobile-main {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+body[data-page="merchant-settings"] {
+  background: #fcf8fb;
+}
+
+body[data-page="merchant-settings"] .merchant-mobile-main {
+  padding: 0 28px 132px;
+}
+
+body[data-page="merchant-settings"] .merchant-mobile-topbar {
+  margin: 0;
+  padding: 0 24px;
+  border-radius: 0;
+  background: rgba(252, 248, 251, 0.94);
+  box-shadow: 0 12px 28px rgba(27, 27, 29, 0.04);
+  left: 0;
+  transform: none;
+  max-width: none;
+  width: 100%;
+}
+
+body[data-page="merchant-settings"] .merchant-mobile-titlebar {
+  gap: 16px;
+}
+
+body[data-page="merchant-settings"] .merchant-mobile-avatar.theme-slate {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #87909d;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+body[data-page="merchant-settings"] .merchant-mobile-title {
+  color: #00422f;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+body[data-page="merchant-settings"] .merchant-mobile-settings-button {
+  color: #00422f;
+}
+
+body[data-page="merchant-settings"] .merchant-mobile-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+body[data-page="merchant-settings"] .mobile-store-card {
+  display: block;
+  margin-top: 40px;
+  padding: 30px 40px 34px;
+  border-radius: 30px;
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgba(27, 27, 29, 0.05);
+}
+
+body[data-page="merchant-settings"] .mobile-store-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 24px;
+  color: #08090a;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+body[data-page="merchant-settings"] .mobile-store-heading .material-symbols-outlined {
+  color: #00422f;
+  font-size: 28px;
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 24;
+}
+
+body[data-page="merchant-settings"] .mobile-store-main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+body[data-page="merchant-settings"] .mobile-store-thumb {
+  width: 112px;
+  height: 112px;
+  border-radius: 28px;
+  background: #0d7559;
+  box-shadow: none;
+}
+
+body[data-page="merchant-settings"] .mobile-store-thumb img {
+  width: 74px;
+  height: 74px;
+  object-fit: contain;
+}
+
+body[data-page="merchant-settings"] .mobile-store-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+body[data-page="merchant-settings"] .mobile-store-copy h3 {
+  font-size: 24px;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+
+body[data-page="merchant-settings"] .mobile-store-copy p {
+  margin: 8px 0 0;
+  color: #3f4943;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+body[data-page="merchant-settings"] .mobile-store-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  color: #1b1b1d;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+body[data-page="merchant-settings"] .mobile-store-info .material-symbols-outlined {
+  width: 20px;
+  height: 20px;
+  color: #1b1b1d;
+  font-size: 20px;
+}
+
+body[data-page="merchant-settings"] .mobile-store-chips {
+  gap: 16px;
+  margin-top: 22px;
+}
+
+body[data-page="merchant-settings"] .mobile-store-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+body[data-page="merchant-settings"] .mobile-store-action {
+  min-height: 54px;
+  border: 0;
+  border-radius: 18px;
+  background: #f5f1f3;
+  color: #08090a;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+body[data-page="merchant-settings"] .mobile-mini-tag {
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+body[data-page="merchant-settings"] .mobile-mini-tag.is-amber,
+body[data-page="merchant-settings"] .mobile-mini-tag.is-gold {
+  padding: 0;
+  color: #1b1b1d;
+  background: transparent;
+}
+
+body[data-page="merchant-settings"] .mobile-card-stack {
+  gap: 28px;
+  margin-top: 0;
+}
+
+body[data-page="merchant-settings"] .mobile-entry-card {
+  min-height: 128px;
+  padding: 28px 40px;
+  border-radius: 30px;
+  background: #f7f4f6;
+  box-shadow: none;
+}
+
+body[data-page="merchant-settings"] .mobile-entry-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  color: #00422f;
+  background: #a6f2d0;
+  box-shadow: none;
+}
+
+body[data-page="merchant-settings"] .mobile-entry-icon .material-symbols-outlined {
+  font-size: 30px;
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 24;
+}
+
+body[data-page="merchant-settings"] .mobile-entry-icon.theme-wheat,
+body[data-page="merchant-settings"] .mobile-entry-icon.theme-sage,
+body[data-page="merchant-settings"] .mobile-entry-icon.theme-peach,
+body[data-page="merchant-settings"] .mobile-entry-icon.theme-mist,
+body[data-page="merchant-settings"] .mobile-entry-icon.theme-emerald {
+  color: #00422f;
+  background: #a6f2d0;
+}
+
+body[data-page="merchant-settings"] .mobile-entry-copy h3 {
+  color: #1b1b1d;
+  font-size: 28px;
+  line-height: 1.18;
+  letter-spacing: -0.04em;
+}
+
+body[data-page="merchant-settings"] .mobile-entry-copy p {
+  margin: 10px 0 0;
+  color: #3f4943;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+body[data-page="merchant-settings"] .mobile-entry-arrow {
+  color: #9aa09d;
+  font-size: 30px;
+}
+
+body[data-page="merchant-settings"] .mobile-recruit-card {
+  display: grid;
+  gap: 16px;
+  min-height: 300px;
+  margin: 30px 0 0;
+  padding: 44px 40px;
+  overflow: hidden;
+  border-radius: 30px 30px 0 0;
+  color: #ffffff;
+  background: linear-gradient(145deg, #00422f, #006548);
+  box-shadow: 0 18px 38px rgba(0, 66, 47, 0.18);
+}
+
+body[data-page="merchant-settings"] .mobile-recruit-card h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+}
+
+body[data-page="merchant-settings"] .mobile-recruit-card p,
+body[data-page="merchant-settings"] .mobile-recruit-card > span {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+body[data-page="merchant-settings"] .mobile-recruit-qr {
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+body[data-page="merchant-settings"] .mobile-recruit-qr img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body[data-page="merchant-settings"] .floating-fab.merchant-mobile-fab.merchant-settings-fab {
+  background: linear-gradient(135deg, #9b5700, #c07000);
+  box-shadow: 0 18px 34px rgba(155, 87, 0, 0.28);
+}
+
+body[data-page="merchant-settings"] .merchant-bottom-nav-mobile {
+  min-height: 108px;
+  padding: 16px 28px calc(16px + env(safe-area-inset-bottom));
+  border-radius: 32px 32px 0 0;
+}
+
+body[data-page="merchant-settings"] .merchant-bottom-nav-mobile .nav-item {
+  height: 76px;
+  font-size: 18px;
+}
+
+body[data-page="merchant-settings"] .merchant-bottom-nav-mobile .nav-item.active {
+  background: #dfe8e4;
+}
+
+body[data-page="merchant-settings"] .merchant-bottom-nav-mobile .material-symbols-outlined {
+  font-size: 30px;
+}
+
+/* ========== 店铺管理页面 V2 样式 (参考图片风格) ========== */
+
+/* 页面背景 */
+body[data-page="merchant-settings"] {
+  background: #f5f5f5;
+}
+
+body[data-page="merchant-settings"] .merchant-mobile-main {
+  padding: 80px 20px 120px;
+}
+
+/* 顶部标题栏优化 */
+body[data-page="merchant-settings"] .merchant-mobile-topbar {
+  background: #f5f5f5;
+  backdrop-filter: none;
+  box-shadow: none;
+  padding: 12px 20px;
+}
+
+body[data-page="merchant-settings"] .merchant-mobile-titlebar {
+  gap: 10px;
+}
+
+body[data-page="merchant-settings"] .merchant-mobile-avatar.theme-coral {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body[data-page="merchant-settings"] .merchant-mobile-avatar.theme-coral img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body[data-page="merchant-settings"] .merchant-mobile-title {
+  color: #1a1a1a;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+body[data-page="merchant-settings"] .merchant-mobile-icon-button,
+body[data-page="merchant-settings"] .merchant-mobile-settings-button {
+  width: 36px;
+  height: 36px;
+  color: #1a1a1a;
+}
+
+/* 店铺信息卡片 V2 */
+.mobile-store-card-v2 {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.mobile-store-card-v2-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.mobile-store-card-v2-header .material-symbols-outlined {
+  font-size: 20px;
+  color: #1a1a1a;
+}
+
+.mobile-store-card-v2-body {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.mobile-store-thumb-v2 {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f0f0f0;
+}
+
+.mobile-store-thumb-v2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mobile-store-copy-v2 {
+  flex: 1;
+  min-width: 0;
+}
+
+.mobile-store-copy-v2 h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.mobile-store-copy-v2 p {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.mobile-store-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.mobile-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.mobile-tag.is-primary {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.mobile-tag.is-gold {
+  background: #fff8e1;
+  color: #f9a825;
+}
+
+.mobile-store-actions-v2 {
+  display: flex;
+  gap: 10px;
+}
+
+.mobile-store-action-v2 {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1a1a1a;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mobile-store-action-v2:hover {
+  background: #f5f5f5;
+}
+
+/* 功能入口列表 */
+.mobile-entry-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.mobile-entry-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #ffffff;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mobile-entry-item:active {
+  transform: scale(0.98);
+}
+
+.mobile-entry-icon-v2 {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mobile-entry-icon-v2.theme-wheat {
+  background: #f5f0e8;
+  color: #8d6e63;
+}
+
+.mobile-entry-icon-v2.theme-sage {
+  background: #e8f5e9;
+  color: #4caf50;
+}
+
+.mobile-entry-icon-v2.theme-peach {
+  background: #fff3e0;
+  color: #ff9800;
+}
+
+.mobile-entry-icon-v2.theme-mist {
+  background: #e3f2fd;
+  color: #2196f3;
+}
+
+.mobile-entry-icon-v2.theme-emerald {
+  background: #e8f5e9;
+  color: #4caf50;
+}
+
+.mobile-entry-icon-v2 .material-symbols-outlined {
+  font-size: 22px;
+}
+
+.mobile-entry-copy-v2 {
+  flex: 1;
+  min-width: 0;
+}
+
+.mobile-entry-copy-v2 h3 {
+  margin: 0 0 2px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.mobile-entry-copy-v2 p {
+  margin: 0;
+  font-size: 13px;
+  color: #888;
+}
+
+.mobile-entry-item .mobile-entry-arrow {
+  color: #bbb;
+  font-size: 20px;
+}
+
+/* 技师招募卡片 V2 */
+.mobile-recruit-card-v2 {
+  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.mobile-recruit-card-v2 h2 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.mobile-recruit-card-v2 p {
+  margin: 0 0 16px;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.mobile-recruit-card-v2 > span {
+  display: block;
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 12px;
+}
+
+.mobile-recruit-qr-v2 {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+  padding: 8px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-recruit-qr-v2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 悬浮按钮 */
+body[data-page="merchant-settings"] .merchant-settings-fab {
+  background: #ff9800;
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+}
+
+/* 底部导航栏优化 */
+body[data-page="merchant-settings"] .merchant-bottom-nav-mobile {
+  background: #ffffff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 20px 20px 0 0;
+  padding: 8px 20px calc(8px + env(safe-area-inset-bottom));
+  min-height: 70px;
+}
+
+body[data-page="merchant-settings"] .merchant-bottom-nav-mobile .nav-item {
+  height: 54px;
+  font-size: 11px;
+  color: #999;
+  border-radius: 12px;
+}
+
+body[data-page="merchant-settings"] .merchant-bottom-nav-mobile .nav-item.active {
+  background: transparent;
+  color: #1a1a1a;
+}
+
+body[data-page="merchant-settings"] .merchant-bottom-nav-mobile .material-symbols-outlined {
+  font-size: 22px;
+}
+
+/* Merchant subpages */
+body[data-page="merchant-rooms"],
+body[data-page="merchant-members"],
+body[data-page="merchant-services"],
+body[data-page="merchant-approvals"],
+body[data-page="merchant-commission-settings"] {
+  background: #fcf8fb;
+}
+
+.merchant-subpage-shell,
+.commission-settings-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(226, 240, 233, 0.5), transparent 30%),
+    #fcf8fb;
+}
+
+.merchant-subpage-main,
+.commission-settings-main {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 18px 24px 40px;
+}
+
+.merchant-subpage-topbar,
+.commission-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.merchant-subpage-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.merchant-back-button,
+.commission-back-btn {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #00422f;
+  box-shadow: 0 8px 24px rgba(27, 27, 29, 0.08);
+}
+
+.merchant-subpage-topbar h1,
+.commission-header-title {
+  margin: 0;
+  color: #111113;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.merchant-subpage-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(27, 27, 29, 0.08);
+}
+
+.merchant-subpage-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.merchant-subpage-head-row h2,
+.commission-section-title {
+  margin: 0;
+  color: #111113;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.merchant-subpage-stack,
+.merchant-service-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.merchant-primary-pill,
+.merchant-add-tile,
+.commission-add-rule-btn,
+.commission-primary-btn {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.merchant-primary-pill {
+  min-height: 46px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #00422f, #006c49);
+  box-shadow: 0 14px 28px rgba(0, 66, 47, 0.2);
+  font-weight: 800;
+}
+
+.merchant-subpage-intro,
+.merchant-search-panel,
+.merchant-subpage-hero,
+.commission-intro,
+.commission-form-card,
+.commission-technician-card,
+.commission-empty-state {
+  background: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 14px 32px rgba(27, 27, 29, 0.06);
+}
+
+.merchant-subpage-intro,
+.commission-intro {
+  margin-bottom: 18px;
+  padding: 20px 22px;
+}
+
+.merchant-subpage-intro p,
+.commission-desc,
+.merchant-subpage-hero p {
+  margin: 0;
+  color: #52605a;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.merchant-search-panel {
+  margin-bottom: 16px;
+  padding: 18px;
+}
+
+.merchant-search-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 0 16px;
+  border-radius: 18px;
+  background: #f7f4f6;
+}
+
+.merchant-search-field input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #111113;
+  font: inherit;
+}
+
+.merchant-filter-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.merchant-chip-button {
+  min-height: 42px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 999px;
+  background: #f7f4f6;
+  color: #52605a;
+  font: inherit;
+  font-weight: 700;
+}
+
+.merchant-add-tile {
+  width: 100%;
+  min-height: 58px;
+  margin-bottom: 18px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #00422f, #006c49);
+  color: #ffffff;
+  box-shadow: 0 16px 30px rgba(0, 66, 47, 0.2);
+  font-weight: 800;
+}
+
+.merchant-add-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.merchant-room-card,
+.merchant-member-card,
+.merchant-service-card,
+.merchant-approval-card {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgba(27, 27, 29, 0.06);
+}
+
+.merchant-room-card,
+.merchant-service-card {
+  grid-template-columns: 96px minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.merchant-room-thumb,
+.merchant-service-thumb {
+  width: 96px;
+  height: 96px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #f2ece7;
+}
+
+.merchant-room-thumb img,
+.merchant-service-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.merchant-service-thumb {
+  display: grid;
+  place-items: center;
+  color: #9b5700;
+}
+
+.merchant-service-thumb .material-symbols-outlined {
+  font-size: 38px;
+}
+
+.merchant-room-copy h3,
+.merchant-service-copy-block h3,
+.merchant-member-row h3,
+.merchant-approval-copy h3 {
+  margin: 0;
+  color: #111113;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.merchant-room-copy p,
+.merchant-service-desc,
+.merchant-subpage-eyebrow,
+.merchant-member-meta,
+.merchant-approval-years {
+  margin: 8px 0 0;
+  color: #6a706d;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.merchant-room-side,
+.merchant-service-side {
+  display: grid;
+  justify-items: end;
+  gap: 12px;
+}
+
+.merchant-room-status,
+.merchant-service-badge,
+.merchant-pending-badge,
+.merchant-tier-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.merchant-room-status.available,
+.merchant-service-badge.green,
+.merchant-pending-badge {
+  background: rgba(166, 242, 208, 0.22);
+  color: #00422f;
+}
+
+.merchant-room-status.busy,
+.merchant-service-badge.orange {
+  background: rgba(255, 196, 125, 0.24);
+  color: #9b5700;
+}
+
+.merchant-service-badge.gold,
+.merchant-tier-tag.gold {
+  background: rgba(255, 220, 138, 0.28);
+  color: #8d6500;
+}
+
+.merchant-service-badge.gray,
+.merchant-tier-tag.regular,
+.merchant-tier-tag.silver,
+.merchant-tier-tag.platinum,
+.merchant-tier-tag.diamond,
+.merchant-tier-tag.bronze {
+  background: #f3eef2;
+  color: #52605a;
+}
+
+.merchant-room-link,
+.merchant-edit-button,
+.merchant-member-action,
+.merchant-reject-button,
+.merchant-approve-button {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #f7f4f6;
+  color: #111113;
+  font: inherit;
+  font-weight: 800;
+}
+
+.merchant-edit-button,
+.merchant-approve-button {
+  background: linear-gradient(135deg, #00422f, #006c49);
+  color: #ffffff;
+}
+
+.merchant-member-card {
+  grid-template-columns: 72px minmax(0, 1fr);
+  align-items: center;
+}
+
+.merchant-member-avatar,
+.merchant-approval-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.merchant-member-copy {
+  min-width: 0;
+}
+
+.merchant-member-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.merchant-member-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.merchant-member-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+}
+
+.merchant-member-action {
+  flex: 1;
+}
+
+.merchant-subpage-hero {
+  margin-bottom: 20px;
+  padding: 22px;
+}
+
+.merchant-subpage-eyebrow {
+  margin: 0 0 8px;
+  color: #00422f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.merchant-subpage-hero h2 {
+  margin: 0 0 8px;
+  color: #111113;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.merchant-approval-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.merchant-approval-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.merchant-approval-desc {
+  margin: 0;
+  color: #52605a;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.merchant-approval-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.merchant-approval-tag {
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #f3eef2;
+  color: #52605a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.merchant-approval-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.merchant-reject-button,
+.merchant-approve-button {
+  flex: 1;
+}
+
+.merchant-reject-button {
+  background: #f7f4f6;
+  color: #7d2d2d;
+}
+
+.commission-intro {
+  margin-bottom: 20px;
+}
+
+.commission-section {
+  margin-top: 20px;
+}
+
+.commission-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.commission-section-tag {
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #f3eef2;
+  color: #52605a;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.commission-form-card {
+  padding: 20px;
+}
+
+.commission-form-group + .commission-form-group {
+  margin-top: 14px;
+}
+
+.commission-form-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #52605a;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.commission-form-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid #ece7eb;
+  border-radius: 16px;
+  background: #fcfafb;
+  color: #111113;
+  font: inherit;
+}
+
+.commission-primary-btn,
+.commission-add-rule-btn {
+  min-height: 50px;
+  padding: 0 18px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #00422f, #006c49);
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.commission-primary-btn {
+  width: 100%;
+  margin-top: 18px;
+}
+
+.commission-rules-container {
+  display: grid;
+  gap: 14px;
+}
+
+.commission-empty-state {
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.commission-empty-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 14px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  border-radius: 24px;
+  background: #f3eef2;
+  color: #52605a;
+}
+
+.commission-empty-badge {
+  position: absolute;
+  right: -8px;
+  bottom: -8px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(27, 27, 29, 0.08);
+}
+
+.commission-empty-title {
+  margin: 0 0 8px;
+  color: #111113;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.commission-empty-desc {
+  margin: 0;
+  color: #6a706d;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.commission-technician-card {
+  padding: 18px;
+}
+
+.commission-technician-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.commission-technician-avatar {
+  width: 56px;
+  height: 56px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #f3eef2;
+}
+
+.commission-technician-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.commission-technician-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.commission-technician-name {
+  margin: 0;
+  color: #111113;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.commission-technician-meta {
+  margin: 6px 0 0;
+  color: #6a706d;
+  font-size: 13px;
+}
+
+.commission-technician-edit {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: #f7f4f6;
+  display: grid;
+  place-items: center;
+}
+
+.commission-technician-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.commission-technician-detail {
+  padding: 14px;
+  border-radius: 18px;
+  background: #f7f4f6;
+}
+
+.commission-technician-detail-label {
+  display: block;
+  color: #6a706d;
+  font-size: 12px;
+}
+
+.commission-technician-detail-value {
+  display: block;
+  margin-top: 6px;
+  color: #111113;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.commission-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(17, 17, 19, 0.36);
+}
+
+.commission-modal-content {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 101;
+  width: min(92vw, 420px);
+  max-height: 80vh;
+  padding: 20px;
+  overflow: auto;
+  transform: translate(-50%, -50%);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 20px 44px rgba(17, 17, 19, 0.2);
+}
+
+.commission-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.commission-modal-title {
+  margin: 0;
+  color: #111113;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.commission-modal-close {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: #f7f4f6;
+  display: grid;
+  place-items: center;
+}
+
+.commission-selector-list {
+  display: grid;
+  gap: 12px;
+}
+
+.commission-selector-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 18px;
+  background: #f7f4f6;
+}
+
+.commission-selector-avatar {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #e6e2e6;
+}
+
+.commission-selector-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.commission-selector-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.commission-selector-name {
+  margin: 0;
+  color: #111113;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.commission-selector-title {
+  margin: 4px 0 0;
+  color: #6a706d;
+  font-size: 13px;
+}
+
+.commission-selector-arrow {
+  color: #8d9491;
+}
+
+/* 店铺信息标题行 */
+.mobile-store-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.mobile-store-title-row h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.mobile-store-tags-inline {
+  display: flex;
+  gap: 6px;
+}
+
+/* 店铺信息联系方式列表 */
+.mobile-store-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.mobile-store-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #666;
+}
+
+.mobile-store-contact-row .material-symbols-outlined {
+  font-size: 14px;
+  color: #999;
+}
+
+/* 会员管理页面新增按钮居中 */
+.member-add-btn-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 0 16px;
+}
+
+/* 房间卡片样式 */
+.merchant-room-copy .room-capacity {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: #666;
+}
+
+.merchant-room-copy .room-note {
+  margin: 0;
+  font-size: 12px;
+  color: #999;
+  line-height: 1.4;
+}
+
+/* 设置菜单 V2 样式 */
+.menu-sheet-v2 {
+  background: #f5f5f5;
+}
+
+.menu-sheet-body-v2 {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.menu-account-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 16px;
+}
+
+.menu-account-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-account-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menu-account-info h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.menu-account-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.menu-list-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.menu-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.menu-list-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-item-icon.theme-blue {
+  background: #e3f2fd;
+  color: #2196f3;
+}
+
+.menu-item-icon.theme-purple {
+  background: #f3e5f5;
+  color: #9c27b0;
+}
+
+.menu-item-icon .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.menu-item-label {
+  flex: 1;
+  font-size: 15px;
+  color: #1a1a1a;
+}
+
+.menu-item-arrow {
+  color: #bbb;
+  font-size: 20px;
+}
+
+.menu-logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #e53935;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* 工资结算卡片 - 复刻设计 */
+.payroll-hero-card {
+  position: relative;
+  margin: 0 20px 24px;
+  padding: 24px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.payroll-hero-bg-icon {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.15;
+}
+
+.payroll-hero-bg-icon .material-symbols-outlined {
+  font-size: 140px;
+  color: #ffffff;
+}
+
+.payroll-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.payroll-hero-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.payroll-hero-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.payroll-hero-arrow {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.payroll-hero-arrow::after {
+  content: ">";
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.payroll-hero-amount {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.payroll-hero-note {
+  margin: 0 0 20px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.payroll-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.payroll-hero-subcard {
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.payroll-hero-subcard span {
+  display: block;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 6px;
+}
+
+.payroll-hero-subcard strong {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
 }

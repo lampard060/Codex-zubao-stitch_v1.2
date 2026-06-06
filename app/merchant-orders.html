@@ -3,342 +3,322 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>足宝 | 订单管理</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Manrope:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght@300;400;500&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css?v=20260410a" />
+    <title>足宝 | 订单中心</title>
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260428a" />
   </head>
   <body data-page="merchant-orders">
-    <div class="app-shell">
-      <aside class="sidebar">
-        <div class="brand">足宝</div>
-        <div class="brand-subtitle">订单管理</div>
-        <nav class="nav-list">
-          <a class="nav-item" href="./merchant-dashboard.html"><span class="material-symbols-outlined">dashboard</span>首页</a>
-          <a class="nav-item" href="./merchant-technicians.html"><span class="material-symbols-outlined">spa</span>技师</a>
-          <a class="nav-item active" href="./merchant-orders.html"><span class="material-symbols-outlined">receipt_long</span>订单</a>
-          <a class="nav-item" href="./merchant-master-data.html"><span class="material-symbols-outlined">inventory_2</span>基础资料</a>
-          <a class="nav-item" href="./merchant-analytics.html"><span class="material-symbols-outlined">analytics</span>统计</a>
-          <a class="nav-item" href="./merchant-settings.html"><span class="material-symbols-outlined">settings</span>设置</a>
-        </nav>
-        <div class="sidebar-footer">
-          <button class="primary-cta" id="orders-create-toggle-sidebar">新增上钟</button>
-          <div class="sidebar-meta">
-            <div class="avatar-sm avatar-fallback">店</div>
-            <div>
-              <div class="small">门店后台</div>
-              <div style="font-weight: 700">足宝旗舰店</div>
-            </div>
+    <div class="app-shell merchant-mobile-shell">
+      <main class="main-panel merchant-mobile-main">
+        <header class="topbar merchant-mobile-topbar">
+          <div class="merchant-mobile-titlebar">
+            <img class="merchant-mobile-logo-badge" src="./zubao-tech-icon.png" alt="足宝图标" />
+            <h1 class="merchant-mobile-title">订单中心</h1>
           </div>
-        </div>
-      </aside>
 
-      <main class="main-panel">
-        <header class="topbar">
-          <div>
-            <div class="small" style="text-transform: uppercase; letter-spacing: 0.14em">订单管理</div>
-            <div style="font-weight: 800; font-family: Manrope, sans-serif; font-size: 1.2rem">当日上钟记录</div>
-          </div>
-          <div class="topbar-actions">
-            <span class="badge success">进行中 3 单</span>
-            <span class="material-symbols-outlined">notifications</span>
-            <span class="material-symbols-outlined">account_circle</span>
-          </div>
         </header>
 
-        <section class="page-header dashboard-header">
-          <p class="eyebrow">订单中心</p>
-          <h1 class="page-title">订单管理</h1>
-          <p class="page-copy">按日期查看上钟记录，快速确认订单状态、服务时间与结算进度。</p>
-        </section>
-
-        <section class="dashboard-kpi-grid">
-          <article class="dashboard-kpi-card">
-            <div class="dashboard-kpi-top">
-              <span class="dashboard-kpi-icon material-symbols-outlined">receipt_long</span>
-              <span class="dashboard-kpi-trend">今日更新</span>
-            </div>
-            <p class="dashboard-kpi-label">今日订单</p>
-            <p class="dashboard-kpi-value" id="orders-total-count">42</p>
-          </article>
-          <article class="dashboard-kpi-card">
-            <div class="dashboard-kpi-top">
-              <span class="dashboard-kpi-icon material-symbols-outlined">payments</span>
-              <span class="dashboard-kpi-trend">实时同步</span>
-            </div>
-            <p class="dashboard-kpi-label">今日营收</p>
-            <p class="dashboard-kpi-value" id="orders-total-revenue">¥12,840</p>
-          </article>
-          <article class="dashboard-kpi-card">
-            <div class="dashboard-kpi-top">
-              <span class="dashboard-kpi-icon material-symbols-outlined">schedule</span>
-              <span class="dashboard-kpi-trend">需跟进</span>
-            </div>
-            <p class="dashboard-kpi-label">待结订单</p>
-            <p class="dashboard-kpi-value" id="orders-pending-count">6</p>
-          </article>
-        </section>
-
-        <section class="dashboard-filter-shell">
-          <div class="filters-left">
-            <label class="field" style="min-width: 320px">
-              <span class="material-symbols-outlined">search</span>
-              <input id="orders-search-input" placeholder="搜索订单号、技师姓名" />
-            </label>
-            <label class="field" style="min-width: 220px">
-              <input type="date" id="orders-date-input" />
-              <span class="material-symbols-outlined">calendar_today</span>
-            </label>
+        <section class="mobile-date-nav" id="orders-date-nav">
+          <button class="mobile-date-nav-btn" type="button" id="orders-date-prev" aria-label="前一天">
+            <span class="material-symbols-outlined">chevron_left</span>
+          </button>
+          <div class="mobile-date-nav-center" onclick="window.__zubaoOpenDatePicker&&window.__zubaoOpenDatePicker()">
+            <span class="mobile-date-nav-label" id="orders-date-label">今天</span>
+            <input type="date" id="orders-date-picker" class="mobile-date-nav-picker" />
           </div>
-          <div class="filters-right">
-            <div class="inline-group" id="orders-status-filters">
-              <button class="ghost-button" data-order-status-filter="all"><span class="material-symbols-outlined">tune</span> 全部</button>
-              <button class="ghost-button" data-order-status-filter="in_service">服务中</button>
-              <button class="ghost-button" data-order-status-filter="completed">已完成</button>
-              <button class="ghost-button" data-order-status-filter="cancelled">已取消</button>
-            </div>
-            <button class="pill-button" id="orders-create-toggle"><span class="material-symbols-outlined">add</span> 新增上钟</button>
-          </div>
+          <button class="mobile-date-nav-btn" type="button" id="orders-date-next" aria-label="后一天">
+            <span class="material-symbols-outlined">chevron_right</span>
+          </button>
         </section>
 
-        <section class="white-card card-pad" id="orders-create-panel" hidden style="margin-bottom: 22px">
-          <div class="section-header" style="margin: 0 0 18px">
+        <section class="mobile-hero-card mobile-hero-card-emerald order-hero-card">
+          <div class="mobile-hero-label" id="orders-hero-label">今日服务总营收</div>
+          <div class="mobile-hero-amount" id="orders-total-revenue">¥--</div>
+          <div class="mobile-stat-grid">
             <div>
-              <h2 class="section-title" style="font-size: 1.6rem">新增上钟订单</h2>
-              <p class="section-copy">按项目、房间和客户档案选择开单，系统会自动带出类型、时长和价格。</p>
+              <span>服务中</span>
+              <strong id="orders-summary-service">--</strong>
             </div>
-            <button class="ghost-button" id="orders-create-cancel">取消</button>
-          </div>
-          <div class="form-grid-2">
-            <label class="form-field">
-              <span class="field-label">技师</span>
-              <select id="orders-create-technician"></select>
-            </label>
-            <label class="form-field">
-              <span class="field-label">项目</span>
-              <select id="orders-create-service-item"></select>
-            </label>
-            <label class="form-field">
-              <span class="field-label">房间</span>
-              <select id="orders-create-room"></select>
-            </label>
-            <label class="form-field">
-              <span class="field-label">客户</span>
-              <select id="orders-create-customer"></select>
-            </label>
-            <label class="form-field">
-              <span class="field-label">开始时间</span>
-              <input id="orders-create-start-time" type="datetime-local" />
-            </label>
-            <label class="form-field">
-              <span class="field-label">备注</span>
-              <input id="orders-create-note" placeholder="例如：客户偏好轻力度" />
-            </label>
-            <div class="record-list form-field-full" id="orders-create-service-summary">
-              <div class="record-row" style="grid-template-columns: 120px 1fr">
-                <div class="small">项目说明</div>
-                <div>请选择项目后自动带出</div>
-              </div>
-            </div>
-          </div>
-          <div class="form-actions">
-            <p class="small" id="orders-create-feedback" hidden></p>
-            <button class="pill-button" id="orders-create-submit">确认新增</button>
-          </div>
-        </section>
-
-        <section class="white-card card-pad" id="orders-edit-panel" hidden style="margin-bottom: 22px">
-          <div class="section-header" style="margin: 0 0 18px">
             <div>
-              <h2 class="section-title" style="font-size: 1.6rem">编辑订单</h2>
-              <p class="section-copy">更新技师、项目、房间或客户选择，金额会随项目自动同步。</p>
+              <span>待服务</span>
+              <strong id="orders-summary-pending">--</strong>
             </div>
-            <button class="ghost-button" id="orders-edit-cancel">取消</button>
-          </div>
-          <div class="inline-group" style="margin-bottom: 18px">
-            <span class="badge success">当前订单</span>
-            <span class="small" id="orders-edit-order-no">--</span>
-          </div>
-          <div class="record-list" style="margin-bottom: 18px" id="orders-edit-summary">
-            <div class="record-row" style="grid-template-columns: 120px 1fr">
-              <div class="small">技师</div>
-              <div>--</div>
-            </div>
-            <div class="record-row" style="grid-template-columns: 120px 1fr">
-              <div class="small">订单状态</div>
-              <div>--</div>
-            </div>
-            <div class="record-row" style="grid-template-columns: 120px 1fr">
-              <div class="small">订单金额</div>
-              <div>--</div>
-            </div>
-          </div>
-          <div class="form-grid-2">
-            <label class="form-field">
-              <span class="field-label">技师</span>
-              <select id="orders-edit-technician"></select>
-            </label>
-            <label class="form-field">
-              <span class="field-label">项目</span>
-              <select id="orders-edit-service-item"></select>
-            </label>
-            <label class="form-field">
-              <span class="field-label">房间</span>
-              <select id="orders-edit-room"></select>
-            </label>
-            <label class="form-field">
-              <span class="field-label">客户</span>
-              <select id="orders-edit-customer"></select>
-            </label>
-            <label class="form-field">
-              <span class="field-label">开始时间</span>
-              <input id="orders-edit-start-time" type="datetime-local" />
-            </label>
-            <label class="form-field form-field-full">
-              <span class="field-label">备注</span>
-              <textarea id="orders-edit-note" rows="4" placeholder="请输入需要同步的订单备注"></textarea>
-            </label>
-            <div class="record-list form-field-full" id="orders-edit-service-summary">
-              <div class="record-row" style="grid-template-columns: 120px 1fr">
-                <div class="small">项目说明</div>
-                <div>请选择项目后自动带出</div>
-              </div>
-            </div>
-          </div>
-          <div class="form-actions">
-            <p class="small" id="orders-edit-feedback" hidden></p>
-            <button class="pill-button" id="orders-edit-submit">保存订单</button>
-          </div>
-        </section>
-
-        <section class="white-card card-pad" id="orders-detail-panel" hidden style="margin-bottom: 22px">
-          <div class="section-header" style="margin: 0 0 18px">
             <div>
-              <h2 class="section-title" style="font-size: 1.6rem">订单详情</h2>
-              <p class="section-copy">用于快速查看当前订单的服务信息、客户信息与金额明细。</p>
+              <span>已完成</span>
+              <strong id="orders-summary-completed">--</strong>
             </div>
-            <div class="inline-group">
-              <button class="ghost-button" id="orders-detail-prev">上一单</button>
-              <button class="ghost-button" id="orders-detail-next">下一单</button>
-              <button class="ghost-button" id="orders-detail-close">关闭</button>
-            </div>
-          </div>
-          <div class="record-list" id="orders-detail-items">
-            <div class="record-row" style="grid-template-columns: 120px 1fr">
-              <div class="small">订单号</div>
-              <div>--</div>
+            <div>
+              <span>全部</span>
+              <strong id="orders-total-count">--</strong>
             </div>
           </div>
         </section>
 
-        <section class="dashboard-main-grid">
-          <div class="dashboard-left-stack">
-            <div class="section-header dashboard-section-header">
-              <div>
-                <h2 class="section-title">订单列表</h2>
-                <p class="section-copy">优先展示当日需要关注的订单记录。</p>
-              </div>
-            </div>
-            <div class="dashboard-live-list" id="orders-list">
-              <article class="dashboard-live-card">
-                <div class="dashboard-live-index">01</div>
-                <div>
-                  <div class="dashboard-live-title">#ZB-8921 足底按摩</div>
-                  <div class="small">客户：张先生　技师：林婉儿　房号：V108 豪华间</div>
-                </div>
-                <span class="badge success">服务中</span>
-                <div class="dashboard-live-time">
-                  <div class="small">订单金额</div>
-                  <strong>¥398</strong>
-                </div>
-              </article>
-              <article class="dashboard-live-card warning">
-                <div class="dashboard-live-index">02</div>
-                <div>
-                  <div class="dashboard-live-title">#ZB-8920 全身油压</div>
-                  <div class="small">客户：李女士　技师：王大志　房号：S202 雅致间</div>
-                </div>
-                <span class="badge warning">待结算</span>
-                <div class="dashboard-live-time">
-                  <div class="small">订单金额</div>
-                  <strong>¥588</strong>
-                </div>
-              </article>
-              <article class="dashboard-live-card">
-                <div class="dashboard-live-index">03</div>
-                <div>
-                  <div class="dashboard-live-title">#ZB-8919 精品开背</div>
-                  <div class="small">客户：赵小姐　技师：张子墨　房号：V105 豪华间</div>
-                </div>
-                <span class="badge neutral">已完成</span>
-                <div class="dashboard-live-time">
-                  <div class="small">订单金额</div>
-                  <strong>¥298</strong>
-                </div>
-              </article>
-              <article class="dashboard-live-card">
-                <div class="dashboard-live-index">04</div>
-                <div>
-                  <div class="dashboard-live-title">#ZB-8918 中医经络推拿</div>
-                  <div class="small">客户：周先生　技师：沈清秋　房号：S201 雅致间</div>
-                </div>
-                <span class="badge neutral">已完成</span>
-                <div class="dashboard-live-time">
-                  <div class="small">订单金额</div>
-                  <strong>¥468</strong>
-                </div>
-              </article>
-            </div>
-          </div>
-
-          <div class="dashboard-right-stack">
-            <article class="dashboard-panel">
-              <div class="section-header dashboard-section-header" style="margin: 0 0 12px">
-                <div>
-                  <h2 class="section-title" style="font-size: 1.6rem">状态分布</h2>
-                  <p class="section-copy">快速了解今日订单处理情况。</p>
-                </div>
-              </div>
-              <div class="dashboard-status-list" id="orders-status-list">
-                <div class="dashboard-status-row">
-                  <span>服务中</span>
-                  <strong>3 单</strong>
-                </div>
-                <div class="dashboard-status-row">
-                  <span>待结算</span>
-                  <strong>6 单</strong>
-                </div>
-                <div class="dashboard-status-row">
-                  <span>已完成</span>
-                  <strong>33 单</strong>
-                </div>
-              </div>
-            </article>
-
-            <article class="dashboard-panel">
-              <div class="section-header dashboard-section-header" style="margin: 0 0 12px">
-                <div>
-                  <h2 class="section-title" style="font-size: 1.6rem">订单高峰</h2>
-                  <p class="section-copy">查看今日订单集中时段。</p>
-                </div>
-              </div>
-              <div class="dashboard-mini-chart">
-                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 22%"></div><span>10:00</span></div>
-                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 44%"></div><span>12:00</span></div>
-                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 62%"></div><span>14:00</span></div>
-                <div class="dashboard-mini-col"><div class="dashboard-mini-bar active" style="height: 84%"></div><span>16:00</span></div>
-                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 70%"></div><span>18:00</span></div>
-                <div class="dashboard-mini-col"><div class="dashboard-mini-bar" style="height: 28%"></div><span>20:00</span></div>
-              </div>
-            </article>
-          </div>
+        <section class="mobile-tab-shell" id="orders-status-filters">
+          <button class="mobile-tab-pill active" data-order-status-filter="all">全部</button>
+          <button class="mobile-tab-pill" data-order-status-filter="in_service">服务中</button>
+          <button class="mobile-tab-pill" data-order-status-filter="pending">待服务</button>
+          <button class="mobile-tab-pill" data-order-status-filter="completed">已完成</button>
         </section>
+
+        <section class="mobile-card-stack mobile-order-stack" id="orders-list">
+          <article class="mobile-order-card">
+            <div class="mobile-order-head">
+              <div class="merchant-mobile-avatar theme-coral">深</div>
+              <div class="mobile-order-copy">
+                <h3>深层经络调理</h3>
+                <p>技师: 李思 (VIP房 203)</p>
+              </div>
+              <span class="mobile-status-pill success">进行中</span>
+            </div>
+            <div class="mobile-progress-meta">
+              <span>剩余时间</span>
+              <strong>82 MIN</strong>
+            </div>
+            <div class="mobile-progress-track">
+              <div class="mobile-progress-fill is-emerald" style="width: 42%"></div>
+            </div>
+            <div class="mobile-order-actions">
+              <button class="mobile-action-button secondary" type="button" data-order-start="PLACEHOLDER">开始</button>
+              <button class="mobile-action-button secondary" type="button" data-order-finish="PLACEHOLDER">结束</button>
+              <button class="mobile-action-button" type="button" data-order-edit="PLACEHOLDER">加钟</button>
+            </div>
+            <div class="mobile-order-foot">
+              <span>#ZB-9830</span>
+              <span>15:30</span>
+            </div>
+          </article>
+        </section>
+
+        <div class="mobile-load-more" id="orders-load-more" hidden>
+          <button class="mobile-load-more-btn" type="button" id="orders-load-more-btn">加载更多</button>
+          <span class="mobile-load-more-info" id="orders-load-more-info"></span>
+        </div>
       </main>
     </div>
-    <script src="./app.js?v=20260410a"></script>
+
+    <div class="mobile-sheet-backdrop" id="orders-sheet-backdrop" hidden></div>
+
+    <section class="mobile-bottom-sheet" id="orders-filter-panel" hidden>
+      <div class="mobile-sheet-handle"></div>
+      <div class="mobile-sheet-head">
+        <div>
+          <h2>筛选订单</h2>
+          <p>按日期与关键词筛选，不改变首页结构。</p>
+        </div>
+        <button class="merchant-mobile-icon-button" type="button" id="orders-filter-close" aria-label="关闭筛选">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="mobile-sheet-body">
+        <label class="mobile-form-field">
+          <span>搜索订单</span>
+          <input id="orders-search-input" placeholder="搜索订单号、技师姓名" />
+        </label>
+        <label class="mobile-form-field" hidden>
+          <span>筛选日期</span>
+          <input type="date" id="orders-date-input" />
+        </label>
+        <button class="mobile-sheet-primary" type="button" id="orders-create-toggle">新增上钟</button>
+      </div>
+    </section>
+
+    <section class="mobile-bottom-sheet" id="orders-create-panel" hidden>
+      <div class="mobile-sheet-handle"></div>
+      <div class="mobile-sheet-head">
+        <div>
+          <h2>新增上钟</h2>
+          <p>按项目、房间与客户快速开单。</p>
+        </div>
+        <button class="merchant-mobile-icon-button" type="button" id="orders-create-cancel" aria-label="关闭新增面板">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="mobile-sheet-body">
+        <div class="mobile-form-field">
+          <span>订单类型</span>
+          <div class="mobile-order-type-options">
+            <button class="mobile-order-type-btn active" type="button" data-order-type="queue">排钟</button>
+            <button class="mobile-order-type-btn" type="button" data-order-type="direct">点钟</button>
+          </div>
+        </div>
+        <label class="mobile-form-field">
+          <span>技师</span>
+          <select id="orders-create-technician"></select>
+        </label>
+        <label class="mobile-form-field">
+          <span>项目</span>
+          <select id="orders-create-service-item"></select>
+        </label>
+        <label class="mobile-form-field">
+          <span>房间</span>
+          <select id="orders-create-room"></select>
+        </label>
+        <label class="mobile-form-field">
+          <span>客户</span>
+          <select id="orders-create-customer"></select>
+        </label>
+        <label class="mobile-form-field">
+          <span>开始时间</span>
+          <input id="orders-create-start-time" type="datetime-local" />
+        </label>
+        <label class="mobile-form-field">
+          <span>备注</span>
+          <input id="orders-create-note" placeholder="例如：客户偏好轻力度" />
+        </label>
+        <p class="small" id="orders-create-feedback" hidden></p>
+        <button class="mobile-sheet-primary" type="button" id="orders-create-submit">确认新增</button>
+      </div>
+    </section>
+
+    <section class="mobile-bottom-sheet" id="orders-edit-panel" hidden>
+      <div class="mobile-sheet-handle"></div>
+      <div class="mobile-sheet-head">
+        <div>
+          <h2 id="orders-edit-title">订单管理</h2>
+          <p id="orders-edit-order-no">--</p>
+        </div>
+        <button class="merchant-mobile-icon-button" type="button" id="orders-edit-cancel" aria-label="关闭编辑面板">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="mobile-sheet-body">
+        <div class="mobile-sheet-records" id="orders-edit-records"></div>
+        <label class="mobile-form-field" id="orders-edit-technician-field">
+          <span>技师</span>
+          <select id="orders-edit-technician"></select>
+        </label>
+        <label class="mobile-form-field">
+          <span>项目</span>
+          <select id="orders-edit-service-item"></select>
+        </label>
+        <label class="mobile-form-field" id="orders-edit-extend-count-field" hidden>
+          <span>加钟数</span>
+          <div class="extend-count-control">
+            <button type="button" id="orders-edit-extend-minus" class="extend-count-btn">−</button>
+            <input id="orders-edit-extend-count" type="number" value="1" min="1" max="10" />
+            <button type="button" id="orders-edit-extend-plus" class="extend-count-btn">+</button>
+          </div>
+        </label>
+        <label class="mobile-form-field" id="orders-edit-room-field">
+          <span>房间</span>
+          <select id="orders-edit-room"></select>
+        </label>
+        <label class="mobile-form-field" id="orders-edit-customer-field">
+          <span>客户</span>
+          <select id="orders-edit-customer"></select>
+        </label>
+        <label class="mobile-form-field" id="orders-edit-start-time-field">
+          <span>开始时间</span>
+          <input id="orders-edit-start-time" type="datetime-local" />
+        </label>
+        <label class="mobile-form-field" id="orders-edit-end-time-field">
+          <span>结束时间</span>
+          <input id="orders-edit-end-time" type="datetime-local" />
+        </label>
+        <label class="mobile-form-field" id="orders-edit-duration-field" hidden>
+          <span>服务时长</span>
+          <input id="orders-edit-duration-display" type="text" disabled />
+        </label>
+        <label class="mobile-form-field">
+          <span>服务金额</span>
+          <input id="orders-edit-service-amount" type="text" inputmode="decimal" placeholder="自动带出服务金额" disabled />
+        </label>
+        <label class="mobile-form-field" id="orders-edit-actual-amount-field">
+          <span>实收金额</span>
+          <input id="orders-edit-actual-amount" type="text" inputmode="decimal" placeholder="请输入实收金额" />
+        </label>
+        <label class="mobile-form-field" id="orders-edit-note-field">
+          <span>备注</span>
+          <textarea id="orders-edit-note" rows="4" placeholder="请输入订单备注"></textarea>
+        </label>
+        <p class="small" id="orders-edit-feedback" hidden></p>
+        <div class="mobile-sheet-inline-actions">
+          <button class="mobile-sheet-secondary danger" type="button" id="orders-edit-delete">删除订单</button>
+          <button class="mobile-sheet-primary" type="button" id="orders-edit-submit">保存订单</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="mobile-bottom-sheet" id="orders-detail-panel" hidden>
+      <div class="mobile-sheet-handle"></div>
+      <div class="mobile-sheet-head">
+        <div>
+          <h2>订单详情</h2>
+          <p>用于查看服务与结算信息。</p>
+        </div>
+        <button class="merchant-mobile-icon-button" type="button" id="orders-detail-close" aria-label="关闭详情面板">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="mobile-sheet-body">
+        <div class="mobile-sheet-records" id="orders-detail-items"></div>
+        <div class="mobile-sheet-inline-actions" id="orders-detail-actions">
+          <button class="mobile-sheet-secondary" type="button" id="orders-manage-button">管理订单</button>
+          <button class="mobile-sheet-primary" type="button" id="orders-start-button">开始订单</button>
+          <div class="orders-action-row" id="orders-end-extend-row" hidden>
+            <button class="mobile-sheet-secondary" type="button" id="orders-end-button">结束订单</button>
+            <button class="mobile-sheet-secondary" type="button" id="orders-extend-button">加钟</button>
+          </div>
+          <div class="orders-action-row" id="orders-delete-save-row" hidden>
+            <button class="mobile-sheet-secondary danger" type="button" id="orders-detail-delete-button">删除订单</button>
+            <button class="mobile-sheet-primary" type="button" id="orders-detail-save-button">保存订单</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mobile-bottom-sheet" id="orders-settle-panel" hidden>
+      <div class="mobile-sheet-handle"></div>
+      <div class="mobile-sheet-head">
+        <div>
+          <h2>结算订单</h2>
+          <p id="orders-settle-order-no">--</p>
+        </div>
+        <button class="merchant-mobile-icon-button" type="button" id="orders-settle-close" aria-label="关闭结算面板">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="mobile-sheet-body">
+        <label class="mobile-form-field">
+          <span>服务金额</span>
+          <input id="orders-settle-service-amount" type="text" disabled />
+        </label>
+        <label class="mobile-form-field">
+          <span>实收金额</span>
+          <input id="orders-settle-actual-amount" type="text" inputmode="decimal" placeholder="默认按服务金额结算，可手动修改" />
+        </label>
+        <label class="mobile-form-field">
+          <span>备注</span>
+          <textarea id="orders-settle-note" rows="2" placeholder="结算备注（选填）"></textarea>
+        </label>
+        <p class="small" id="orders-settle-feedback" hidden></p>
+        <div class="mobile-sheet-inline-actions">
+          <button class="mobile-sheet-secondary" type="button" id="orders-settle-cancel">取消</button>
+          <button class="mobile-sheet-primary" type="button" id="orders-settle-confirm">确认结算</button>
+        </div>
+      </div>
+    </section>
+
+    <nav class="merchant-bottom-nav-mobile" aria-label="商家端底部导航">
+      <a class="nav-item" href="./merchant-dashboard.html">
+        <span class="material-symbols-outlined">grid_view</span>
+        <span>工作台</span>
+      </a>
+      <a class="nav-item active" href="./merchant-orders.html">
+        <span class="material-symbols-outlined">receipt_long</span>
+        <span>订单</span>
+      </a>
+      <a class="nav-item" href="./merchant-technicians.html">
+        <span class="material-symbols-outlined">groups</span>
+        <span>技师</span>
+      </a>
+      <a class="nav-item" href="./merchant-settings.html">
+        <span class="material-symbols-outlined">storefront</span>
+        <span>店铺</span>
+      </a>
+    </nav>
+
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>

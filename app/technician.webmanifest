@@ -10,9 +10,9 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "./zubao-tech-icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "./zubao-tech-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ]

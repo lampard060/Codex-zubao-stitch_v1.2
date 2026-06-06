@@ -2,19 +2,404 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>足宝 | 让养生触手可及</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;600;700;800&family=Material+Symbols+Outlined:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css?v=20260410a" />
+    <link rel="icon" type="image/png" href="./zubao-tech-icon.png" />
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <style>
+      :root {
+        --primary: #0D9488;
+        --primary-container: #008378;
+        --background: #f7f9fb;
+        --surface: #f7f9fb;
+        --surface-container-low: #f2f4f6;
+        --surface-container-lowest: #ffffff;
+        --on-surface: #191c1e;
+        --on-surface-variant: #3d4947;
+        --shadow-soft: 0 4px 24px rgba(25, 28, 30, 0.04);
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: var(--background);
+        color: var(--on-surface);
+        line-height: 1.6;
+      }
+      
+      .landing-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 20px;
+        background: rgba(247, 249, 251, 0.9);
+        backdrop-filter: blur(12px);
+        z-index: 100;
+      }
+      
+      .landing-brand {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .landing-brand img {
+        width: clamp(116px, 16vw, 168px);
+        height: auto;
+        display: block;
+      }
+
+      .hero-brand {
+        margin: 0 auto 20px;
+      }
+
+      .hero-brand img {
+        width: min(240px, 52vw);
+        height: auto;
+        margin: 0 auto;
+        filter: drop-shadow(0 10px 24px rgba(17, 24, 39, 0.08));
+      }
+      
+      .topbar-actions .badge {
+        padding: 6px 12px;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+      }
+      
+      .badge.primary {
+        background-color: var(--primary);
+        color: white;
+      }
+      
+      .hero-landing {
+        position: relative;
+        min-height: calc(100svh - 72px);
+        display: flex;
+        align-items: center;
+        padding: 120px 20px 80px;
+        justify-content: center;
+      }
+      
+      .hero-landing::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(252, 248, 251, 0.82), rgba(252, 248, 251, 0.12)),
+          linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 50%, #a5d6a7 100%) center/cover;
+      }
+      
+      .hero-glass {
+        position: relative;
+        max-width: 560px;
+        padding: 40px 20px;
+        border-radius: 24px;
+        background: rgba(252, 248, 251, 0.72);
+        backdrop-filter: blur(20px);
+        text-align: center;
+        box-shadow: var(--shadow-soft);
+      }
+      
+      .eyebrow {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 12px;
+      }
+      
+      .page-title {
+        font-family: 'Manrope', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: white;
+        line-height: 1.2;
+        margin-bottom: 16px;
+      }
+      
+      .page-title span {
+        color: inherit;
+      }
+      
+      .page-copy {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 32px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .hero-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+      }
+      
+      .pill-button, .ghost-button {
+        padding: 14px 24px;
+        border-radius: 9999px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+      
+      .pill-button {
+        background: white;
+        color: var(--primary);
+      }
+      
+      .ghost-button {
+        background: transparent;
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+      
+      .pill-button:hover, .ghost-button:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-soft);
+      }
+      
+      .section-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      
+      .section-title {
+        font-family: 'Manrope', sans-serif;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--on-surface);
+        margin-bottom: 16px;
+      }
+      
+      .section-copy {
+        font-size: 1rem;
+        color: var(--on-surface-variant);
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      .landing-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      
+      .role-card {
+        background: var(--surface-container-lowest);
+        border-radius: 24px;
+        padding: 32px 24px;
+        box-shadow: var(--shadow-soft);
+        transition: all 0.3s ease;
+      }
+      
+      .role-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 32px rgba(25, 28, 30, 0.08);
+      }
+      
+      .role-card.primary {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 100%);
+        color: white;
+      }
+      
+      .icon-pill {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: var(--surface-container-low);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+      }
+      
+      .role-card.primary .icon-pill {
+        background: rgba(255, 255, 255, 0.14);
+        color: white;
+      }
+      
+      .icon-pill span {
+        font-size: 24px;
+      }
+      
+      .role-card h3 {
+        font-family: 'Manrope', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+      
+      .role-card p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+      
+      .role-card.primary p {
+        color: rgba(255, 255, 255, 0.8);
+      }
+      
+      .action-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--primary);
+        text-decoration: none;
+      }
+      
+      .role-card.primary .action-link {
+        color: white;
+      }
+      
+      .badge.neutral {
+        padding: 6px 12px;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+      
+      .editorial-divider {
+        position: relative;
+        min-height: 380px;
+        display: grid;
+        place-items: center;
+        color: white;
+        text-align: center;
+        padding: 80px 20px;
+        margin: 80px 0;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34)),
+          linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #388e3c 100%) center/cover;
+      }
+      
+      .editorial-divider h2 {
+        font-family: 'Manrope', sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+        line-height: 1.2;
+      }
+      
+      .grid-3 {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      
+      .surface-card, .hero-card, .white-card {
+        border-radius: 24px;
+        padding: 32px 24px;
+        box-shadow: var(--shadow-soft);
+      }
+      
+      .surface-card {
+        background: var(--surface-container-low);
+      }
+      
+      .hero-card {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 100%);
+        color: white;
+      }
+      
+      .white-card {
+        background: var(--surface-container-lowest);
+      }
+      
+      .metric-label {
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.72);
+        margin-bottom: 8px;
+      }
+      
+      .metric-value {
+        font-family: 'Manrope', sans-serif;
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+      
+      .hero-card p {
+        color: rgba(255, 255, 255, 0.82);
+      }
+      
+      .floating-fab {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 8px 32px rgba(13, 148, 136, 0.3);
+        transition: all 0.3s ease;
+        z-index: 99;
+      }
+      
+      .floating-fab:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(13, 148, 136, 0.4);
+      }
+      
+      .floating-fab span {
+        font-size: 24px;
+      }
+      
+      @media (min-width: 768px) {
+        .landing-grid {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        
+        .role-card {
+          flex: 1;
+          min-width: 300px;
+          max-width: 350px;
+        }
+        
+        .grid-3 {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        
+        .surface-card, .hero-card, .white-card {
+          flex: 1;
+          min-width: 300px;
+          max-width: 350px;
+        }
+      }
+    </style>
   </head>
-  <body class="landing-body">
+  <body>
     <nav class="landing-nav">
-      <div class="brand">ZuBao</div>
+      <div class="landing-brand">
+        <img src="./assets/brand/zubao-logo-symbol.png?v=20260513b" alt="足宝 Logo" />
+      </div>
       <div class="topbar-actions">
         <a href="./login.html" class="badge primary">立即登录</a>
       </div>
@@ -22,28 +407,31 @@
 
     <section class="hero-landing">
       <div class="hero-glass">
+        <div class="hero-brand">
+          <img src="./assets/brand/zubao-logo-full.png?v=20260513b" alt="足宝品牌标识" />
+        </div>
         <p class="eyebrow">足宝</p>
         <h1 class="page-title">
           让养生
-          <span style="color: var(--primary)">触手可及</span>
+          <span>触手可及</span>
         </h1>
         <p class="page-copy">
           足宝专注于足疗养生门店的数字化管理，连接商家、技师与服务流程，让日常经营更高效、协作更顺畅、服务体验更稳定。
         </p>
-        <div class="hero-meta" style="margin-top: 24px">
+        <div class="hero-meta">
           <a href="./login.html" class="pill-button">进入系统</a>
           <a href="./login.html" class="ghost-button">选择登录身份</a>
         </div>
       </div>
     </section>
 
-    <section style="padding: 80px 28px">
+    <section style="padding: 80px 20px">
       <div class="section-header">
         <div>
           <p class="eyebrow">服务入口</p>
           <h2 class="section-title">多重身份，同一种秩序。</h2>
         </div>
-        <p class="section-copy" style="max-width: 360px">
+        <p class="section-copy">
           足宝为不同使用角色提供清晰入口，帮助门店管理、技师协作与后续服务连接在同一套体系中完成。
         </p>
       </div>
@@ -51,32 +439,32 @@
       <div class="landing-grid">
         <article class="role-card">
           <div class="icon-pill"><span class="material-symbols-outlined">business_center</span></div>
-          <h3 class="section-title" style="font-size: 1.8rem; margin-top: 18px">商家入口</h3>
-          <p class="section-copy">面向门店管理者，集中处理技师、订单、营收统计与门店设置。</p>
-          <div style="margin-top: 18px"><a class="action-link" href="./merchant-dashboard.html">进入商家端 <span class="material-symbols-outlined">arrow_forward</span></a></div>
+          <h3>商家入口</h3>
+          <p>面向门店管理者，集中处理技师、订单、营收统计与门店设置。</p>
+          <div><a class="action-link" href="./merchant-dashboard.html">进入商家端 <span class="material-symbols-outlined">arrow_forward</span></a></div>
         </article>
 
-        <article class="role-card" style="background: var(--surface-lowest); box-shadow: var(--shadow-soft)">
+        <article class="role-card">
           <div class="icon-pill"><span class="material-symbols-outlined">self_improvement</span></div>
-          <h3 class="section-title" style="font-size: 1.8rem; margin-top: 18px">技师入口</h3>
-          <p class="section-copy">面向技师个人，查看工作状态、收益记录、门店信息与个人资料。</p>
-          <div style="margin-top: 18px"><a class="action-link" href="./technician-home.html">进入技师端 <span class="material-symbols-outlined">arrow_forward</span></a></div>
+          <h3>技师入口</h3>
+          <p>面向技师个人，查看工作状态、收益记录、门店信息与个人资料。</p>
+          <div><a class="action-link" href="./technician-home.html">进入技师端 <span class="material-symbols-outlined">arrow_forward</span></a></div>
         </article>
 
         <article class="role-card primary">
-          <div class="icon-pill" style="background: rgba(255,255,255,0.14); color: white"><span class="material-symbols-outlined">face</span></div>
-          <h3 class="section-title" style="font-size: 1.8rem; margin-top: 18px">消费者入口</h3>
-          <p class="section-copy" style="color: rgba(255,255,255,0.8)">
+          <div class="icon-pill"><span class="material-symbols-outlined">face</span></div>
+          <h3>消费者入口</h3>
+          <p>
             面向消费者的预约与服务入口，当前提供品牌展示与后续服务承接说明。
           </p>
-          <div style="margin-top: 18px"><span class="badge neutral">即将开放</span></div>
+          <div><span class="badge neutral">即将开放</span></div>
         </article>
       </div>
     </section>
 
     <section class="editorial-divider">
-      <div style="padding: 0 20px">
-        <h2 class="page-title" style="color: white; font-size: clamp(2.2rem, 5vw, 4rem)">
+      <div>
+        <h2>
           真正的治愈，始于内心的宁静
           <br />
           与技术的精准衔接。
@@ -84,19 +472,19 @@
       </div>
     </section>
 
-    <section style="padding: 80px 28px 96px">
+    <section style="padding: 80px 20px 96px">
       <div class="grid-3">
-        <article class="surface-card card-pad">
-          <h3 class="section-title" style="font-size: 1.6rem">商家端管理</h3>
+        <article class="surface-card">
+          <h3 class="section-title">商家端管理</h3>
           <p class="section-copy">覆盖首页、技师管理、订单管理、经营统计与门店设置，帮助门店建立稳定高效的日常运营流程。</p>
         </article>
-        <article class="hero-card hero-pad">
-          <p class="metric-label" style="color: rgba(255,255,255,0.72)">服务目标</p>
+        <article class="hero-card">
+          <p class="metric-label">服务目标</p>
           <p class="metric-value">5 家</p>
-          <p class="section-copy" style="color: rgba(255,255,255,0.82)">服务 5 家门店，持续验证门店管理与技师协作的完整闭环。</p>
+          <p>服务 5 家门店，持续验证门店管理与技师协作的完整闭环。</p>
         </article>
-        <article class="white-card card-pad">
-          <h3 class="section-title" style="font-size: 1.6rem">技师独立账号</h3>
+        <article class="white-card">
+          <h3 class="section-title">技师独立账号</h3>
           <p class="section-copy">技师拥有独立账号与资料页，门店仅处理加入审核与在店状态管理，职责边界清晰。</p>
         </article>
       </div>

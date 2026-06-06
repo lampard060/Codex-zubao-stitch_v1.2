@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#0A0A0A" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>休息中 - 足宝</title>
+<link rel="stylesheet" href="./fonts/fonts.css" />
+<link rel="stylesheet" href="./styles.css?v=20260515-redesign" />
+<script defer src="./js/icon-fallback-inline.js?v=20260514-icons"></script>
+<link rel="stylesheet" href="./technician-redesign.css?v=20260515-obsidian" />
+</head>
+<body data-page="technician-rest">
+<div class="technician-app-shell">
+  <div class="technician-topbar" id="technician-topbar"></div>
+
+  <main class="technician-page technician-rest-page">
+    <section class="rest-status-card">
+      <div class="rest-icon">
+        <svg viewBox="0 0 64 80" aria-hidden="true">
+          <path d="M32 8c-13.3 0-24 10.7-24 24 0 8.4 4.3 15.8 10.9 20.1L32 72l13.1-19.9C51.7 47.8 56 40.4 56 32c0-13.3-10.7-24-24-24z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M32 20c-6.6 0-12 5.4-12 12s5.4 12 12 12 12-5.4 12-12-5.4-12-12-12z" fill="currentColor"/>
+        </svg>
+      </div>
+      <h2 class="rest-title">休息中</h2>
+      <p class="rest-desc">您当前处于休息状态，不会接收新的订单</p>
+      <div class="rest-time">
+        <span class="material-symbols-outlined">schedule</span>
+        <span id="rest-duration">00:00:00</span>
+      </div>
+    </section>
+
+    <section class="rest-actions">
+      <button class="btn-primary" id="resume-work-btn" type="button">
+        <span class="material-symbols-outlined">play_circle</span>
+        上班打卡
+      </button>
+    </section>
+
+    <section class="rest-stats">
+      <h3>今日休息统计</h3>
+      <div class="rest-stats-grid">
+        <div class="rest-stat-item">
+          <strong id="rest-count">0</strong>
+          <span>休息次数</span>
+        </div>
+        <div class="rest-stat-item">
+          <strong id="rest-total">00:00</strong>
+          <span>累计休息</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="technician-bottom-nav-mobile" id="technician-bottom-nav"></div>
+</div>
+
+<script type="module" src="./js/pages/technician-rest.js?v=20260515-obsidian"></script>
+</body>
+</html>

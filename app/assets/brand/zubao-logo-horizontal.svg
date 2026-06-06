@@ -1,0 +1,28 @@
+<svg width="760" height="240" viewBox="0 0 760 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="zubaoBrandGradient" x1="74" y1="34" x2="228" y2="214" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF6B00"/>
+      <stop offset="1" stop-color="#FFB347"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(-42 -16) scale(0.38)">
+    <path
+      d="M134 166C167 145 215 129 290 107C315 100 334 95 352 89C366 84 380 92 385 105C391 117 387 132 375 140C366 148 351 150 337 147C294 153 243 166 198 181C168 191 147 204 134 219C124 232 122 246 128 256C133 267 147 273 166 273H313L201 385C187 400 188 418 202 427C236 447 299 457 391 457C425 457 456 452 481 441"
+      stroke="url(#zubaoBrandGradient)"
+      stroke-width="42"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <circle cx="400" cy="84" r="34" fill="url(#zubaoBrandGradient)"/>
+    <circle cx="454" cy="446" r="34" fill="url(#zubaoBrandGradient)"/>
+  </g>
+  <g fill="#111827">
+    <text x="230" y="106" font-family="Inter, Manrope, system-ui, sans-serif" font-size="92" font-weight="800" letter-spacing="-3">ZuBao</text>
+    <text x="236" y="178" font-family="'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif" font-size="50" font-weight="700" letter-spacing="8">足宝</text>
+  </g>
+  <g stroke="#9CA3AF" stroke-width="2">
+    <line x1="236" y1="208" x2="304" y2="208"/>
+    <line x1="560" y1="208" x2="628" y2="208"/>
+  </g>
+  <text x="432" y="214" text-anchor="middle" fill="#9CA3AF" font-family="'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif" font-size="28" font-weight="500" letter-spacing="4">让养生触手可及</text>
+</svg>

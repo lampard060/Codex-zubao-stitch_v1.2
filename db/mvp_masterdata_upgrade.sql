@@ -9,8 +9,13 @@ begin
   end if;
 end $$;
 
+alter type order_status add value if not exists 'pending' before 'in_service';
+
 alter table service_items
   add column if not exists description text;
+
+alter table shops
+  add column if not exists opening_hours varchar(32);
 
 create table if not exists rooms (
   id uuid primary key default gen_random_uuid(),
@@ -44,4 +49,3 @@ alter table orders
   add column if not exists room_id uuid references rooms(id),
   add column if not exists customer_id uuid references customers(id),
   add column if not exists customer_type customer_type not null default 'walk_in';
-
